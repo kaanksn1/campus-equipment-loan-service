@@ -1,0 +1,3 @@
+# Optional tooling for generating the report PDF; not needed to build/run Java.
+PyMuPDF==1.26.5
+reportlab==4.4.4

@@ -1,0 +1,14 @@
+target/
+*.class
+*.jar
+.DS_Store
+.idea/
+*.iml
+.vscode/
+__pycache__/
+*.pyc
+.venv/
+.qa/
+submission/*.zip
+submission/MANIFEST.json
+submission/checksums.sha256

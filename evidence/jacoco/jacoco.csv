@@ -1,0 +1,8 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Campus Equipment Loan Eligibility and Overdue Fee Service,edu.campus.loan,Role,0,36,0,0,0,9,0,4,0,4
+Campus Equipment Loan Eligibility and Overdue Fee Service,edu.campus.loan,Borrower,0,38,0,6,0,8,0,4,0,1
+Campus Equipment Loan Eligibility and Overdue Fee Service,edu.campus.loan,LoanService,0,87,0,16,0,20,0,10,0,2
+Campus Equipment Loan Eligibility and Overdue Fee Service,edu.campus.loan,OverdueFeeService,0,49,0,12,0,11,0,8,0,2
+Campus Equipment Loan Eligibility and Overdue Fee Service,edu.campus.loan,RejectionReason,0,21,0,0,0,4,0,1,0,1
+Campus Equipment Loan Eligibility and Overdue Fee Service,edu.campus.loan,ConsoleApp,10,257,4,22,4,45,4,16,1,6
+Campus Equipment Loan Eligibility and Overdue Fee Service,edu.campus.loan,LoanDecision,0,21,0,0,0,7,0,4,0,4

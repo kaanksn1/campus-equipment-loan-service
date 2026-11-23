@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="tr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LoanService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Campus Equipment Loan Eligibility and Overdue Fee Service</a> &gt; <a href="index.source.html" class="el_package">edu.campus.loan</a> &gt; <span class="el_source">LoanService.java</span></div><h1>LoanService.java</h1><pre class="source lang-java linenums">package edu.campus.loan;
+
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+/** Stateless loan evaluation. A decision does not issue or reserve equipment. */
+<span class="fc" id="L9">public final class LoanService {</span>
+    public LoanDecision requestLoan(Borrower borrower, LocalDate checkoutDate, int requestedDays) {
+<span class="fc bfc" id="L11" title="All 2 branches covered.">        if (borrower == null) {</span>
+<span class="fc" id="L12">            throw new IllegalArgumentException(&quot;Borrower is required.&quot;);</span>
+        }
+<span class="fc bfc" id="L14" title="All 2 branches covered.">        if (checkoutDate == null) {</span>
+<span class="fc" id="L15">            throw new IllegalArgumentException(&quot;Checkout date is required.&quot;);</span>
+        }
+<span class="fc bfc" id="L17" title="All 4 branches covered.">        if (requestedDays &lt; 1 || requestedDays &gt; borrower.role().maximumLoanDays()) {</span>
+<span class="fc" id="L18">            throw new IllegalArgumentException(&quot;Requested days must be between 1 and &quot;</span>
+<span class="fc" id="L19">                    + borrower.role().maximumLoanDays() + &quot;.&quot;);</span>
+        }
+
+        // Validate the entire request before evaluating eligibility, even for a blocked borrower.
+        LocalDate candidateDueDate;
+        try {
+<span class="fc" id="L25">            candidateDueDate = checkoutDate.plusDays(requestedDays);</span>
+<span class="fc" id="L26">        } catch (DateTimeException ex) {</span>
+<span class="fc" id="L27">            throw new IllegalArgumentException(&quot;Due date exceeds the supported calendar range.&quot;, ex);</span>
+<span class="fc" id="L28">        }</span>
+
+<span class="fc" id="L30">        List&lt;RejectionReason&gt; reasons = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (!borrower.activeMembership()) {</span>
+<span class="fc" id="L32">            reasons.add(RejectionReason.INACTIVE_MEMBERSHIP);</span>
+        }
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (borrower.outstandingFeeCents() &gt; 0) {</span>
+<span class="fc" id="L35">            reasons.add(RejectionReason.OUTSTANDING_FEES);</span>
+        }
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        if (borrower.currentLoanCount() &gt;= borrower.role().loanLimit()) {</span>
+<span class="fc" id="L38">            reasons.add(RejectionReason.LOAN_LIMIT_REACHED);</span>
+        }
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        return new LoanDecision(reasons.isEmpty() ? candidateDueDate : null, reasons);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

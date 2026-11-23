@@ -1,0 +1,11 @@
+# Render documents and report images as binary files in Git diffs.
+*.pdf binary
+*.gif binary
+*.jar binary
+*.zip binary
+
+# Preserve captured/generated evidence without source-format whitespace checks.
+evidence/** -whitespace
+
+mvnw text eol=lf
+mvnw.cmd text eol=crlf

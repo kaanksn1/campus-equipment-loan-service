@@ -1,0 +1,146 @@
+Command: /var/folders/s1/xmqxz6fx0kd5jd6w62yy2t1r0000gn/T/swe411-fault-2gdysgh9/scripts/build.sh -B -ntp -Dstyle.color=never -o -Dtest=LoanServiceTest#capacityBoundary clean test
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< edu.campus.swe411:campus-equipment-loan >---------------
+[INFO] Building Campus Equipment Loan Eligibility and Overdue Fee Service 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ campus-equipment-loan ---
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (coverage-agent) @ campus-equipment-loan ---
+[INFO] argLine set to -javaagent:/Users/kaan/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/private/var/folders/s1/xmqxz6fx0kd5jd6w62yy2t1r0000gn/T/swe411-fault-2gdysgh9/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ campus-equipment-loan ---
+[INFO] skip non existing resourceDirectory /private/var/folders/s1/xmqxz6fx0kd5jd6w62yy2t1r0000gn/T/swe411-fault-2gdysgh9/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ campus-equipment-loan ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 7 source files with javac [debug release 17] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ campus-equipment-loan ---
+[INFO] skip non existing resourceDirectory /private/var/folders/s1/xmqxz6fx0kd5jd6w62yy2t1r0000gn/T/swe411-fault-2gdysgh9/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ campus-equipment-loan ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 5 source files with javac [debug release 17] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ campus-equipment-loan ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running edu.campus.loan.LoanServiceTest
+CASE	CAP-01	FR-02	Boundary value analysis	STUDENT; active=true; debt=0; count=0; days=1; checkout=2026-11-23	true	true
+CASE	CAP-02	FR-02	Boundary value analysis	STUDENT; active=true; debt=0; count=2; days=1; checkout=2026-11-23	true	true
+CASE	CAP-03	FR-02	Boundary value analysis	STUDENT; active=true; debt=0; count=3; days=1; checkout=2026-11-23	false	true
+CASE	CAP-04	FR-02	Boundary value analysis	STUDENT; active=true; debt=0; count=4; days=1; checkout=2026-11-23	false	false
+CASE	CAP-05	FR-02	Boundary value analysis	STAFF; active=true; debt=0; count=0; days=1; checkout=2026-11-23	true	true
+CASE	CAP-06	FR-02	Boundary value analysis	STAFF; active=true; debt=0; count=4; days=1; checkout=2026-11-23	true	true
+CASE	CAP-07	FR-02	Boundary value analysis	STAFF; active=true; debt=0; count=5; days=1; checkout=2026-11-23	false	true
+CASE	CAP-08	FR-02	Boundary value analysis	STAFF; active=true; debt=0; count=6; days=1; checkout=2026-11-23	false	false
+CASE	CAP-09	FR-02	Boundary value analysis	STAFF; active=true; debt=0; count=2147483647; days=1; checkout=2026-11-23	false	false
+[ERROR] Tests run: 9, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.176 s <<< FAILURE! -- in edu.campus.loan.LoanServiceTest
+[ERROR] edu.campus.loan.LoanServiceTest.capacityBoundary(String, Role, int, boolean)[3] -- Time elapsed: 0.006 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: CAP-03 ==> expected: <false> but was: <true>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1156)
+	at edu.campus.loan.CaseEvidence.check(CaseEvidence.java:15)
+	at edu.campus.loan.LoanServiceTest.capacityBoundary(LoanServiceTest.java:57)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[ERROR] edu.campus.loan.LoanServiceTest.capacityBoundary(String, Role, int, boolean)[7] -- Time elapsed: 0.003 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: CAP-07 ==> expected: <false> but was: <true>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1156)
+	at edu.campus.loan.CaseEvidence.check(CaseEvidence.java:15)
+	at edu.campus.loan.LoanServiceTest.capacityBoundary(LoanServiceTest.java:57)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   LoanServiceTest.capacityBoundary:57 CAP-03 ==> expected: <false> but was: <true>
+[ERROR]   LoanServiceTest.capacityBoundary:57 CAP-07 ==> expected: <false> but was: <true>
+[INFO] 
+[ERROR] Tests run: 9, Failures: 2, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.775 s
+[INFO] Finished at: 2026-11-23T04:45:24+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.4:test (default-test) on project campus-equipment-loan: There are test failures.
+[ERROR] 
+[ERROR] See /private/var/folders/s1/xmqxz6fx0kd5jd6w62yy2t1r0000gn/T/swe411-fault-2gdysgh9/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

@@ -1,0 +1,17 @@
+SWE411 execution environment
+Recorded date: 23 November 2026 (Europe/Oslo)
+Platform: macOS-15.7.4-arm64-arm-64bit
+Architecture: arm64
+Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)
+Maven home: /Users/kaan/.m2/wrapper/dists/apache-maven-3.9.11/a2d47e15
+Java version: 17.0.21.1, vendor: Eclipse Adoptium, runtime: /Users/kaan/Library/Caches/codex/software-verification/jdk17/jdk-17.0.21.1+2/Contents/Home
+Default locale: tr_TR, platform encoding: UTF-8
+OS name: "mac os x", version: "15.7.4", arch: "aarch64", family: "mac"
+
+Compiler release: 17
+JUnit Jupiter: 5.13.4
+JaCoCo: 0.8.14
+Surefire: 3.5.4
+Maven Compiler Plugin: 3.14.0
+Maven Jar Plugin: 3.4.2
+Maven Wrapper: 3.3.4

@@ -1,0 +1,11 @@
+--- original/LoanService.java
++++ injected/LoanService.java
+@@ -34,7 +34,7 @@
+         if (borrower.outstandingFeeCents() > 0) {
+             reasons.add(RejectionReason.OUTSTANDING_FEES);
+         }
+-        if (borrower.currentLoanCount() >= borrower.role().loanLimit()) {
++        if (borrower.currentLoanCount() > borrower.role().loanLimit()) {
+             reasons.add(RejectionReason.LOAN_LIMIT_REACHED);
+         }
+         return new LoanDecision(reasons.isEmpty() ? candidateDueDate : null, reasons);

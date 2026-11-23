@@ -1,0 +1,125 @@
+[
+  {
+    "id": "SMOKE-01",
+    "args": [
+      "loan",
+      "STUDENT",
+      "true",
+      "2",
+      "0",
+      "2026-11-23",
+      "7"
+    ],
+    "expected_exit": 0,
+    "expected_output_contains": "APPROVED; due date: 2026-11-30",
+    "actual_exit": 0,
+    "stdout": "APPROVED; due date: 2026-11-30\n",
+    "stderr": "",
+    "passed": true
+  },
+  {
+    "id": "SMOKE-02",
+    "args": [
+      "loan",
+      "STAFF",
+      "false",
+      "5",
+      "1",
+      "2026-11-23",
+      "14"
+    ],
+    "expected_exit": 0,
+    "expected_output_contains": "REJECTED; reasons: [INACTIVE_MEMBERSHIP, OUTSTANDING_FEES, LOAN_LIMIT_REACHED]",
+    "actual_exit": 0,
+    "stdout": "REJECTED; reasons: [INACTIVE_MEMBERSHIP, OUTSTANDING_FEES, LOAN_LIMIT_REACHED]\n",
+    "stderr": "",
+    "passed": true
+  },
+  {
+    "id": "SMOKE-03",
+    "args": [
+      "fee",
+      "2026-11-23",
+      "2026-11-30",
+      "2026-12-03"
+    ],
+    "expected_exit": 0,
+    "expected_output_contains": "Overdue fee: 3.00 TL (300 kurus)",
+    "actual_exit": 0,
+    "stdout": "Overdue fee: 3.00 TL (300 kurus)\n",
+    "stderr": "",
+    "passed": true
+  },
+  {
+    "id": "SMOKE-04",
+    "args": [
+      "fee",
+      "2026-11-23",
+      "2026-11-30",
+      "2027-03-01"
+    ],
+    "expected_exit": 0,
+    "expected_output_contains": "Overdue fee: 50.00 TL (5000 kurus)",
+    "actual_exit": 0,
+    "stdout": "Overdue fee: 50.00 TL (5000 kurus)\n",
+    "stderr": "",
+    "passed": true
+  },
+  {
+    "id": "SMOKE-05",
+    "args": [
+      "fee",
+      "2026-11-23",
+      "2026-11-30",
+      "2026-11-23"
+    ],
+    "expected_exit": 0,
+    "expected_output_contains": "Overdue fee: 0.00 TL (0 kurus)",
+    "actual_exit": 0,
+    "stdout": "Overdue fee: 0.00 TL (0 kurus)\n",
+    "stderr": "",
+    "passed": true
+  },
+  {
+    "id": "SMOKE-06",
+    "args": [
+      "loan",
+      "STUDENT",
+      "true",
+      "0",
+      "-1",
+      "2026-11-23",
+      "7"
+    ],
+    "expected_exit": 2,
+    "expected_output_contains": "Input error: Outstanding fees cannot be negative.",
+    "actual_exit": 2,
+    "stdout": "",
+    "stderr": "Input error: Outstanding fees cannot be negative.\nUsage: java -jar target/campus-equipment-loan.jar --demo\n       java -jar target/campus-equipment-loan.jar loan <STUDENT|STAFF> <true|false> <currentLoans> <outstandingKurus> <YYYY-MM-DD> <days>\n       java -jar target/campus-equipment-loan.jar fee <checkoutDate> <dueDate> <returnDate>\nDates are ISO calendar dates; money inputs are integer kurus (100 = 1 TL).\n",
+    "passed": true
+  },
+  {
+    "id": "SMOKE-07",
+    "args": [
+      "unknown"
+    ],
+    "expected_exit": 2,
+    "expected_output_contains": "Input error: Unknown command or incorrect argument count.",
+    "actual_exit": 2,
+    "stdout": "",
+    "stderr": "Input error: Unknown command or incorrect argument count.\nUsage: java -jar target/campus-equipment-loan.jar --demo\n       java -jar target/campus-equipment-loan.jar loan <STUDENT|STAFF> <true|false> <currentLoans> <outstandingKurus> <YYYY-MM-DD> <days>\n       java -jar target/campus-equipment-loan.jar fee <checkoutDate> <dueDate> <returnDate>\nDates are ISO calendar dates; money inputs are integer kurus (100 = 1 TL).\n",
+    "passed": true
+  },
+  {
+    "id": "SMOKE-08",
+    "args": [
+      "--demo"
+    ],
+    "expected_exit": 0,
+    "expected_output_contains": "Three days late: 3.00 TL",
+    "actual_exit": 0,
+    "stdout": "Campus Equipment Loan Eligibility and Overdue Fee Service\nEducational policy; no equipment is reserved or issued.\nAPPROVED; due date: 2026-11-30\nREJECTED; reasons: [INACTIVE_MEMBERSHIP, OUTSTANDING_FEES, LOAN_LIMIT_REACHED]\nThree days late: 3.00 TL\n",
+    "stderr": "",
+    "passed": true
+  }
+]

@@ -1,0 +1,86 @@
+{
+  "id": "FI-02",
+  "title": "On-time return charged as one day late",
+  "classification": "deliberately seeded fault",
+  "selector": "OverdueFeeServiceTest#feeBoundary",
+  "exit_code": 1,
+  "detected": true,
+  "results": {
+    "tests": 9,
+    "failures": 4,
+    "errors": 0,
+    "skipped": 0,
+    "classes": [
+      {
+        "name": "edu.campus.loan.OverdueFeeServiceTest",
+        "tests": 9,
+        "failures": 4,
+        "errors": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "failing_cases": [
+    {
+      "id": "FEE-03",
+      "requirements": "FR-06",
+      "technique": "Boundary value analysis",
+      "input": "checkout=2026-11-01; due=2026-11-08; return=2026-11-08",
+      "expected": "0",
+      "actual": "100",
+      "status": "FAIL",
+      "test_class": "edu.campus.loan.OverdueFeeServiceTest",
+      "test_method": "feeBoundary(String, int, long)[3]"
+    },
+    {
+      "id": "FEE-04",
+      "requirements": "FR-06",
+      "technique": "Boundary value analysis",
+      "input": "checkout=2026-11-01; due=2026-11-08; return=2026-11-09",
+      "expected": "100",
+      "actual": "200",
+      "status": "FAIL",
+      "test_class": "edu.campus.loan.OverdueFeeServiceTest",
+      "test_method": "feeBoundary(String, int, long)[4]"
+    },
+    {
+      "id": "FEE-05",
+      "requirements": "FR-06",
+      "technique": "Boundary value analysis",
+      "input": "checkout=2026-11-01; due=2026-11-08; return=2026-11-10",
+      "expected": "200",
+      "actual": "300",
+      "status": "FAIL",
+      "test_class": "edu.campus.loan.OverdueFeeServiceTest",
+      "test_method": "feeBoundary(String, int, long)[5]"
+    },
+    {
+      "id": "FEE-06",
+      "requirements": "FR-06",
+      "technique": "Boundary value analysis",
+      "input": "checkout=2026-11-01; due=2026-11-08; return=2026-12-27",
+      "expected": "4900",
+      "actual": "5000",
+      "status": "FAIL",
+      "test_class": "edu.campus.loan.OverdueFeeServiceTest",
+      "test_method": "feeBoundary(String, int, long)[6]"
+    }
+  ],
+  "repair_exit_code": 0,
+  "repair_results": {
+    "tests": 9,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "classes": [
+      {
+        "name": "edu.campus.loan.OverdueFeeServiceTest",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "repair_verified": true
+}

@@ -1,0 +1,264 @@
+{
+  "tests": 103,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "classes": [
+    {
+      "name": "edu.campus.loan.BorrowerTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "edu.campus.loan.ConsoleAppTest",
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "edu.campus.loan.LoanServiceTest",
+      "tests": 54,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "edu.campus.loan.OverdueFeeServiceTest",
+      "tests": 22,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "coverage": {
+    "INSTRUCTION": {
+      "missed": 10,
+      "covered": 509,
+      "percent": 98.07
+    },
+    "BRANCH": {
+      "missed": 4,
+      "covered": 56,
+      "percent": 93.33
+    },
+    "LINE": {
+      "missed": 4,
+      "covered": 104,
+      "percent": 96.3
+    },
+    "COMPLEXITY": {
+      "missed": 4,
+      "covered": 47,
+      "percent": 92.16
+    },
+    "METHOD": {
+      "missed": 1,
+      "covered": 20,
+      "percent": 95.24
+    },
+    "CLASS": {
+      "missed": 0,
+      "covered": 7,
+      "percent": 100.0
+    }
+  },
+  "run_time_oslo": "2026-11-23T04:46:17+01:00",
+  "production_classes": [
+    {
+      "name": "edu/campus/loan/Role",
+      "counters": {
+        "INSTRUCTION": {
+          "missed": 0,
+          "covered": 36
+        },
+        "LINE": {
+          "missed": 0,
+          "covered": 9
+        },
+        "COMPLEXITY": {
+          "missed": 0,
+          "covered": 4
+        },
+        "METHOD": {
+          "missed": 0,
+          "covered": 4
+        },
+        "CLASS": {
+          "missed": 0,
+          "covered": 1
+        }
+      }
+    },
+    {
+      "name": "edu/campus/loan/Borrower",
+      "counters": {
+        "INSTRUCTION": {
+          "missed": 0,
+          "covered": 38
+        },
+        "BRANCH": {
+          "missed": 0,
+          "covered": 6
+        },
+        "LINE": {
+          "missed": 0,
+          "covered": 8
+        },
+        "COMPLEXITY": {
+          "missed": 0,
+          "covered": 4
+        },
+        "METHOD": {
+          "missed": 0,
+          "covered": 1
+        },
+        "CLASS": {
+          "missed": 0,
+          "covered": 1
+        }
+      }
+    },
+    {
+      "name": "edu/campus/loan/LoanService",
+      "counters": {
+        "INSTRUCTION": {
+          "missed": 0,
+          "covered": 87
+        },
+        "BRANCH": {
+          "missed": 0,
+          "covered": 16
+        },
+        "LINE": {
+          "missed": 0,
+          "covered": 20
+        },
+        "COMPLEXITY": {
+          "missed": 0,
+          "covered": 10
+        },
+        "METHOD": {
+          "missed": 0,
+          "covered": 2
+        },
+        "CLASS": {
+          "missed": 0,
+          "covered": 1
+        }
+      }
+    },
+    {
+      "name": "edu/campus/loan/OverdueFeeService",
+      "counters": {
+        "INSTRUCTION": {
+          "missed": 0,
+          "covered": 49
+        },
+        "BRANCH": {
+          "missed": 0,
+          "covered": 12
+        },
+        "LINE": {
+          "missed": 0,
+          "covered": 11
+        },
+        "COMPLEXITY": {
+          "missed": 0,
+          "covered": 8
+        },
+        "METHOD": {
+          "missed": 0,
+          "covered": 2
+        },
+        "CLASS": {
+          "missed": 0,
+          "covered": 1
+        }
+      }
+    },
+    {
+      "name": "edu/campus/loan/RejectionReason",
+      "counters": {
+        "INSTRUCTION": {
+          "missed": 0,
+          "covered": 21
+        },
+        "LINE": {
+          "missed": 0,
+          "covered": 4
+        },
+        "COMPLEXITY": {
+          "missed": 0,
+          "covered": 1
+        },
+        "METHOD": {
+          "missed": 0,
+          "covered": 1
+        },
+        "CLASS": {
+          "missed": 0,
+          "covered": 1
+        }
+      }
+    },
+    {
+      "name": "edu/campus/loan/ConsoleApp",
+      "counters": {
+        "INSTRUCTION": {
+          "missed": 10,
+          "covered": 257
+        },
+        "BRANCH": {
+          "missed": 4,
+          "covered": 22
+        },
+        "LINE": {
+          "missed": 4,
+          "covered": 45
+        },
+        "COMPLEXITY": {
+          "missed": 4,
+          "covered": 16
+        },
+        "METHOD": {
+          "missed": 1,
+          "covered": 6
+        },
+        "CLASS": {
+          "missed": 0,
+          "covered": 1
+        }
+      }
+    },
+    {
+      "name": "edu/campus/loan/LoanDecision",
+      "counters": {
+        "INSTRUCTION": {
+          "missed": 0,
+          "covered": 21
+        },
+        "LINE": {
+          "missed": 0,
+          "covered": 7
+        },
+        "COMPLEXITY": {
+          "missed": 0,
+          "covered": 4
+        },
+        "METHOD": {
+          "missed": 0,
+          "covered": 4
+        },
+        "CLASS": {
+          "missed": 0,
+          "covered": 1
+        }
+      }
+    }
+  ],
+  "console_smoke_tests": 8,
+  "console_smoke_passed": 8
+}

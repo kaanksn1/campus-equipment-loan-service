@@ -1,0 +1,64 @@
+{
+  "id": "FI-01",
+  "title": "Loan limit off-by-one",
+  "classification": "deliberately seeded fault",
+  "selector": "LoanServiceTest#capacityBoundary",
+  "exit_code": 1,
+  "detected": true,
+  "results": {
+    "tests": 9,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0,
+    "classes": [
+      {
+        "name": "edu.campus.loan.LoanServiceTest",
+        "tests": 9,
+        "failures": 2,
+        "errors": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "failing_cases": [
+    {
+      "id": "CAP-03",
+      "requirements": "FR-02",
+      "technique": "Boundary value analysis",
+      "input": "STUDENT; active=true; debt=0; count=3; days=1; checkout=2026-11-23",
+      "expected": "false",
+      "actual": "true",
+      "status": "FAIL",
+      "test_class": "edu.campus.loan.LoanServiceTest",
+      "test_method": "capacityBoundary(String, Role, int, boolean)[3]"
+    },
+    {
+      "id": "CAP-07",
+      "requirements": "FR-02",
+      "technique": "Boundary value analysis",
+      "input": "STAFF; active=true; debt=0; count=5; days=1; checkout=2026-11-23",
+      "expected": "false",
+      "actual": "true",
+      "status": "FAIL",
+      "test_class": "edu.campus.loan.LoanServiceTest",
+      "test_method": "capacityBoundary(String, Role, int, boolean)[7]"
+    }
+  ],
+  "repair_exit_code": 0,
+  "repair_results": {
+    "tests": 9,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "classes": [
+      {
+        "name": "edu.campus.loan.LoanServiceTest",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "repair_verified": true
+}

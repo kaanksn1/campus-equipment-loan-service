@@ -1,0 +1,11 @@
+--- original/OverdueFeeService.java
++++ injected/OverdueFeeService.java
+@@ -18,7 +18,7 @@
+         if (returnDate.isBefore(checkoutDate)) {
+             throw new IllegalArgumentException("Return date cannot be before checkout date.");
+         }
+-        long lateDays = ChronoUnit.DAYS.between(dueDate, returnDate);
++        long lateDays = ChronoUnit.DAYS.between(dueDate, returnDate) + 1;
+         if (lateDays <= 0) {
+             return 0;
+         }

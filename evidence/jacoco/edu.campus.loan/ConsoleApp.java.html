@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="tr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConsoleApp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Campus Equipment Loan Eligibility and Overdue Fee Service</a> &gt; <a href="index.source.html" class="el_package">edu.campus.loan</a> &gt; <span class="el_source">ConsoleApp.java</span></div><h1>ConsoleApp.java</h1><pre class="source lang-java linenums">package edu.campus.loan;
+
+import java.io.PrintStream;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.util.Locale;
+
+/** A command-line entry point; service inputs remain explicit and reproducible. */
+public final class ConsoleApp {
+    private ConsoleApp() {
+    }
+
+    public static void main(String[] args) {
+<span class="nc" id="L14">        int status = run(args, System.out, System.err);</span>
+<span class="nc bnc" id="L15" title="All 2 branches missed.">        if (status != 0) {</span>
+<span class="nc" id="L16">            System.exit(status);</span>
+        }
+<span class="nc" id="L18">    }</span>
+
+    public static int run(String[] args, PrintStream out, PrintStream err) {
+        try {
+<span class="fc bfc" id="L22" title="All 6 branches covered.">            if (args.length == 0 || (args.length == 1 &amp;&amp; &quot;--help&quot;.equals(args[0]))) {</span>
+<span class="fc" id="L23">                usage(out);</span>
+<span class="fc bfc" id="L24" title="All 4 branches covered.">            } else if (args.length == 1 &amp;&amp; &quot;--demo&quot;.equals(args[0])) {</span>
+<span class="fc" id="L25">                demonstrate(out);</span>
+<span class="pc bpc" id="L26" title="1 of 4 branches missed.">            } else if (args.length == 7 &amp;&amp; &quot;loan&quot;.equals(args[0])) {</span>
+<span class="fc" id="L27">                Borrower borrower = new Borrower(Role.valueOf(args[1].toUpperCase(Locale.ROOT)),</span>
+<span class="fc" id="L28">                        parseMembership(args[2]), Integer.parseInt(args[3]), Long.parseLong(args[4]));</span>
+<span class="fc" id="L29">                printDecision(new LoanService().requestLoan(borrower,</span>
+<span class="fc" id="L30">                        LocalDate.parse(args[5]), Integer.parseInt(args[6])), out);</span>
+<span class="pc bpc" id="L31" title="1 of 4 branches missed.">            } else if (args.length == 4 &amp;&amp; &quot;fee&quot;.equals(args[0])) {</span>
+<span class="fc" id="L32">                long fee = new OverdueFeeService().calculateFeeCents(LocalDate.parse(args[1]),</span>
+<span class="fc" id="L33">                        LocalDate.parse(args[2]), LocalDate.parse(args[3]));</span>
+<span class="fc" id="L34">                out.println(&quot;Overdue fee: &quot; + formatMoney(fee) + &quot; TL (&quot; + fee + &quot; kurus)&quot;);</span>
+<span class="fc" id="L35">            } else {</span>
+<span class="fc" id="L36">                throw new IllegalArgumentException(&quot;Unknown command or incorrect argument count.&quot;);</span>
+            }
+<span class="fc" id="L38">            return 0;</span>
+<span class="fc" id="L39">        } catch (IllegalArgumentException | DateTimeException ex) {</span>
+<span class="fc" id="L40">            err.println(&quot;Input error: &quot; + ex.getMessage());</span>
+<span class="fc" id="L41">            usage(err);</span>
+<span class="fc" id="L42">            return 2;</span>
+        }
+    }
+
+    private static boolean parseMembership(String value) {
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (&quot;true&quot;.equalsIgnoreCase(value)) {</span>
+<span class="fc" id="L48">            return true;</span>
+        }
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (&quot;false&quot;.equalsIgnoreCase(value)) {</span>
+<span class="fc" id="L51">            return false;</span>
+        }
+<span class="fc" id="L53">        throw new IllegalArgumentException(&quot;Membership must be true or false.&quot;);</span>
+    }
+
+    private static void printDecision(LoanDecision decision, PrintStream out) {
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        if (decision.isApproved()) {</span>
+<span class="fc" id="L58">            out.println(&quot;APPROVED; due date: &quot; + decision.dueDate().orElseThrow());</span>
+        } else {
+<span class="fc" id="L60">            out.println(&quot;REJECTED; reasons: &quot; + decision.rejectionReasons());</span>
+        }
+<span class="fc" id="L62">    }</span>
+
+    private static String formatMoney(long cents) {
+<span class="fc" id="L65">        return String.format(Locale.ROOT, &quot;%d.%02d&quot;, cents / 100, cents % 100);</span>
+    }
+
+    private static void demonstrate(PrintStream out) {
+<span class="fc" id="L69">        out.println(&quot;Campus Equipment Loan Eligibility and Overdue Fee Service&quot;);</span>
+<span class="fc" id="L70">        out.println(&quot;Educational policy; no equipment is reserved or issued.&quot;);</span>
+<span class="fc" id="L71">        LoanService loans = new LoanService();</span>
+<span class="fc" id="L72">        LocalDate checkout = LocalDate.of(2026, 11, 23);</span>
+<span class="fc" id="L73">        printDecision(loans.requestLoan(new Borrower(Role.STUDENT, true, 2, 0), checkout, 7), out);</span>
+<span class="fc" id="L74">        printDecision(loans.requestLoan(new Borrower(Role.STAFF, false, 5, 1), checkout, 14), out);</span>
+<span class="fc" id="L75">        long fee = new OverdueFeeService().calculateFeeCents(checkout,</span>
+<span class="fc" id="L76">                LocalDate.of(2026, 11, 30), LocalDate.of(2026, 12, 3));</span>
+<span class="fc" id="L77">        out.println(&quot;Three days late: &quot; + formatMoney(fee) + &quot; TL&quot;);</span>
+<span class="fc" id="L78">    }</span>
+
+    private static void usage(PrintStream out) {
+<span class="fc" id="L81">        out.println(&quot;Usage: java -jar target/campus-equipment-loan.jar --demo&quot;);</span>
+<span class="fc" id="L82">        out.println(&quot;       java -jar target/campus-equipment-loan.jar loan &lt;STUDENT|STAFF&gt;&quot;</span>
+                + &quot; &lt;true|false&gt; &lt;currentLoans&gt; &lt;outstandingKurus&gt; &lt;YYYY-MM-DD&gt; &lt;days&gt;&quot;);
+<span class="fc" id="L84">        out.println(&quot;       java -jar target/campus-equipment-loan.jar fee&quot;</span>
+                + &quot; &lt;checkoutDate&gt; &lt;dueDate&gt; &lt;returnDate&gt;&quot;);
+<span class="fc" id="L86">        out.println(&quot;Dates are ISO calendar dates; money inputs are integer kurus (100 = 1 TL).&quot;);</span>
+<span class="fc" id="L87">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

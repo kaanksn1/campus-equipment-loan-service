@@ -1,0 +1,64 @@
+{
+  "id": "FI-03",
+  "title": "Per-return fee cap removed",
+  "classification": "deliberately seeded fault",
+  "selector": "OverdueFeeServiceTest#feeBoundary",
+  "exit_code": 1,
+  "detected": true,
+  "results": {
+    "tests": 9,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0,
+    "classes": [
+      {
+        "name": "edu.campus.loan.OverdueFeeServiceTest",
+        "tests": 9,
+        "failures": 2,
+        "errors": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "failing_cases": [
+    {
+      "id": "FEE-08",
+      "requirements": "FR-06",
+      "technique": "Boundary value analysis",
+      "input": "checkout=2026-11-01; due=2026-11-08; return=2026-12-29",
+      "expected": "5000",
+      "actual": "5100",
+      "status": "FAIL",
+      "test_class": "edu.campus.loan.OverdueFeeServiceTest",
+      "test_method": "feeBoundary(String, int, long)[8]"
+    },
+    {
+      "id": "FEE-09",
+      "requirements": "FR-06",
+      "technique": "Boundary value analysis",
+      "input": "checkout=2026-11-01; due=2026-11-08; return=2027-02-16",
+      "expected": "5000",
+      "actual": "10000",
+      "status": "FAIL",
+      "test_class": "edu.campus.loan.OverdueFeeServiceTest",
+      "test_method": "feeBoundary(String, int, long)[9]"
+    }
+  ],
+  "repair_exit_code": 0,
+  "repair_results": {
+    "tests": 9,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "classes": [
+      {
+        "name": "edu.campus.loan.OverdueFeeServiceTest",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "repair_verified": true
+}

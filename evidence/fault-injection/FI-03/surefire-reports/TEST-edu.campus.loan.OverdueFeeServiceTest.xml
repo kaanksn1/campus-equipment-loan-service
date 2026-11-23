@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="edu.campus.loan.OverdueFeeServiceTest" time="0.203" tests="9" errors="0" skipped="0" failures="2">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/private/var/folders/s1/xmqxz6fx0kd5jd6w62yy2t1r0000gn/T/swe411-fault-yme67tdj/target/test-classes:/private/var/folders/s1/xmqxz6fx0kd5jd6w62yy2t1r0000gn/T/swe411-fault-yme67tdj/target/classes:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter/5.13.4/junit-jupiter-5.13.4.jar:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.13.4/junit-jupiter-api-5.13.4.jar:/Users/kaan/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/kaan/.m2/repository/org/junit/platform/junit-platform-commons/1.13.4/junit-platform-commons-1.13.4.jar:/Users/kaan/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.13.4/junit-jupiter-params-5.13.4.jar:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.13.4/junit-jupiter-engine-5.13.4.jar:/Users/kaan/.m2/repository/org/junit/platform/junit-platform-engine/1.13.4/junit-platform-engine-1.13.4.jar:"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="TR"/>
+    <property name="sun.boot.library.path" value="/Users/kaan/Library/Caches/codex/software-verification/jdk17/jdk-17.0.21.1+2/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/private/var/folders/s1/xmqxz6fx0kd5jd6w62yy2t1r0000gn/T/swe411-fault-yme67tdj/target/surefire/surefirebooter-20261123044540761_3.jar /private/var/folders/s1/xmqxz6fx0kd5jd6w62yy2t1r0000gn/T/swe411-fault-yme67tdj/target/surefire 2026-11-23T04-45-40_678-jvmRun1 surefire-20261123044540761_1tmp surefire_0-20261123044540761_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="test" value="OverdueFeeServiceTest#feeBoundary"/>
+    <property name="surefire.test.class.path" value="/private/var/folders/s1/xmqxz6fx0kd5jd6w62yy2t1r0000gn/T/swe411-fault-yme67tdj/target/test-classes:/private/var/folders/s1/xmqxz6fx0kd5jd6w62yy2t1r0000gn/T/swe411-fault-yme67tdj/target/classes:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter/5.13.4/junit-jupiter-5.13.4.jar:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.13.4/junit-jupiter-api-5.13.4.jar:/Users/kaan/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/kaan/.m2/repository/org/junit/platform/junit-platform-commons/1.13.4/junit-platform-commons-1.13.4.jar:/Users/kaan/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.13.4/junit-jupiter-params-5.13.4.jar:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.13.4/junit-jupiter-engine-5.13.4.jar:/Users/kaan/.m2/repository/org/junit/platform/junit-platform-engine/1.13.4/junit-platform-engine-1.13.4.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/kaan"/>
+    <property name="user.language" value="tr"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-11-17"/>
+    <property name="java.home" value="/Users/kaan/Library/Caches/codex/software-verification/jdk17/jdk-17.0.21.1+2/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="style.color" value="never"/>
+    <property name="basedir" value="/private/var/folders/s1/xmqxz6fx0kd5jd6w62yy2t1r0000gn/T/swe411-fault-yme67tdj"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/private/var/folders/s1/xmqxz6fx0kd5jd6w62yy2t1r0000gn/T/swe411-fault-yme67tdj/target/surefire/surefirebooter-20261123044540761_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="17.0.21.1+2"/>
+    <property name="user.name" value="kaan"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="15.7.4"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Temurin-17.0.21.1+2"/>
+    <property name="localRepository" value="/Users/kaan/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/s1/xmqxz6fx0kd5jd6w62yy2t1r0000gn/T/"/>
+    <property name="java.version" value="17.0.21.1"/>
+    <property name="user.dir" value="/private/var/folders/s1/xmqxz6fx0kd5jd6w62yy2t1r0000gn/T/swe411-fault-yme67tdj"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/kaan/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vm.version" value="17.0.21.1+2"/>
+    <property name="java.specification.maintenance.version" value="1"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="feeBoundary(String, int, long)[1]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.053">
+    <system-out><![CDATA[CASE	FEE-01	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-11-01	0	0
+]]></system-out>
+  </testcase>
+  <testcase name="feeBoundary(String, int, long)[2]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.004">
+    <system-out><![CDATA[CASE	FEE-02	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-11-07	0	0
+]]></system-out>
+  </testcase>
+  <testcase name="feeBoundary(String, int, long)[3]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.003">
+    <system-out><![CDATA[CASE	FEE-03	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-11-08	0	0
+]]></system-out>
+  </testcase>
+  <testcase name="feeBoundary(String, int, long)[4]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.003">
+    <system-out><![CDATA[CASE	FEE-04	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-11-09	100	100
+]]></system-out>
+  </testcase>
+  <testcase name="feeBoundary(String, int, long)[5]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.002">
+    <system-out><![CDATA[CASE	FEE-05	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-11-10	200	200
+]]></system-out>
+  </testcase>
+  <testcase name="feeBoundary(String, int, long)[6]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.003">
+    <system-out><![CDATA[CASE	FEE-06	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-12-27	4900	4900
+]]></system-out>
+  </testcase>
+  <testcase name="feeBoundary(String, int, long)[7]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.002">
+    <system-out><![CDATA[CASE	FEE-07	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-12-28	5000	5000
+]]></system-out>
+  </testcase>
+  <testcase name="feeBoundary(String, int, long)[8]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.008">
+    <failure message="FEE-08 ==&gt; expected: &lt;5000&gt; but was: &lt;5100&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: FEE-08 ==> expected: <5000> but was: <5100>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1156)
+	at edu.campus.loan.CaseEvidence.check(CaseEvidence.java:15)
+	at edu.campus.loan.OverdueFeeServiceTest.feeBoundary(OverdueFeeServiceTest.java:18)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></failure>
+    <system-out><![CDATA[CASE	FEE-08	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-12-29	5000	5100
+]]></system-out>
+  </testcase>
+  <testcase name="feeBoundary(String, int, long)[9]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.003">
+    <failure message="FEE-09 ==&gt; expected: &lt;5000&gt; but was: &lt;10000&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: FEE-09 ==> expected: <5000> but was: <10000>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1156)
+	at edu.campus.loan.CaseEvidence.check(CaseEvidence.java:15)
+	at edu.campus.loan.OverdueFeeServiceTest.feeBoundary(OverdueFeeServiceTest.java:18)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></failure>
+    <system-out><![CDATA[CASE	FEE-09	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2027-02-16	5000	10000
+]]></system-out>
+  </testcase>
+</testsuite>

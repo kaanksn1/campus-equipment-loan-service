@@ -1,0 +1,10 @@
+--- original/OverdueFeeService.java
++++ injected/OverdueFeeService.java
+@@ -23,6 +23,6 @@
+             return 0;
+         }
+         // Even the full LocalDate range times 100 fits in long; no floating-point arithmetic.
+-        return Math.min(lateDays * DAILY_FEE_CENTS, MAXIMUM_FEE_CENTS);
++        return lateDays * DAILY_FEE_CENTS;
+     }
+ }

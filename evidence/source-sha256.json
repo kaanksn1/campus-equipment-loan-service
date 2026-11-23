@@ -1,0 +1,15 @@
+{
+  "src/main/java/edu/campus/loan/Borrower.java": "0d07eb128a74fec6d7f3f550fa7c10ee5fc42a6584805a3517ccf7ea9658b5fd",
+  "src/main/java/edu/campus/loan/ConsoleApp.java": "e66ba434dd1e0f967687f773781e3c7d022ce0d109a68f7119129b44e770dc18",
+  "src/main/java/edu/campus/loan/LoanDecision.java": "f20183ffa4890beff86da4ce22b64a93a47997517f4bca46ab1b724e02d552b6",
+  "src/main/java/edu/campus/loan/LoanService.java": "70489ac7820b738b57f22aec1b4baddd3e89df1cf8a79855935e6c30a6be64bf",
+  "src/main/java/edu/campus/loan/OverdueFeeService.java": "d5805fcec93148bb0bee30f2e60036cd283925b96444650d6d2f8e3432306151",
+  "src/main/java/edu/campus/loan/RejectionReason.java": "2c727599f97a83eab954c101909c1993ab58a64b4ef46ebd8b8c6a8c9b69f153",
+  "src/main/java/edu/campus/loan/Role.java": "c377347f5bf4368ecf8407b57244a1d3e1a80f99951b26ba72ae563a9f72f19b",
+  "src/test/java/edu/campus/loan/BorrowerTest.java": "6ca9e40fc77c242523dcad702e74835671114d63bac7d7430e6565ae61cae260",
+  "src/test/java/edu/campus/loan/CaseEvidence.java": "08a513690fab545340afbba202dbde71af6f91cae5b8bdd7ffa0c5045ac1fc49",
+  "src/test/java/edu/campus/loan/ConsoleAppTest.java": "b70f106b5987f4f7d32271db7510c66c70e15ef84d5e248d648a87725c02e689",
+  "src/test/java/edu/campus/loan/LoanServiceTest.java": "15e924d6329a6145fb0420ef4d3e07fffbf8ad305d86842395b50e5de9cda6a5",
+  "src/test/java/edu/campus/loan/OverdueFeeServiceTest.java": "204b8fcbb0dc293c6543d193664fa81fb606b8d456b2004d8cc780283d5e20c6",
+  "pom.xml": "03f50f0647ffdc2d7cdd608a279faf105e49c18554a7d19b847e61cb798155df"
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="tr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LoanDecision.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Campus Equipment Loan Eligibility and Overdue Fee Service</a> &gt; <a href="index.source.html" class="el_package">edu.campus.loan</a> &gt; <span class="el_source">LoanDecision.java</span></div><h1>LoanDecision.java</h1><pre class="source lang-java linenums">package edu.campus.loan;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
+/** Created by LoanService; rejected requests have no due date. */
+public final class LoanDecision {
+    private final LocalDate dueDate;
+    private final List&lt;RejectionReason&gt; rejectionReasons;
+
+<span class="fc" id="L12">    LoanDecision(LocalDate dueDate, List&lt;RejectionReason&gt; rejectionReasons) {</span>
+<span class="fc" id="L13">        this.dueDate = dueDate;</span>
+<span class="fc" id="L14">        this.rejectionReasons = List.copyOf(rejectionReasons);</span>
+<span class="fc" id="L15">    }</span>
+
+    public boolean isApproved() {
+<span class="fc" id="L18">        return rejectionReasons.isEmpty();</span>
+    }
+
+    public Optional&lt;LocalDate&gt; dueDate() {
+<span class="fc" id="L22">        return Optional.ofNullable(dueDate);</span>
+    }
+
+    public List&lt;RejectionReason&gt; rejectionReasons() {
+<span class="fc" id="L26">        return rejectionReasons;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>
