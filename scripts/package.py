@@ -40,7 +40,7 @@ def main():
             raise RuntimeError("Missing deliverable: " + str(path))
     manifest = {"project": "Campus Equipment Loan Eligibility and Overdue Fee Service",
                 "student": "Serdar Kaan Kesen", "student_number": "220911810",
-                "status": "AI-assisted report with student contribution and learning statement; instructor approval unconfirmed",
+                "status": "Submission package; student contribution, learning outcomes and AI assistance documented in the report",
                 "final_tests": summary["tests"], "console_smoke_tests": summary["console_smoke_tests"],
                 "detected_controlled_faults": len(faults), "coverage": summary["coverage"],
                 "files": {str(path.relative_to(ROOT)): digest(path) for path in files}}

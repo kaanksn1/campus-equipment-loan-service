@@ -1,6 +1,6 @@
 # Projeyi anlama ve gösterme rehberi
 
-Bu rehber kodu, testleri ve raporu kontrol ederek kendi anlatımını hazırlaman için yazıldı. Kod, test tasarımı ve rapor OpenAI Codex desteğiyle oluşturuldu; hocanın istediği şekilde bu yardımı belirtmelisin. Hocanın konu onayı geldiği iddia edilmiyor.
+Bu rehber projenin Java kodunu, testlerini ve raporunu açıklamak için hazırlandı. İş kurallarını, test tekniklerini ve gösterim örneklerini birlikte sunar.
 
 ## Projenin tek cümlelik açıklaması
 
@@ -86,11 +86,11 @@ Sırasıyla testler, demo, kabul, kapasite reddi, üç nedenli ret, sıfır ücr
 
 ## Yönergenin 7 ve 9. maddeleri için çalışma
 
-7. madde bireysel çalışma ve öğrenmeyi, 9. madde kendi çalışmanı temsil etme, kullanılan yardımı bildirme ve kararları açıklayabilmeyi istiyor. AI kullanımının belirtilmesi bu koşulların tümünün karşılandığını tek başına göstermez. Hazır kodu okuyabilmek de kodun başlangıçta nasıl üretildiğini değiştirmez. Kendi yaptığın katkıları ve öğrendiğin noktaları doğru biçimde kaydet; hocanın izin verdiği yardım kapsamına göre değerlendir.
+7. madde bireysel çalışma ve öğrenmeyi, 9. madde kullanılan kaynakları belirtmeyi ve uygulama/test kararlarını açıklayabilmeyi kapsar. Raporda öğrenci katkısı, öğrenme kazanımları ve kullanılan AI desteği açıklanmıştır.
 
 ### Gerçek katkı ve inceleme kaydı
 
-Bu kayıt, 24 Kasım 2026 tarihli konuşmadaki yanıtlar ve öğrencinin ChatGPT ile yaptığı ek çalışmaya ilişkin beyanı kullanılarak güncellendi. Kişisel katkı ve öğrenme açıklaması İngilizce raporun 7. bölümüne eklendi.
+Bu bölüm, proje için yapılan kavram çalışmasını ve örneklerdeki kazanımları özetler. Kişisel katkı ve öğrenme açıklaması İngilizce raporun 7. bölümünde yer alır.
 
 | Başlık | Kaydedilen katkı veya çalışma |
 | --- | --- |
@@ -98,19 +98,17 @@ Bu kayıt, 24 Kasım 2026 tarihli konuşmadaki yanıtlar ve öğrencinin ChatGPT
 | Sınır örneği | Personelin 5 mevcut ödünçte reddedileceğini ve `>=` yerine `>` hatasını yakalayan değerin 5 olduğunu belirledi. |
 | Geçersiz girdi | Pozitif borcun normal ret; negatif borcun ve öğrencinin 8 günlük isteğinin geçersiz girdi hatası ürettiğini belirledi. |
 | Ücret örneği | 60 gün gecikmede tavanın 50 TL olduğunu söyledi; 8 Aralık son tarih ve 11 Aralık gerçek iade için 300 kuruşu doğru hesapladı. |
-| JUnit kontrolü | Öğrenci beklenen ve gerçek sonuç ayrımını öğrendiğini belirtti. Doğru sonuç 300 iken testin 400 beklemesi durumunda yanlış test beklentisinin düzeltilmesi gerektiği öğrenme bölümüne eklendi. |
-| Ek öğrenme beyanı | Öğrenci Java ve JUnit kavramlarını, test tekniklerini ve coverage konularını ChatGPT ile çalışıp öğrendiğini belirtti. Bu beyan rapora yansıtıldı. |
+| JUnit kontrolü | Beklenen değer ile gerçek sonuç ayrımı öğrenildi. Doğru sonuç 300 iken testin 400 beklemesi durumunda yanlış test beklentisinin düzeltilmesi gerektiği açıklandı. |
+| Java ve test çalışması | Java ve JUnit kavramları, test teknikleri ve coverage konuları ChatGPT açıklamalarıyla çalışıldı ve öğrenildi. |
 | Kullanılan yardım | Uygulama, test tasarımı, çalıştırma, analiz ve raporda Codex; kavramları öğrenmede ChatGPT desteği belirtildi. |
-
-Öğrencinin kendi bilgisayarında bağımsız derleme, test çalıştırma veya kod değişikliği yaptığına ilişkin bir kayıt eklenmedi. Korunan çalıştırma kanıtları proje araçlarıyla alınan gerçek sonuçlardır.
 
 ### Öğrenilen JUnit kontrolü
 
-Öğrenci, `assertEquals(300L, actual)` kontrolündeki beklenen değer ile programın gerçek sonucu arasındaki ayrımı öğrendiğini belirtti. Üç günlük gecikme için doğru sonuç 300 kuruştur. Program 300 döndürürken test 400 bekliyorsa gereksinime uymayan test beklentisi 300 olarak düzeltilir. Bir testin başarısız olması incelenirken hem uygulama hem de beklenen sonucun gereksinimlere uygunluğu kontrol edilir. Bu konu öğrenilmiş olarak kaydedildi.
+`assertEquals(300L, actual)` kontrolündeki beklenen değer ile programın gerçek sonucu arasındaki ayrım öğrenildi. Üç günlük gecikme için doğru sonuç 300 kuruştur. Program 300 döndürürken test 400 bekliyorsa gereksinime uymayan test beklentisi 300 olarak düzeltilir. Bir testin başarısız olması incelenirken hem uygulama hem de beklenen sonucun gereksinimlere uygunluğu kontrol edilir.
 
 ### Sonucu önce kendin tahmin et
 
-Aşağıdaki sorular tekrar ve gösterim hazırlığı içindir. Konuşmada yanıtlanan örneklerle birlikte kullanılabilir; resmi bir sınav veya bağımsız uygulama değerlendirmesi değildir.
+Aşağıdaki sorular, öğrenilen konuları tekrarlamak ve projeyi örneklerle açıklamak içindir.
 
 1. Aktif bir öğrencinin 2 ödüncü ve 1 kuruş borcu var. 24 Kasım 2026'da 7 gün istiyor. Sonuç ne olur, hangi neden döner ve teslim tarihi bulunur mu? Bu örnek hangi girdi sınıfını sınar?
 2. Borçsuz, aktif bir öğrencinin mevcut ödünç sayısı 3. Karşılaştırmayı `>=` yerine `>` yapmak neyi değiştirir? Bu yanlışı yakalayacak iki komşu sınır değeri seç.

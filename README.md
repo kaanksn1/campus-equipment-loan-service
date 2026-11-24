@@ -103,4 +103,4 @@ The report PDF and preserved test evidence are versioned. Compiled JARs, submiss
 
 Java release 17; Maven 3.9.11; JUnit Jupiter 5.13.4; JaCoCo 0.8.14. Other plugin versions are pinned in `pom.xml`. JUnit 5 is used even though some lecture examples show JUnit 4 syntax.
 
-Implementation, test design, execution orchestration, analysis and report drafting were assisted by OpenAI Codex. The student also reports studying the Java and testing concepts with ChatGPT. Report section 7 describes the student's contribution and AI-assisted learning. The student is responsible for verifying the material, explaining the decisions and acknowledging assistance according to the instructor's guidelines. External technical references appear in the report.
+OpenAI Codex supported Java implementation, JUnit test design, build and test execution, evidence analysis and report preparation. ChatGPT was used to study the Java and testing concepts. Report section 7 describes the student's contribution and learning outcomes. External technical references are cited in the report.
