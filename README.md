@@ -75,6 +75,7 @@ An applicant at the limit is rejected. Return every applicable rejection reason.
 | `evidence/surefire-reports/` | Preserved JUnit XML/text results |
 | `evidence/fault-injection/` | Three deliberately seeded faults, failing logs, diffs and results |
 | `evidence/console-smoke.json` | Packaged-JAR output and exit-code checks |
+| `evidence/student-run.json` and `evidence/student-*.log` | Student's passing full build and three manually checked console runs, with raw logs and checksums |
 | `references/` | Unchanged supplied proposal and assignment |
 
 Fresh build reports are also available at `target/surefire-reports` and `target/site/jacoco/index.html`. No production classes are excluded from coverage. Coverage alone is not proof of correct requirements or assertions.

@@ -18,6 +18,7 @@ SUMMARY = json.loads((ROOT / "evidence/summary.json").read_text())
 REPORT_DATE = datetime.fromisoformat(SUMMARY["run_time_oslo"]).strftime("%d %B %Y")
 CASES = json.loads((ROOT / "evidence/test-cases.json").read_text())
 FAULTS = json.loads((ROOT / "evidence/fault-injection/summary.json").read_text())
+STUDENT_RUN = json.loads((ROOT / "evidence/student-run.json").read_text())
 BY_ID = {row["id"]: row for row in CASES}
 
 CSS = """
@@ -260,6 +261,24 @@ JAR process checks passed, covering approval, complete rejection, normal/zero/ca
 unknown command and the demo. They verify output and exit codes; exact stdout/stderr are preserved in
 <code>evidence/console-smoke.json</code>. Deliberately unsuccessful test executions are documented next.</p>
 """
+    results += f"""
+<h2>Student execution record</h2>
+<p>I ran <code>./scripts/build.sh clean verify</code>; the build finished at
+{html.escape(STUDENT_RUN['build_finished_at'])} with BUILD SUCCESS. All
+{STUDENT_RUN['automated_tests']['tests']} JUnit executions passed, with zero failures, errors or skipped tests.
+I then ran the demo, a student request at the loan limit and a three-day-late return, comparing each
+console output with the expected result.</p>
+""" + table(["Manual check", "Expected and observed outcome", "Result"], [
+        (row["id"].removeprefix("STUDENT-"), row["summary"], "PASS" if row["passed"] else "FAIL")
+        for row in STUDENT_RUN["manual_console_checks"]
+    ], [21, 66, 13]) + """
+<p>All three manual console checks matched their expected outputs. The four terminal logs are
+<code>evidence/student-build.log</code>, <code>student-demo.log</code>,
+<code>student-limit.log</code> and <code>student-fee.log</code> in the same directory.
+Commands, full expected and actual outputs, and log checksums are preserved in
+<code>evidence/student-run.json</code>. These three manual checks are additional to the 103 JUnit
+executions and the eight automated packaged-JAR process checks.</p>
+"""
 
     metrics = [(name.title(), counter_ratio(s["coverage"][name])) for name in ("INSTRUCTION", "LINE", "BRANCH")]
     class_metrics = []
@@ -332,6 +351,9 @@ scenario. The source and accompanying guide explain these choices and the Java a
 <p>I selected the project topic and small console scope, provided the proposal and course materials,
 and sent the topic approval email. I participated in a guided review of requirement examples,
 including rejection at the loan limit, invalid requested periods and late-fee calculations.</p>
+<p>I built the application and ran its full JUnit suite, then manually checked the demo, rejection at
+the student loan limit and a three-day overdue fee. I compared the displayed results with the expected
+outcomes and saved the terminal outputs as execution records. Section 5 presents this run and its logs.</p>
 <p>I studied the Java and testing concepts with explanations from ChatGPT.
 This study covered classes, objects and methods; parameters and return values;
 integer money representation and LocalDate; JUnit 5 annotations, assertions and parameterized tests;
@@ -390,7 +412,8 @@ instructor approval.</i> 21 November 2026. Supplied proposal;
 <h2>Supporting submission materials</h2>
 <p>Java production and test sources; pinned Maven configuration and wrapper; requirement specification;
 test plan; all 103 case records; baseline/final execution logs; Surefire XML/text; JaCoCo HTML/XML/CSV;
-three controlled fault-experiment records; eight console smoke records; source checksums; environment
+three controlled fault-experiment records; eight console smoke records; student execution summary and
+four terminal logs; source checksums; environment
 details; English build instructions and Turkish demonstration guide.</p>
 <p class="small">Traceability and raw evidence remain in the accompanying project rather than being
 replaced by the report's representative tables.</p>

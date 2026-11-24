@@ -98,6 +98,8 @@ Bu bölüm, proje için yapılan kavram çalışmasını ve örneklerdeki kazan�
 | Sınır örneği | Personelin 5 mevcut ödünçte reddedileceğini ve `>=` yerine `>` hatasını yakalayan değerin 5 olduğunu belirledi. |
 | Geçersiz girdi | Pozitif borcun normal ret; negatif borcun ve öğrencinin 8 günlük isteğinin geçersiz girdi hatası ürettiğini belirledi. |
 | Ücret örneği | 60 gün gecikmede tavanın 50 TL olduğunu söyledi; 8 Aralık son tarih ve 11 Aralık gerçek iade için 300 kuruşu doğru hesapladı. |
+| Derleme ve otomatik test | Öğrenci `./scripts/build.sh clean verify` komutunu çalıştırdı. 24 Kasım 2026, 15:16:30 +01:00 tarihli kayıtta BUILD SUCCESS ve 103 başarılı test bulunuyor. |
+| Elle konsol kontrolü | Demo, 3 ödünçlü öğrencinin reddedilmesi ve üç günlük gecikmenin 300 kuruş olması kontrol edildi; üç çıktı da beklentiyle eşleşti. |
 | JUnit kontrolü | Beklenen değer ile gerçek sonuç ayrımı öğrenildi. Doğru sonuç 300 iken testin 400 beklemesi durumunda yanlış test beklentisinin düzeltilmesi gerektiği açıklandı. |
 | Java ve test çalışması | Java ve JUnit kavramları, test teknikleri ve coverage konuları ChatGPT açıklamalarıyla çalışıldı ve öğrenildi. |
 | Kullanılan yardım | Uygulama, test tasarımı, çalıştırma, analiz ve raporda Codex; kavramları öğrenmede ChatGPT desteği belirtildi. |
@@ -105,6 +107,10 @@ Bu bölüm, proje için yapılan kavram çalışmasını ve örneklerdeki kazan�
 ### Öğrenilen JUnit kontrolü
 
 `assertEquals(300L, actual)` kontrolündeki beklenen değer ile programın gerçek sonucu arasındaki ayrım öğrenildi. Üç günlük gecikme için doğru sonuç 300 kuruştur. Program 300 döndürürken test 400 bekliyorsa gereksinime uymayan test beklentisi 300 olarak düzeltilir. Bir testin başarısız olması incelenirken hem uygulama hem de beklenen sonucun gereksinimlere uygunluğu kontrol edilir.
+
+### Öğrencinin çalıştırma kayıtları
+
+`evidence/student-build.log`, `evidence/student-demo.log`, `evidence/student-limit.log` ve `evidence/student-fee.log` öğrencinin terminalde çalıştırdığı komutların çıktılarıdır. `evidence/student-run.json` komutları, beklenen ve gerçek çıktıları, sonuçları ve kayıtların SHA-256 değerlerini içerir. Otomatik JUnit çalıştırmasında 103 test, ayrıca elle karşılaştırılan üç konsol kontrolü vardır.
 
 ### Sonucu önce kendin tahmin et
 

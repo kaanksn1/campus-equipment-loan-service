@@ -65,6 +65,10 @@ No minimum count or coverage percentage is imposed by the assignment. Completion
 
 First run the unmodified suite. In temporary copies, inject exactly one known fault per experiment: (1) allow a borrower at the loan limit, (2) count an on-time return as one late day, (3) remove the fee cap. Run the relevant existing tests and preserve failures. These are deliberately seeded faults, not claimed accidental development mistakes, and this small set is not a comprehensive mutation score. Keep production source intact, then run the complete original suite again and preserve that final regression output.
 
+## Student execution checks
+
+The student ran the complete Maven/JUnit build and then manually compared the demo, a student loan request at the count limit of 3, and a return three days after its due date with the expected console outputs. The recorded build passed all 103 JUnit executions; all three manual checks matched their expectations. Commands, full expected and actual outputs, raw log locations and log checksums are in `evidence/student-run.json`. The four raw terminal logs are preserved alongside it. Manual checks complement the automated suite and the eight packaged-JAR process checks; they are not counted as additional JUnit executions.
+
 ## Coverage and limitations
 
 Measure instruction, line and branch coverage with JaCoCo after `verify`. Include every production class in the report; do not silently exclude console or validation code. Distinguish service coverage from overall coverage if useful. A covered line can still use the wrong comparison or calculation. Coverage does not establish correct assertions, complete requirements, all date combinations or actual campus suitability. The eight-rule decision table and injected faults provide behavioural evidence beyond execution counts.

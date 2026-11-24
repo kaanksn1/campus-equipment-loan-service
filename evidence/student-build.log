@@ -1,0 +1,162 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< edu.campus.swe411:campus-equipment-loan >---------------
+[INFO] Building Campus Equipment Loan Eligibility and Overdue Fee Service 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ campus-equipment-loan ---
+[INFO] Deleting /Users/kaan/software verification/target
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (coverage-agent) @ campus-equipment-loan ---
+[INFO] argLine set to "-javaagent:/Users/kaan/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/Users/kaan/software verification/target/jacoco.exec"
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ campus-equipment-loan ---
+[INFO] skip non existing resourceDirectory /Users/kaan/software verification/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ campus-equipment-loan ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 7 source files with javac [debug release 17] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ campus-equipment-loan ---
+[INFO] skip non existing resourceDirectory /Users/kaan/software verification/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ campus-equipment-loan ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 5 source files with javac [debug release 17] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ campus-equipment-loan ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running edu.campus.loan.ConsoleAppTest
+CASE	CLI-NEG-01	FR-09	Negative testing	loan VISITOR true 0 0 2026-11-23 1	2	2
+CASE	CLI-NEG-02	FR-09	Negative testing	loan STUDENT maybe 0 0 2026-11-23 1	2	2
+CASE	CLI-NEG-03	FR-09	Negative testing	loan STUDENT true -1 0 2026-11-23 1	2	2
+CASE	CLI-NEG-04	FR-09	Negative testing	loan STUDENT true 0 -1 2026-11-23 1	2	2
+CASE	CLI-NEG-05	FR-09	Negative testing	loan STUDENT true 0 0 2026-02-30 1	2	2
+CASE	CLI-NEG-06	FR-09	Negative testing	loan STUDENT true 0 0 2026-11-23 8	2	2
+CASE	CLI-NEG-07	FR-09	Negative testing	loan STUDENT true 0 0.5 2026-11-23 1	2	2
+CASE	CLI-NEG-08	FR-09	Negative testing	loan STUDENT true 2147483648 0 2026-11-23 1	2	2
+CASE	CLI-NEG-09	FR-09	Negative testing	loan STUDENT true 0 9223372036854775808 2026-11-23 1	2	2
+CASE	CLI-NEG-10	FR-09	Negative testing	fee 2026-11-23 2026-11-30 2026-11-22	2	2
+CASE	CLI-NEG-11	FR-09	Negative testing	fee 2026-11-23 2026-11-30	2	2
+CASE	CLI-NEG-12	FR-09	Negative testing	unknown	2	2
+CASE	CLI-NEG-13	FR-09	Negative testing	loan STUDENT true 0 0 23/11/2026 1	2	2
+CASE	CLI-NEG-14	FR-09	Negative testing	loan STUDENT true 0 0 2026-11-23 word	2	2
+CASE	CLI-01	FR-09	Equivalence partitioning	loan STUDENT true 2 0 2026-11-23 7	APPROVED; due date: 2026-11-30	APPROVED; due date: 2026-11-30
+CASE	CLI-02	FR-09	Equivalence partitioning	loan staff FALSE 5 1 2026-11-23 14	REJECTED; reasons: [INACTIVE_MEMBERSHIP, OUTSTANDING_FEES, LOAN_LIMIT_REACHED]	REJECTED; reasons: [INACTIVE_MEMBERSHIP, OUTSTANDING_FEES, LOAN_LIMIT_REACHED]
+CASE	CLI-03	FR-09	Equivalence partitioning	fee 2026-11-23 2026-11-30 2026-12-03	Overdue fee: 3.00 TL (300 kurus)	Overdue fee: 3.00 TL (300 kurus)
+CASE	CLI-04	FR-09	Equivalence partitioning	fee 2026-11-23 2026-11-30 2026-11-30	Overdue fee: 0.00 TL (0 kurus)	Overdue fee: 0.00 TL (0 kurus)
+CASE	CLI-05	FR-09	Equivalence partitioning	fee 2026-11-23 2026-11-30 2027-03-01	Overdue fee: 50.00 TL (5000 kurus)	Overdue fee: 50.00 TL (5000 kurus)
+CASE	CLI-DEMO-01	FR-09	Regression testing	--demo	0	0
+CASE	CLI-HELP-01	FR-09	Equivalence partitioning	empty arguments; --help	0;0	0;0
+[INFO] Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.161 s -- in edu.campus.loan.ConsoleAppTest
+[INFO] Running edu.campus.loan.BorrowerTest
+CASE	MODEL-01	FR-01	Negative testing	count=-1; fees=0	IllegalArgumentException	IllegalArgumentException
+CASE	MODEL-02	FR-01	Negative testing	count=-2147483648; fees=0	IllegalArgumentException	IllegalArgumentException
+CASE	MODEL-03	FR-01	Negative testing	count=0; fees=-1	IllegalArgumentException	IllegalArgumentException
+CASE	MODEL-04	FR-01	Negative testing	count=0; fees=-9223372036854775808	IllegalArgumentException	IllegalArgumentException
+CASE	MODEL-06	FR-01	Equivalence partitioning	zero snapshot; count=INT_MAX; fees=LONG_MAX	STUDENT,true,0,0;STAFF,false,2147483647,9223372036854775807	STUDENT,true,0,0;STAFF,false,2147483647,9223372036854775807
+CASE	MODEL-05	FR-01	Negative testing	role=null	IllegalArgumentException	IllegalArgumentException
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.030 s -- in edu.campus.loan.BorrowerTest
+[INFO] Running edu.campus.loan.LoanServiceTest
+CASE	PERIOD-01	FR-04	Negative testing	STUDENT; active=true; count=0; fees=0; days=0; checkout=2026-11-23	IllegalArgumentException	IllegalArgumentException
+CASE	PERIOD-02	FR-04 FR-05	Boundary value analysis	STUDENT; active=true; count=0; fees=0; days=1; checkout=2026-11-23	2026-11-24	2026-11-24
+CASE	PERIOD-03	FR-04 FR-05	Boundary value analysis	STUDENT; active=true; count=0; fees=0; days=6; checkout=2026-11-23	2026-11-29	2026-11-29
+CASE	PERIOD-04	FR-04 FR-05	Boundary value analysis	STUDENT; active=true; count=0; fees=0; days=7; checkout=2026-11-23	2026-11-30	2026-11-30
+CASE	PERIOD-05	FR-04	Negative testing	STUDENT; active=true; count=0; fees=0; days=8; checkout=2026-11-23	IllegalArgumentException	IllegalArgumentException
+CASE	PERIOD-06	FR-04	Negative testing	STAFF; active=true; count=0; fees=0; days=0; checkout=2026-11-23	IllegalArgumentException	IllegalArgumentException
+CASE	PERIOD-07	FR-04 FR-05	Boundary value analysis	STAFF; active=true; count=0; fees=0; days=1; checkout=2026-11-23	2026-11-24	2026-11-24
+CASE	PERIOD-08	FR-04 FR-05	Boundary value analysis	STAFF; active=true; count=0; fees=0; days=13; checkout=2026-11-23	2026-12-06	2026-12-06
+CASE	PERIOD-09	FR-04 FR-05	Boundary value analysis	STAFF; active=true; count=0; fees=0; days=14; checkout=2026-11-23	2026-12-07	2026-12-07
+CASE	PERIOD-10	FR-04	Negative testing	STAFF; active=true; count=0; fees=0; days=15; checkout=2026-11-23	IllegalArgumentException	IllegalArgumentException
+CASE	PERIOD-11	FR-04	Negative testing	STUDENT; active=true; count=0; fees=0; days=-2147483648; checkout=2026-11-23	IllegalArgumentException	IllegalArgumentException
+CASE	PERIOD-12	FR-04	Negative testing	STAFF; active=true; count=0; fees=0; days=2147483647; checkout=2026-11-23	IllegalArgumentException	IllegalArgumentException
+CASE	LOAN-NEG-02	FR-05	Negative testing	STUDENT; checkout=null; days=1	IllegalArgumentException	IllegalArgumentException
+CASE	STATE-02	FR-08	Regression testing	blocked request followed by two eligible requests on the same service	true;true;2	true;true;2
+CASE	LOAN-NEG-01	FR-01	Negative testing	borrower=null; checkout=2026-11-23; days=1	IllegalArgumentException	IllegalArgumentException
+CASE	DEBT-01	FR-02	Boundary value analysis	STUDENT; active=true; count=0; fees=0; days=1; checkout=2026-11-23	true	true
+CASE	DEBT-02	FR-02	Boundary value analysis	STUDENT; active=true; count=0; fees=1; days=1; checkout=2026-11-23	false	false
+CASE	DEBT-03	FR-02	Boundary value analysis	STUDENT; active=true; count=0; fees=100; days=1; checkout=2026-11-23	false	false
+CASE	DEBT-04	FR-02	Boundary value analysis	STUDENT; active=true; count=0; fees=9223372036854775807; days=1; checkout=2026-11-23	false	false
+CASE	CAP-01	FR-02	Boundary value analysis	STUDENT; active=true; debt=0; count=0; days=1; checkout=2026-11-23	true	true
+CASE	CAP-02	FR-02	Boundary value analysis	STUDENT; active=true; debt=0; count=2; days=1; checkout=2026-11-23	true	true
+CASE	CAP-03	FR-02	Boundary value analysis	STUDENT; active=true; debt=0; count=3; days=1; checkout=2026-11-23	false	false
+CASE	CAP-04	FR-02	Boundary value analysis	STUDENT; active=true; debt=0; count=4; days=1; checkout=2026-11-23	false	false
+CASE	CAP-05	FR-02	Boundary value analysis	STAFF; active=true; debt=0; count=0; days=1; checkout=2026-11-23	true	true
+CASE	CAP-06	FR-02	Boundary value analysis	STAFF; active=true; debt=0; count=4; days=1; checkout=2026-11-23	true	true
+CASE	CAP-07	FR-02	Boundary value analysis	STAFF; active=true; debt=0; count=5; days=1; checkout=2026-11-23	false	false
+CASE	CAP-08	FR-02	Boundary value analysis	STAFF; active=true; debt=0; count=6; days=1; checkout=2026-11-23	false	false
+CASE	CAP-09	FR-02	Boundary value analysis	STAFF; active=true; debt=0; count=2147483647; days=1; checkout=2026-11-23	false	false
+CASE	DT-STUDENT-1	FR-02 FR-03 FR-05	Decision table	STUDENT; active=true; debt=0; count=2; days=7; checkout=2026-11-23	true;[];2026-11-30	true;[];2026-11-30
+CASE	DT-STUDENT-2	FR-02 FR-03 FR-05	Decision table	STUDENT; active=true; debt=0; count=3; days=7; checkout=2026-11-23	false;[LOAN_LIMIT_REACHED];none	false;[LOAN_LIMIT_REACHED];none
+CASE	DT-STUDENT-3	FR-02 FR-03 FR-05	Decision table	STUDENT; active=true; debt=1; count=2; days=7; checkout=2026-11-23	false;[OUTSTANDING_FEES];none	false;[OUTSTANDING_FEES];none
+CASE	DT-STUDENT-4	FR-02 FR-03 FR-05	Decision table	STUDENT; active=true; debt=1; count=3; days=7; checkout=2026-11-23	false;[OUTSTANDING_FEES, LOAN_LIMIT_REACHED];none	false;[OUTSTANDING_FEES, LOAN_LIMIT_REACHED];none
+CASE	DT-STUDENT-5	FR-02 FR-03 FR-05	Decision table	STUDENT; active=false; debt=0; count=2; days=7; checkout=2026-11-23	false;[INACTIVE_MEMBERSHIP];none	false;[INACTIVE_MEMBERSHIP];none
+CASE	DT-STUDENT-6	FR-02 FR-03 FR-05	Decision table	STUDENT; active=false; debt=0; count=3; days=7; checkout=2026-11-23	false;[INACTIVE_MEMBERSHIP, LOAN_LIMIT_REACHED];none	false;[INACTIVE_MEMBERSHIP, LOAN_LIMIT_REACHED];none
+CASE	DT-STUDENT-7	FR-02 FR-03 FR-05	Decision table	STUDENT; active=false; debt=1; count=2; days=7; checkout=2026-11-23	false;[INACTIVE_MEMBERSHIP, OUTSTANDING_FEES];none	false;[INACTIVE_MEMBERSHIP, OUTSTANDING_FEES];none
+CASE	DT-STUDENT-8	FR-02 FR-03 FR-05	Decision table	STUDENT; active=false; debt=1; count=3; days=7; checkout=2026-11-23	false;[INACTIVE_MEMBERSHIP, OUTSTANDING_FEES, LOAN_LIMIT_REACHED];none	false;[INACTIVE_MEMBERSHIP, OUTSTANDING_FEES, LOAN_LIMIT_REACHED];none
+CASE	DT-STAFF-1	FR-02 FR-03 FR-05	Decision table	STAFF; active=true; debt=0; count=4; days=7; checkout=2026-11-23	true;[];2026-11-30	true;[];2026-11-30
+CASE	DT-STAFF-2	FR-02 FR-03 FR-05	Decision table	STAFF; active=true; debt=0; count=5; days=7; checkout=2026-11-23	false;[LOAN_LIMIT_REACHED];none	false;[LOAN_LIMIT_REACHED];none
+CASE	DT-STAFF-3	FR-02 FR-03 FR-05	Decision table	STAFF; active=true; debt=1; count=4; days=7; checkout=2026-11-23	false;[OUTSTANDING_FEES];none	false;[OUTSTANDING_FEES];none
+CASE	DT-STAFF-4	FR-02 FR-03 FR-05	Decision table	STAFF; active=true; debt=1; count=5; days=7; checkout=2026-11-23	false;[OUTSTANDING_FEES, LOAN_LIMIT_REACHED];none	false;[OUTSTANDING_FEES, LOAN_LIMIT_REACHED];none
+CASE	DT-STAFF-5	FR-02 FR-03 FR-05	Decision table	STAFF; active=false; debt=0; count=4; days=7; checkout=2026-11-23	false;[INACTIVE_MEMBERSHIP];none	false;[INACTIVE_MEMBERSHIP];none
+CASE	DT-STAFF-6	FR-02 FR-03 FR-05	Decision table	STAFF; active=false; debt=0; count=5; days=7; checkout=2026-11-23	false;[INACTIVE_MEMBERSHIP, LOAN_LIMIT_REACHED];none	false;[INACTIVE_MEMBERSHIP, LOAN_LIMIT_REACHED];none
+CASE	DT-STAFF-7	FR-02 FR-03 FR-05	Decision table	STAFF; active=false; debt=1; count=4; days=7; checkout=2026-11-23	false;[INACTIVE_MEMBERSHIP, OUTSTANDING_FEES];none	false;[INACTIVE_MEMBERSHIP, OUTSTANDING_FEES];none
+CASE	DT-STAFF-8	FR-02 FR-03 FR-05	Decision table	STAFF; active=false; debt=1; count=5; days=7; checkout=2026-11-23	false;[INACTIVE_MEMBERSHIP, OUTSTANDING_FEES, LOAN_LIMIT_REACHED];none	false;[INACTIVE_MEMBERSHIP, OUTSTANDING_FEES, LOAN_LIMIT_REACHED];none
+CASE	STATE-01	FR-03 FR-08	Negative testing	attempt to clear all three returned rejection reasons	3	3
+CASE	LOAN-NEG-03	FR-05	Negative testing	checkout=LocalDate.MAX; days=1	IllegalArgumentException	IllegalArgumentException
+CASE	LOAN-NEG-04	FR-04 FR-08	Negative testing	inactive STUDENT; checkout=2026-11-23; days=8	IllegalArgumentException	IllegalArgumentException
+CASE	DATE-01	FR-05	Boundary value analysis	STUDENT; active=true; count=0; debt=0; checkout=2026-01-31; days=1	2026-02-01	2026-02-01
+CASE	DATE-02	FR-05	Boundary value analysis	STUDENT; active=true; count=0; debt=0; checkout=2026-12-31; days=1	2027-01-01	2027-01-01
+CASE	DATE-03	FR-05	Boundary value analysis	STUDENT; active=true; count=0; debt=0; checkout=2024-02-28; days=1	2024-02-29	2024-02-29
+CASE	DATE-04	FR-05	Boundary value analysis	STUDENT; active=true; count=0; debt=0; checkout=2024-02-28; days=2	2024-03-01	2024-03-01
+CASE	DATE-05	FR-05	Boundary value analysis	STUDENT; active=true; count=0; debt=0; checkout=2026-02-28; days=1	2026-03-01	2026-03-01
+CASE	DATE-06	FR-05	Boundary value analysis	STUDENT; active=true; count=0; debt=0; checkout=+999999999-12-30; days=1	+999999999-12-31	+999999999-12-31
+CASE	DATE-07	FR-05	Boundary value analysis	STUDENT; active=true; count=0; debt=0; checkout=-999999999-01-01; days=1	-999999999-01-02	-999999999-01-02
+[INFO] Tests run: 54, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.107 s -- in edu.campus.loan.LoanServiceTest
+[INFO] Running edu.campus.loan.OverdueFeeServiceTest
+CASE	FEE-EXTREME-01	FR-06	Boundary value analysis	checkout=LocalDate.MIN; due=MIN+1; return=LocalDate.MAX	5000	5000
+CASE	FEE-DATE-01	FR-06	Equivalence partitioning	checkout=2024-02-20; due=2024-02-28; return=2024-03-01	200	200
+CASE	FEE-DATE-02	FR-06	Equivalence partitioning	checkout=2026-02-20; due=2026-02-28; return=2026-03-01	100	100
+CASE	FEE-DATE-03	FR-06	Equivalence partitioning	checkout=2026-12-25; due=2026-12-31; return=2027-01-01	100	100
+CASE	FEE-DATE-04	FR-06	Equivalence partitioning	checkout=2026-01-25; due=2026-01-31; return=2026-02-02	200	200
+CASE	FEE-DATE-05	FR-06	Equivalence partitioning	checkout=2026-11-23; due=2026-11-30; return=2026-11-29	0	0
+CASE	FEE-01	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-11-01	0	0
+CASE	FEE-02	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-11-07	0	0
+CASE	FEE-03	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-11-08	0	0
+CASE	FEE-04	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-11-09	100	100
+CASE	FEE-05	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-11-10	200	200
+CASE	FEE-06	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-12-27	4900	4900
+CASE	FEE-07	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-12-28	5000	5000
+CASE	FEE-08	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-12-29	5000	5000
+CASE	FEE-09	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2027-02-16	5000	5000
+CASE	FEE-NEG-01	FR-07	Negative testing	checkout=NULL; due=2026-11-08; return=2026-11-09	IllegalArgumentException	IllegalArgumentException
+CASE	FEE-NEG-02	FR-07	Negative testing	checkout=2026-11-01; due=NULL; return=2026-11-09	IllegalArgumentException	IllegalArgumentException
+CASE	FEE-NEG-03	FR-07	Negative testing	checkout=2026-11-01; due=2026-11-08; return=NULL	IllegalArgumentException	IllegalArgumentException
+CASE	FEE-NEG-04	FR-07	Negative testing	checkout=2026-11-01; due=2026-11-01; return=2026-11-02	IllegalArgumentException	IllegalArgumentException
+CASE	FEE-NEG-05	FR-07	Negative testing	checkout=2026-11-01; due=2026-10-31; return=2026-11-02	IllegalArgumentException	IllegalArgumentException
+CASE	FEE-NEG-06	FR-07	Negative testing	checkout=2026-11-01; due=2026-11-08; return=2026-10-31	IllegalArgumentException	IllegalArgumentException
+CASE	FEE-STATE-01	FR-08	Regression testing	capped late return followed by an on-time return; checkout=2026-11-01; due=2026-11-08	0	0
+[INFO] Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s -- in edu.campus.loan.OverdueFeeServiceTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 103, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ campus-equipment-loan ---
+[INFO] Building jar: /Users/kaan/software verification/target/campus-equipment-loan.jar
+[INFO] 
+[INFO] --- jacoco:0.8.14:report (coverage-report) @ campus-equipment-loan ---
+[INFO] Loading execution data file /Users/kaan/software verification/target/jacoco.exec
+[INFO] Analyzed bundle 'Campus Equipment Loan Eligibility and Overdue Fee Service' with 7 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.857 s
+[INFO] Finished at: 2026-11-24T15:16:30+01:00
+[INFO] ------------------------------------------------------------------------

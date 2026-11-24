@@ -21,6 +21,15 @@ def main():
         raise RuntimeError("Expected final passing regression evidence")
     if summary["console_smoke_passed"] != summary["console_smoke_tests"]:
         raise RuntimeError("Console smoke tests must pass")
+    student_run = json.loads((ROOT / "evidence/student-run.json").read_text())
+    student_tests = student_run["automated_tests"]
+    if student_tests["tests"] != summary["tests"] or any(student_tests[key] for key in ("failures", "errors", "skipped")):
+        raise RuntimeError("Student build evidence must match the passing full suite")
+    if len(student_run["manual_console_checks"]) != 3 or not all(row["passed"] for row in student_run["manual_console_checks"]):
+        raise RuntimeError("All three recorded student console checks must pass")
+    for name, checksum in student_run["log_sha256"].items():
+        if digest(ROOT / name) != checksum:
+            raise RuntimeError("Student execution log changed: " + name)
     faults = json.loads((ROOT / "evidence/fault-injection/summary.json").read_text())
     if len(faults) != 3 or not all(fault["detected"] and fault["repair_verified"] for fault in faults):
         raise RuntimeError("All three seeded faults must be detected and their repairs verified")
@@ -42,6 +51,9 @@ def main():
                 "student": "Serdar Kaan Kesen", "student_number": "220911810",
                 "status": "Submission package; student contribution, learning outcomes and AI assistance documented in the report",
                 "final_tests": summary["tests"], "console_smoke_tests": summary["console_smoke_tests"],
+                "student_execution": {"build_finished_at": student_run["build_finished_at"],
+                                      "automated_tests": student_tests["tests"],
+                                      "manual_console_checks": len(student_run["manual_console_checks"])},
                 "detected_controlled_faults": len(faults), "coverage": summary["coverage"],
                 "files": {str(path.relative_to(ROOT)): digest(path) for path in files}}
     (OUT / "MANIFEST.json").write_text(json.dumps(manifest, indent=2) + "\n")

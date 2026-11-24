@@ -1,0 +1,48 @@
+{
+  "student": "Serdar Kaan Kesen",
+  "student_number": "220911810",
+  "build_command": "./scripts/build.sh clean verify",
+  "build_log": "evidence/student-build.log",
+  "build_finished_at": "2026-11-24T15:16:30+01:00",
+  "automated_tests": {
+    "tests": 103,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "manual_console_checks": [
+    {
+      "id": "STUDENT-DEMO",
+      "command": "./scripts/run.sh --demo",
+      "log": "evidence/student-demo.log",
+      "expected_output": "Campus Equipment Loan Eligibility and Overdue Fee Service\nEducational policy; no equipment is reserved or issued.\nAPPROVED; due date: 2026-11-30\nREJECTED; reasons: [INACTIVE_MEMBERSHIP, OUTSTANDING_FEES, LOAN_LIMIT_REACHED]\nThree days late: 3.00 TL",
+      "actual_output": "Campus Equipment Loan Eligibility and Overdue Fee Service\nEducational policy; no equipment is reserved or issued.\nAPPROVED; due date: 2026-11-30\nREJECTED; reasons: [INACTIVE_MEMBERSHIP, OUTSTANDING_FEES, LOAN_LIMIT_REACHED]\nThree days late: 3.00 TL",
+      "summary": "Approval; three rejection reasons; three-day fee of 3.00 TL",
+      "passed": true
+    },
+    {
+      "id": "STUDENT-LIMIT",
+      "command": "./scripts/run.sh loan STUDENT true 3 0 2026-11-24 7",
+      "log": "evidence/student-limit.log",
+      "expected_output": "REJECTED; reasons: [LOAN_LIMIT_REACHED]",
+      "actual_output": "REJECTED; reasons: [LOAN_LIMIT_REACHED]",
+      "summary": "Student at 3 loans: rejected for LOAN_LIMIT_REACHED",
+      "passed": true
+    },
+    {
+      "id": "STUDENT-FEE",
+      "command": "./scripts/run.sh fee 2026-11-24 2026-12-01 2026-12-04",
+      "log": "evidence/student-fee.log",
+      "expected_output": "Overdue fee: 3.00 TL (300 kurus)",
+      "actual_output": "Overdue fee: 3.00 TL (300 kurus)",
+      "summary": "Three days late: 3.00 TL (300 kurus)",
+      "passed": true
+    }
+  ],
+  "log_sha256": {
+    "evidence/student-build.log": "f283e9c13dee001302fc18e06403a1933fa9767b5de47f43d97de8bb40a764ad",
+    "evidence/student-demo.log": "60e0c6b4fc5cf160c5775239883443cf6b945411ef18876e7c50bfa3ee28d022",
+    "evidence/student-limit.log": "162e40ec25677e6f7aa01fe0602fc8c8dc1d0d3cef839a80836f774659deafba",
+    "evidence/student-fee.log": "9f6a0adc71af769783ee3f03a09a64cc7ea1a03b81c41fd3ffb26352b652dcd6"
+  }
+}

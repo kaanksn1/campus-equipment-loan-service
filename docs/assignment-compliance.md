@@ -14,7 +14,7 @@ The following numbers are the instructor's nine section headings. The table maps
 | 4 | Required Testing Techniques | All five required techniques are implemented and explained. |
 | 5 | Research Component | Required discussion topics, credible technical references and a personal learning reflection are included. The reflection covers Java/testing study and worked examples. |
 | 6 | Required Deliverables | Eight-section report and supporting source, tests, results, coverage and build configuration are prepared locally; this is not confirmation of submission to the instructor. |
-| 7 | Duration and Individual Work | Java/JUnit/build setup is ready. Report section 7 describes topic/scope decisions, proposal submission, worked examples and the student's study of Java/testing with ChatGPT. |
+| 7 | Duration and Individual Work | Report section 7 describes topic/scope decisions, proposal submission, worked examples, Java/testing study with ChatGPT, and the student's full build and three manual console checks. Raw execution logs are preserved. |
 | 8 | Evaluation Criteria | A rubric, not a separate task. All seven criteria have supporting materials; marks depend on the instructor's assessment of their quality. |
 | 9 | Academic Integrity | Report section 7 describes student contributions, learning outcomes and AI assistance. External technical sources are cited in the report and listed in section 8. |
 
@@ -35,6 +35,7 @@ See `docs/student-guide-tr.md` for explanations, worked examples and the contrib
 | Negative testing | Invalid borrower data, date ordering, periods, malformed CLI and immutable result checks |
 | Regression testing after modifications | Three seeded changes tested in isolated copies; complete original suite rerun; `evidence/regression.log` |
 | Inputs, expected and actual results | All 103 records in `evidence/test-cases.html` and JSON; Surefire XML/text |
+| Student build and manual console execution | Report sections 5 and 7; `evidence/student-run.json` and four `student-*.log` files |
 | Successful and unsuccessful executions | Passing baseline/final runs; actual failing runs in `evidence/fault-injection` |
 | Defect analysis | Report section 6; three exact injected diffs and failures, explicitly labelled controlled experiments |
 | Coverage measurement and limitations | Full JaCoCo HTML/XML/CSV; all production classes included; report section 6 |
