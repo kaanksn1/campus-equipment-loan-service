@@ -345,6 +345,10 @@ a return on 11 December with a due date of 8 December is three days late and cos
 Another example showed why a borrower exactly at the limit must be rejected: changing the comparison
 from greater-than-or-equal to greater-than allows an incorrect approval. These examples connect
 the business rules to explicit expected values and boundary tests.</p>
+<p>I also learned to distinguish the expected value in an assertion from the actual result returned
+by the application. For a three-day delay, the correct fee is 300 kurus. If the application returns
+300 but the test expects 400, the test expectation must be corrected using the requirement.
+A failing test therefore requires checking both the application behaviour and the expected value.</p>
 <h2>Limitations and possible improvements</h2>
 <p>The service trusts a caller-supplied borrower snapshot. Without storage or inventory integration it
 cannot prevent simultaneous requests from exceeding a real equipment pool, update counts or collect fees.

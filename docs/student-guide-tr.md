@@ -98,14 +98,15 @@ Bu kayıt, 24 Kasım 2026 tarihli konuşmadaki yanıtlar ve öğrencinin ChatGPT
 | Sınır örneği | Personelin 5 mevcut ödünçte reddedileceğini ve `>=` yerine `>` hatasını yakalayan değerin 5 olduğunu belirledi. |
 | Geçersiz girdi | Pozitif borcun normal ret; negatif borcun ve öğrencinin 8 günlük isteğinin geçersiz girdi hatası ürettiğini belirledi. |
 | Ücret örneği | 60 gün gecikmede tavanın 50 TL olduğunu söyledi; 8 Aralık son tarih ve 11 Aralık gerçek iade için 300 kuruşu doğru hesapladı. |
+| JUnit kontrolü | Öğrenci beklenen ve gerçek sonuç ayrımını öğrendiğini belirtti. Doğru sonuç 300 iken testin 400 beklemesi durumunda yanlış test beklentisinin düzeltilmesi gerektiği öğrenme bölümüne eklendi. |
 | Ek öğrenme beyanı | Öğrenci Java ve JUnit kavramlarını, test tekniklerini ve coverage konularını ChatGPT ile çalışıp öğrendiğini belirtti. Bu beyan rapora yansıtıldı. |
 | Kullanılan yardım | Uygulama, test tasarımı, çalıştırma, analiz ve raporda Codex; kavramları öğrenmede ChatGPT desteği belirtildi. |
 
 Öğrencinin kendi bilgisayarında bağımsız derleme, test çalıştırma veya kod değişikliği yaptığına ilişkin bir kayıt eklenmedi. Korunan çalıştırma kanıtları proje araçlarıyla alınan gerçek sonuçlardır.
 
-### Kaldığımız uygulama noktası
+### Öğrenilen JUnit kontrolü
 
-Üç gün gecikmeyi 300 kuruş bekleyen JUnit örneğine kadar gelindi. Son açıklanan kontrol `assertEquals(300L, actual)` oldu. Tekrar için sonraki soru: Program doğru olarak 300 döndürürken test 400 bekliyorsa hangi tarafı neden düzeltmek gerekir? Ardından bir mevcut testi okuyup bir girdi/beklenen sonuç değişikliğini çalıştırarak incele.
+Öğrenci, `assertEquals(300L, actual)` kontrolündeki beklenen değer ile programın gerçek sonucu arasındaki ayrımı öğrendiğini belirtti. Üç günlük gecikme için doğru sonuç 300 kuruştur. Program 300 döndürürken test 400 bekliyorsa gereksinime uymayan test beklentisi 300 olarak düzeltilir. Bir testin başarısız olması incelenirken hem uygulama hem de beklenen sonucun gereksinimlere uygunluğu kontrol edilir. Bu konu öğrenilmiş olarak kaydedildi.
 
 ### Sonucu önce kendin tahmin et
 
