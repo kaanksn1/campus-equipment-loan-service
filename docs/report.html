@@ -177,11 +177,15 @@ The controlled failures show that assertions detect selected faults beyond merel
 distinguishing invalid input from normal rejection, and consistent date/money semantics. Explicit dates,
 integer kurus and a Maven Wrapper made the build and tests repeatable. Parameterized tests reduced
 duplication while keeping separate records for each example.</p>
-<p>I selected the topic and console scope, supplied the proposal and sent the approval email.
-I reviewed example decisions, built the application, ran the 103-test suite and manually compared
-three console runs with expected results. The actual terminal outputs are preserved. I studied Java,
-JUnit and test-design concepts with explanations from ChatGPT, including expected-versus-actual
-values and the distinction between due and actual return dates.</p>
+<h2>Personal contribution and reflection</h2>
+<p>I selected the equipment-loan topic and small console scope, provided the proposal and emailed
+the instructor to request approval. In the examples, I identified that a borrower already at the
+loan limit must be rejected, while a negative debt value is invalid input. I checked that three late
+days cost 300 kurus and that a longer delay cannot raise the fee above 50 TL. I ran the full build
+and all 103 tests passed, then compared the demo and two console scenarios with their expected
+outputs. These runs confirmed the rejection at three student loans and the 300-kurus fee for a
+three-day delay; their terminal logs are preserved. ChatGPT explanations helped me study Java,
+JUnit, test design and the difference between an expected result and the program's actual output.</p>
 <p>The service trusts supplied snapshots and has no persistence or concurrent inventory control.
 The policy has not been validated with an operating equipment desk; tests do not exhaust every date
 or integer. Within scope, broader fault selection and additional calendar combinations could improve
