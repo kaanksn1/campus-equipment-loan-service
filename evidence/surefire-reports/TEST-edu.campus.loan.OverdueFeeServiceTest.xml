@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="edu.campus.loan.OverdueFeeServiceTest" time="0.058" tests="22" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="edu.campus.loan.OverdueFeeServiceTest" time="0.056" tests="22" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="TR"/>
     <property name="sun.boot.library.path" value="/Users/kaan/Library/Caches/codex/software-verification/jdk17/jdk-17.0.21.1+2/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/kaan/software verification/target/surefire/surefirebooter-20261123044615669_3.jar /Users/kaan/software verification/target/surefire 2026-11-23T04-46-15_594-jvmRun1 surefire-20261123044615669_1tmp surefire_0-20261123044615669_2tmp"/>
+    <property name="sun.java.command" value="/Users/kaan/software verification/target/surefire/surefirebooter-20261124143517624_3.jar /Users/kaan/software verification/target/surefire 2026-11-24T14-35-17_561-jvmRun1 surefire-20261124143517624_1tmp surefire_0-20261124143517624_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/kaan/software verification/target/test-classes:/Users/kaan/software verification/target/classes:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter/5.13.4/junit-jupiter-5.13.4.jar:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.13.4/junit-jupiter-api-5.13.4.jar:/Users/kaan/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/kaan/.m2/repository/org/junit/platform/junit-platform-commons/1.13.4/junit-platform-commons-1.13.4.jar:/Users/kaan/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.13.4/junit-jupiter-params-5.13.4.jar:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.13.4/junit-jupiter-engine-5.13.4.jar:/Users/kaan/.m2/repository/org/junit/platform/junit-platform-engine/1.13.4/junit-platform-engine-1.13.4.jar:"/>
@@ -23,13 +23,12 @@
     <property name="java.version.date" value="2026-11-17"/>
     <property name="java.home" value="/Users/kaan/Library/Caches/codex/software-verification/jdk17/jdk-17.0.21.1+2/Contents/Home"/>
     <property name="file.separator" value="/"/>
-    <property name="style.color" value="never"/>
     <property name="basedir" value="/Users/kaan/software verification"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
-    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/Users/kaan/software verification/target/surefire/surefirebooter-20261123044615669_3.jar"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="surefire.real.class.path" value="/Users/kaan/software verification/target/surefire/surefirebooter-20261124143517624_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="17.0.21.1+2"/>
@@ -57,11 +56,11 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="maximumCalendarSpanStillCapsSafely" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.001">
+  <testcase name="maximumCalendarSpanStillCapsSafely" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.0">
     <system-out><![CDATA[CASE	FEE-EXTREME-01	FR-06	Boundary value analysis	checkout=LocalDate.MIN; due=MIN+1; return=LocalDate.MAX	5000	5000
 ]]></system-out>
   </testcase>
-  <testcase name="calendarFeeCases(String, LocalDate, LocalDate, LocalDate, long)[1]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.004">
+  <testcase name="calendarFeeCases(String, LocalDate, LocalDate, LocalDate, long)[1]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.003">
     <system-out><![CDATA[CASE	FEE-DATE-01	FR-06	Equivalence partitioning	checkout=2024-02-20; due=2024-02-28; return=2024-03-01	200	200
 ]]></system-out>
   </testcase>
@@ -73,7 +72,7 @@
     <system-out><![CDATA[CASE	FEE-DATE-03	FR-06	Equivalence partitioning	checkout=2026-12-25; due=2026-12-31; return=2027-01-01	100	100
 ]]></system-out>
   </testcase>
-  <testcase name="calendarFeeCases(String, LocalDate, LocalDate, LocalDate, long)[4]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.002">
+  <testcase name="calendarFeeCases(String, LocalDate, LocalDate, LocalDate, long)[4]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.001">
     <system-out><![CDATA[CASE	FEE-DATE-04	FR-06	Equivalence partitioning	checkout=2026-01-25; due=2026-01-31; return=2026-02-02	200	200
 ]]></system-out>
   </testcase>
@@ -89,7 +88,7 @@
     <system-out><![CDATA[CASE	FEE-02	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-11-07	0	0
 ]]></system-out>
   </testcase>
-  <testcase name="feeBoundary(String, int, long)[3]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.0">
+  <testcase name="feeBoundary(String, int, long)[3]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.002">
     <system-out><![CDATA[CASE	FEE-03	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-11-08	0	0
 ]]></system-out>
   </testcase>
@@ -101,11 +100,11 @@
     <system-out><![CDATA[CASE	FEE-05	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-11-10	200	200
 ]]></system-out>
   </testcase>
-  <testcase name="feeBoundary(String, int, long)[6]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.001">
+  <testcase name="feeBoundary(String, int, long)[6]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.0">
     <system-out><![CDATA[CASE	FEE-06	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-12-27	4900	4900
 ]]></system-out>
   </testcase>
-  <testcase name="feeBoundary(String, int, long)[7]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.0">
+  <testcase name="feeBoundary(String, int, long)[7]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.001">
     <system-out><![CDATA[CASE	FEE-07	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2026-12-28	5000	5000
 ]]></system-out>
   </testcase>
@@ -117,7 +116,7 @@
     <system-out><![CDATA[CASE	FEE-09	FR-06	Boundary value analysis	checkout=2026-11-01; due=2026-11-08; return=2027-02-16	5000	5000
 ]]></system-out>
   </testcase>
-  <testcase name="invalidDates(String, String, String, String)[1]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.004">
+  <testcase name="invalidDates(String, String, String, String)[1]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.001">
     <system-out><![CDATA[CASE	FEE-NEG-01	FR-07	Negative testing	checkout=NULL; due=2026-11-08; return=2026-11-09	IllegalArgumentException	IllegalArgumentException
 ]]></system-out>
   </testcase>
@@ -125,19 +124,19 @@
     <system-out><![CDATA[CASE	FEE-NEG-02	FR-07	Negative testing	checkout=2026-11-01; due=NULL; return=2026-11-09	IllegalArgumentException	IllegalArgumentException
 ]]></system-out>
   </testcase>
-  <testcase name="invalidDates(String, String, String, String)[3]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.001">
+  <testcase name="invalidDates(String, String, String, String)[3]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.002">
     <system-out><![CDATA[CASE	FEE-NEG-03	FR-07	Negative testing	checkout=2026-11-01; due=2026-11-08; return=NULL	IllegalArgumentException	IllegalArgumentException
 ]]></system-out>
   </testcase>
-  <testcase name="invalidDates(String, String, String, String)[4]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.001">
+  <testcase name="invalidDates(String, String, String, String)[4]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.002">
     <system-out><![CDATA[CASE	FEE-NEG-04	FR-07	Negative testing	checkout=2026-11-01; due=2026-11-01; return=2026-11-02	IllegalArgumentException	IllegalArgumentException
 ]]></system-out>
   </testcase>
-  <testcase name="invalidDates(String, String, String, String)[5]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.0">
+  <testcase name="invalidDates(String, String, String, String)[5]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.001">
     <system-out><![CDATA[CASE	FEE-NEG-05	FR-07	Negative testing	checkout=2026-11-01; due=2026-10-31; return=2026-11-02	IllegalArgumentException	IllegalArgumentException
 ]]></system-out>
   </testcase>
-  <testcase name="invalidDates(String, String, String, String)[6]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.001">
+  <testcase name="invalidDates(String, String, String, String)[6]" classname="edu.campus.loan.OverdueFeeServiceTest" time="0.002">
     <system-out><![CDATA[CASE	FEE-NEG-06	FR-07	Negative testing	checkout=2026-11-01; due=2026-11-08; return=2026-10-31	IllegalArgumentException	IllegalArgumentException
 ]]></system-out>
   </testcase>

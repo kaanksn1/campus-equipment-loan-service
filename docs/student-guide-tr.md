@@ -83,3 +83,45 @@ Sırasıyla testler, demo, kabul, kapasite reddi, üç nedenli ret, sıfır ücr
 ## Hocaya açıklayabilmen gereken noktalar
 
 `>=` neden gerekli, 7 günlük istekte tarihe neden 7 ekleniyor, geçersiz girdinin normal retten farkı ne, neden `long` ve `LocalDate` seçildi, neden bütün ret nedenleri dönüyor, 100% coverage neden tek başına yeterli değil ve JUnit 4 örnekleri yerine neden JUnit 5 kullanıldı. Cevaplar specification, kod ve testlerle birbirini tutmalı. Rapordaki tartışmayı okuyup kendi gerçekten karşılaştığın öğrenme deneyimlerini ekle; yazılmamış kişisel deneyim uydurulmadı.
+
+## Yönergenin 7 ve 9. maddeleri için çalışma
+
+7. madde bireysel çalışma ve öğrenmeyi, 9. madde kendi çalışmanı temsil etme, kullanılan yardımı bildirme ve kararları açıklayabilmeyi istiyor. AI kullanımının belirtilmesi bu koşulların tümünün karşılandığını tek başına göstermez. Hazır kodu okuyabilmek de kodun başlangıçta nasıl üretildiğini değiştirmez. Kendi yaptığın katkıları ve öğrendiğin noktaları doğru biçimde kaydet; hocanın izin verdiği yardım kapsamına göre değerlendir.
+
+### Gerçek katkı ve inceleme kaydı
+
+Bu bölüm henüz öğrenci tarafından doldurulmadı. Aşağıdaki başlıklar tamamlanmış öğrenci faaliyeti olarak sunulmaz. Yanıtlarını kendi cümlelerinle hazırladıktan sonra raporun kişisel tartışma bölümüne yalnızca doğruladığın bilgileri ekle.
+
+Konuşmada doğrulanan katkı: kullanıcı mevcut konuyu ve küçük Java konsol kapsamını bu çalışmaya taşıdı, proposal ile onay e-postasını paylaştı ve geliştirmeye devam etme kararını verdi. Bunlar kodun öğrenci tarafından bağımsız yazıldığı veya incelendiği anlamına gelmez. Ek katkılar aşağıdaki kayda öğrencinin açıklamalarıyla eklenecek.
+
+| Başlık | Öğrencinin dolduracağı bilgi |
+| --- | --- |
+| Konu ve kapsam kararları | Hangi kararı kendin verdin? Hangi seçenekleri neden eledin? |
+| Kod incelemesi | Hangi sınıf/metotları gerçekten inceledin? Açıklayabildiğin bir tasarım kararı nedir? |
+| Çalıştırma | Hangi komutu kendin çalıştırdın? Ne bekledin ve ne gördün? |
+| Test katkısı | Kendin seçtiğin senaryo, girdileri ve kodu çalıştırmadan önce belirlediğin beklenen sonuç nedir? |
+| Öğrenme ve eleştiri | Başlangıçta anlamadığın bir kavramı şimdi nasıl açıklıyorsun? Mevcut çözümde hangi sınırlamayı görüyorsun? |
+| Kullanılan yardım | Codex'in, kütüphanelerin ve kaynakların hangi katkısını kullandın? Hocanın ayrıca belirttiği bir kural var mı? |
+
+### Sonucu önce kendin tahmin et
+
+Aşağıdaki sorular kodu çalıştırmadan önce açıklama hazırlamak içindir. Bunlar henüz öğrencinin cevapladığı veya geçtiği bir sınav olarak kaydedilmez.
+
+1. Aktif bir öğrencinin 2 ödüncü ve 1 kuruş borcu var. 24 Kasım 2026'da 7 gün istiyor. Sonuç ne olur, hangi neden döner ve teslim tarihi bulunur mu? Bu örnek hangi girdi sınıfını sınar?
+2. Borçsuz, aktif bir öğrencinin mevcut ödünç sayısı 3. Karşılaştırmayı `>=` yerine `>` yapmak neyi değiştirir? Bu yanlışı yakalayacak iki komşu sınır değeri seç.
+3. Öğrenci 24 Kasım 2026'da 7 günlük geçerli bir istek yapıyor. Son tarihi hesapla; o tarihte, ertesi gün ve 51 gün sonra iade ücretlerini kuruş ve TL olarak söyle. Kullanılacak test tekniğini gerekçelendir.
+4. Aynı öğrencinin üyeliği pasif ve istediği süre 8 gün olursa normal ret mi, geçersiz girdi hatası mı beklenir? İşlem sırasını hangi gereksinim belirliyor?
+5. Öğrenci için 7 yerine 6 gün ekleyen bir uygulama düşün. Bütün satırlar yine çalışabilir mi? Hangi beklenen-sonuç kontrolü yanlışı ortaya çıkarır?
+
+Soruların ardından kendin bir ek senaryo seç, beklenen sonucu kurallardan çıkar ve mevcut testlerden hangisinin bunu kapsadığını bul. Kapsanmıyorsa yeni testin neyi farklı doğrulayacağını açıkla. Yeni test eklemeden önce senaryonun amacını netleştir.
+
+### Tamamlanma kontrolü
+
+- [ ] İncelediğim kod ve testleri kendi cümlelerimle açıklayabiliyorum.
+- [ ] Bir sınır senaryosunun beklenen sonucunu kodu çalıştırmadan çıkarabiliyorum.
+- [ ] Kontrol amacıyla eklenen üç hatayı gerçek geliştirme hatalarından ayırabiliyorum.
+- [ ] Kendi katkımı ve kullandığım yardımı doğru biçimde yazdım.
+- [ ] Rapordaki kişisel öğrenme bölümünü gerçekten yaşadığım deneyimlerle tamamladım.
+- [ ] Kullanılan yardımın hocanın kurallarıyla uyumunu değerlendirdim.
+
+Bu kutular öğrenci tarafından henüz doğrulanmadı. Teknik testlerin geçmesi bu kutuları otomatik olarak tamamlamaz.

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build the eight-section report from evidence using ReportLab and PyMuPDF."""
 from pathlib import Path
+from datetime import datetime
 import html
 import json
 import re
@@ -14,6 +15,7 @@ from reportlab.platypus import BaseDocTemplate, PageTemplate, Frame, Paragraph, 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "submission"
 SUMMARY = json.loads((ROOT / "evidence/summary.json").read_text())
+REPORT_DATE = datetime.fromisoformat(SUMMARY["run_time_oslo"]).strftime("%d %B %Y")
 CASES = json.loads((ROOT / "evidence/test-cases.json").read_text())
 FAULTS = json.loads((ROOT / "evidence/fault-injection/summary.json").read_text())
 BY_ID = {row["id"]: row for row in CASES}
@@ -64,7 +66,7 @@ def build_sections():
 <p class="title"><b>Campus Equipment Loan Eligibility<br>and Overdue Fee Service</b></p>
 <p class="subtitle">SWE411 Software Verification and Validation<br>Implementation and automated testing report</p>
 <p class="meta"><b>Student:</b> Serdar Kaan Kesen &nbsp; | &nbsp; <b>Number:</b> 220911810</p>
-<p class="meta"><b>Instructor:</b> Dr. Osman Durmaz &nbsp; | &nbsp; <b>Date:</b> 23 November 2026</p>
+<p class="meta"><b>Instructor:</b> Dr. Osman Durmaz &nbsp; | &nbsp; <b>Date:</b> {REPORT_DATE}</p>
 <p class="meta"><b>Status:</b> AI-assisted draft for student review</p>
 <p class="lead"><b>Measured result:</b> {s['tests']} JUnit 5 executions passed, with no failures, errors or skipped tests.
 All {s['console_smoke_tests']} packaged-console checks passed. Three deliberately seeded faults were detected.
@@ -237,7 +239,7 @@ are preserved separately. The full design is in <code>docs/test-plan.md</code>.<
 parameterized tests express related examples through CsvSource and MethodSource. Assertions compare
 actual values with explicit expected values; exception assertions also check immutability. Fresh test
 instances keep fixtures independent [1]. JUnit is test-scoped and is not shipped as an application dependency.</p>
-<p>The final Maven verify run completed at {html.escape(s['run_time_oslo'])}. It executed {s['tests']} cases:
+<p>Evidence from the final passing Maven verify run was collected at {html.escape(s['run_time_oslo'])}. It contains {s['tests']} cases:
 {s['tests'] - s['failures'] - s['errors'] - s['skipped']} passed, {s['failures']} failed,
 {s['errors']} errored and {s['skipped']} were skipped.</p>
 """ + table(["Test class", "Cases", "Failures", "Errors", "Skipped"], class_rows, [48, 13, 13, 13, 13]) + """
@@ -526,7 +528,7 @@ def render(sections):
         page.wrap_contents()
         shade = (0.32, 0.38, 0.45)
         page.insert_text((72, 35), "SWE411 | Campus Equipment Loan Service", fontsize=8, color=shade)
-        page.insert_text((72, 755), "Serdar Kaan Kesen | 220911810 | 23 November 2026", fontsize=8, color=shade)
+        page.insert_text((72, 755), f"Serdar Kaan Kesen | 220911810 | {REPORT_DATE}", fontsize=8, color=shade)
         label = f"{i + 1} / {len(pdf)}"
         page.insert_text((540 - fitz.get_text_length(label, fontsize=8), 755), label, fontsize=8, color=shade)
     final_pdf = destination.with_suffix(".tmp.pdf")

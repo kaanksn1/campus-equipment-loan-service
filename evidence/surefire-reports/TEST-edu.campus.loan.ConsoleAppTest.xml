@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="edu.campus.loan.ConsoleAppTest" time="0.223" tests="21" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="edu.campus.loan.ConsoleAppTest" time="0.178" tests="21" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="TR"/>
     <property name="sun.boot.library.path" value="/Users/kaan/Library/Caches/codex/software-verification/jdk17/jdk-17.0.21.1+2/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/kaan/software verification/target/surefire/surefirebooter-20261123044615669_3.jar /Users/kaan/software verification/target/surefire 2026-11-23T04-46-15_594-jvmRun1 surefire-20261123044615669_1tmp surefire_0-20261123044615669_2tmp"/>
+    <property name="sun.java.command" value="/Users/kaan/software verification/target/surefire/surefirebooter-20261124143517624_3.jar /Users/kaan/software verification/target/surefire 2026-11-24T14-35-17_561-jvmRun1 surefire-20261124143517624_1tmp surefire_0-20261124143517624_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/kaan/software verification/target/test-classes:/Users/kaan/software verification/target/classes:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter/5.13.4/junit-jupiter-5.13.4.jar:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.13.4/junit-jupiter-api-5.13.4.jar:/Users/kaan/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/kaan/.m2/repository/org/junit/platform/junit-platform-commons/1.13.4/junit-platform-commons-1.13.4.jar:/Users/kaan/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.13.4/junit-jupiter-params-5.13.4.jar:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.13.4/junit-jupiter-engine-5.13.4.jar:/Users/kaan/.m2/repository/org/junit/platform/junit-platform-engine/1.13.4/junit-platform-engine-1.13.4.jar:"/>
@@ -23,13 +23,12 @@
     <property name="java.version.date" value="2026-11-17"/>
     <property name="java.home" value="/Users/kaan/Library/Caches/codex/software-verification/jdk17/jdk-17.0.21.1+2/Contents/Home"/>
     <property name="file.separator" value="/"/>
-    <property name="style.color" value="never"/>
     <property name="basedir" value="/Users/kaan/software verification"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
-    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/Users/kaan/software verification/target/surefire/surefirebooter-20261123044615669_3.jar"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="surefire.real.class.path" value="/Users/kaan/software verification/target/surefire/surefirebooter-20261124143517624_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="17.0.21.1+2"/>
@@ -57,11 +56,11 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="invalidCommands(String, String)[1]" classname="edu.campus.loan.ConsoleAppTest" time="0.032">
+  <testcase name="invalidCommands(String, String)[1]" classname="edu.campus.loan.ConsoleAppTest" time="0.024">
     <system-out><![CDATA[CASE	CLI-NEG-01	FR-09	Negative testing	loan VISITOR true 0 0 2026-11-23 1	2	2
 ]]></system-out>
   </testcase>
-  <testcase name="invalidCommands(String, String)[2]" classname="edu.campus.loan.ConsoleAppTest" time="0.002">
+  <testcase name="invalidCommands(String, String)[2]" classname="edu.campus.loan.ConsoleAppTest" time="0.003">
     <system-out><![CDATA[CASE	CLI-NEG-02	FR-09	Negative testing	loan STUDENT maybe 0 0 2026-11-23 1	2	2
 ]]></system-out>
   </testcase>
@@ -81,11 +80,11 @@
     <system-out><![CDATA[CASE	CLI-NEG-06	FR-09	Negative testing	loan STUDENT true 0 0 2026-11-23 8	2	2
 ]]></system-out>
   </testcase>
-  <testcase name="invalidCommands(String, String)[7]" classname="edu.campus.loan.ConsoleAppTest" time="0.002">
+  <testcase name="invalidCommands(String, String)[7]" classname="edu.campus.loan.ConsoleAppTest" time="0.001">
     <system-out><![CDATA[CASE	CLI-NEG-07	FR-09	Negative testing	loan STUDENT true 0 0.5 2026-11-23 1	2	2
 ]]></system-out>
   </testcase>
-  <testcase name="invalidCommands(String, String)[8]" classname="edu.campus.loan.ConsoleAppTest" time="0.002">
+  <testcase name="invalidCommands(String, String)[8]" classname="edu.campus.loan.ConsoleAppTest" time="0.001">
     <system-out><![CDATA[CASE	CLI-NEG-08	FR-09	Negative testing	loan STUDENT true 2147483648 0 2026-11-23 1	2	2
 ]]></system-out>
   </testcase>
@@ -93,19 +92,19 @@
     <system-out><![CDATA[CASE	CLI-NEG-09	FR-09	Negative testing	loan STUDENT true 0 9223372036854775808 2026-11-23 1	2	2
 ]]></system-out>
   </testcase>
-  <testcase name="invalidCommands(String, String)[10]" classname="edu.campus.loan.ConsoleAppTest" time="0.004">
+  <testcase name="invalidCommands(String, String)[10]" classname="edu.campus.loan.ConsoleAppTest" time="0.002">
     <system-out><![CDATA[CASE	CLI-NEG-10	FR-09	Negative testing	fee 2026-11-23 2026-11-30 2026-11-22	2	2
 ]]></system-out>
   </testcase>
-  <testcase name="invalidCommands(String, String)[11]" classname="edu.campus.loan.ConsoleAppTest" time="0.006">
+  <testcase name="invalidCommands(String, String)[11]" classname="edu.campus.loan.ConsoleAppTest" time="0.002">
     <system-out><![CDATA[CASE	CLI-NEG-11	FR-09	Negative testing	fee 2026-11-23 2026-11-30	2	2
 ]]></system-out>
   </testcase>
-  <testcase name="invalidCommands(String, String)[12]" classname="edu.campus.loan.ConsoleAppTest" time="0.004">
+  <testcase name="invalidCommands(String, String)[12]" classname="edu.campus.loan.ConsoleAppTest" time="0.002">
     <system-out><![CDATA[CASE	CLI-NEG-12	FR-09	Negative testing	unknown	2	2
 ]]></system-out>
   </testcase>
-  <testcase name="invalidCommands(String, String)[13]" classname="edu.campus.loan.ConsoleAppTest" time="0.002">
+  <testcase name="invalidCommands(String, String)[13]" classname="edu.campus.loan.ConsoleAppTest" time="0.004">
     <system-out><![CDATA[CASE	CLI-NEG-13	FR-09	Negative testing	loan STUDENT true 0 0 23/11/2026 1	2	2
 ]]></system-out>
   </testcase>
@@ -113,31 +112,31 @@
     <system-out><![CDATA[CASE	CLI-NEG-14	FR-09	Negative testing	loan STUDENT true 0 0 2026-11-23 word	2	2
 ]]></system-out>
   </testcase>
-  <testcase name="validCommands(String, String, String)[1]" classname="edu.campus.loan.ConsoleAppTest" time="0.002">
+  <testcase name="validCommands(String, String, String)[1]" classname="edu.campus.loan.ConsoleAppTest" time="0.001">
     <system-out><![CDATA[CASE	CLI-01	FR-09	Equivalence partitioning	loan STUDENT true 2 0 2026-11-23 7	APPROVED; due date: 2026-11-30	APPROVED; due date: 2026-11-30
 ]]></system-out>
   </testcase>
-  <testcase name="validCommands(String, String, String)[2]" classname="edu.campus.loan.ConsoleAppTest" time="0.003">
+  <testcase name="validCommands(String, String, String)[2]" classname="edu.campus.loan.ConsoleAppTest" time="0.002">
     <system-out><![CDATA[CASE	CLI-02	FR-09	Equivalence partitioning	loan staff FALSE 5 1 2026-11-23 14	REJECTED; reasons: [INACTIVE_MEMBERSHIP, OUTSTANDING_FEES, LOAN_LIMIT_REACHED]	REJECTED; reasons: [INACTIVE_MEMBERSHIP, OUTSTANDING_FEES, LOAN_LIMIT_REACHED]
 ]]></system-out>
   </testcase>
-  <testcase name="validCommands(String, String, String)[3]" classname="edu.campus.loan.ConsoleAppTest" time="0.019">
+  <testcase name="validCommands(String, String, String)[3]" classname="edu.campus.loan.ConsoleAppTest" time="0.012">
     <system-out><![CDATA[CASE	CLI-03	FR-09	Equivalence partitioning	fee 2026-11-23 2026-11-30 2026-12-03	Overdue fee: 3.00 TL (300 kurus)	Overdue fee: 3.00 TL (300 kurus)
 ]]></system-out>
   </testcase>
-  <testcase name="validCommands(String, String, String)[4]" classname="edu.campus.loan.ConsoleAppTest" time="0.001">
+  <testcase name="validCommands(String, String, String)[4]" classname="edu.campus.loan.ConsoleAppTest" time="0.002">
     <system-out><![CDATA[CASE	CLI-04	FR-09	Equivalence partitioning	fee 2026-11-23 2026-11-30 2026-11-30	Overdue fee: 0.00 TL (0 kurus)	Overdue fee: 0.00 TL (0 kurus)
 ]]></system-out>
   </testcase>
-  <testcase name="validCommands(String, String, String)[5]" classname="edu.campus.loan.ConsoleAppTest" time="0.001">
+  <testcase name="validCommands(String, String, String)[5]" classname="edu.campus.loan.ConsoleAppTest" time="0.002">
     <system-out><![CDATA[CASE	CLI-05	FR-09	Equivalence partitioning	fee 2026-11-23 2026-11-30 2027-03-01	Overdue fee: 50.00 TL (5000 kurus)	Overdue fee: 50.00 TL (5000 kurus)
 ]]></system-out>
   </testcase>
-  <testcase name="deterministicDemo" classname="edu.campus.loan.ConsoleAppTest" time="0.002">
+  <testcase name="deterministicDemo" classname="edu.campus.loan.ConsoleAppTest" time="0.003">
     <system-out><![CDATA[CASE	CLI-DEMO-01	FR-09	Regression testing	--demo	0	0
 ]]></system-out>
   </testcase>
-  <testcase name="helpAndEmptyArguments" classname="edu.campus.loan.ConsoleAppTest" time="0.002">
+  <testcase name="helpAndEmptyArguments" classname="edu.campus.loan.ConsoleAppTest" time="0.003">
     <system-out><![CDATA[CASE	CLI-HELP-01	FR-09	Equivalence partitioning	empty arguments; --help	0;0	0;0
 ]]></system-out>
   </testcase>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="edu.campus.loan.LoanServiceTest" time="0.181" tests="54" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="edu.campus.loan.LoanServiceTest" time="0.125" tests="54" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="TR"/>
     <property name="sun.boot.library.path" value="/Users/kaan/Library/Caches/codex/software-verification/jdk17/jdk-17.0.21.1+2/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/kaan/software verification/target/surefire/surefirebooter-20261123044615669_3.jar /Users/kaan/software verification/target/surefire 2026-11-23T04-46-15_594-jvmRun1 surefire-20261123044615669_1tmp surefire_0-20261123044615669_2tmp"/>
+    <property name="sun.java.command" value="/Users/kaan/software verification/target/surefire/surefirebooter-20261124143517624_3.jar /Users/kaan/software verification/target/surefire 2026-11-24T14-35-17_561-jvmRun1 surefire-20261124143517624_1tmp surefire_0-20261124143517624_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/kaan/software verification/target/test-classes:/Users/kaan/software verification/target/classes:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter/5.13.4/junit-jupiter-5.13.4.jar:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.13.4/junit-jupiter-api-5.13.4.jar:/Users/kaan/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/kaan/.m2/repository/org/junit/platform/junit-platform-commons/1.13.4/junit-platform-commons-1.13.4.jar:/Users/kaan/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.13.4/junit-jupiter-params-5.13.4.jar:/Users/kaan/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.13.4/junit-jupiter-engine-5.13.4.jar:/Users/kaan/.m2/repository/org/junit/platform/junit-platform-engine/1.13.4/junit-platform-engine-1.13.4.jar:"/>
@@ -23,13 +23,12 @@
     <property name="java.version.date" value="2026-11-17"/>
     <property name="java.home" value="/Users/kaan/Library/Caches/codex/software-verification/jdk17/jdk-17.0.21.1+2/Contents/Home"/>
     <property name="file.separator" value="/"/>
-    <property name="style.color" value="never"/>
     <property name="basedir" value="/Users/kaan/software verification"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
-    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/Users/kaan/software verification/target/surefire/surefirebooter-20261123044615669_3.jar"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="surefire.real.class.path" value="/Users/kaan/software verification/target/surefire/surefirebooter-20261124143517624_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="17.0.21.1+2"/>
@@ -57,11 +56,11 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="loanPeriodBoundary(String, Role, int, String)[1]" classname="edu.campus.loan.LoanServiceTest" time="0.006">
+  <testcase name="loanPeriodBoundary(String, Role, int, String)[1]" classname="edu.campus.loan.LoanServiceTest" time="0.003">
     <system-out><![CDATA[CASE	PERIOD-01	FR-04	Negative testing	STUDENT; active=true; count=0; fees=0; days=0; checkout=2026-11-23	IllegalArgumentException	IllegalArgumentException
 ]]></system-out>
   </testcase>
-  <testcase name="loanPeriodBoundary(String, Role, int, String)[2]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
+  <testcase name="loanPeriodBoundary(String, Role, int, String)[2]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
     <system-out><![CDATA[CASE	PERIOD-02	FR-04 FR-05	Boundary value analysis	STUDENT; active=true; count=0; fees=0; days=1; checkout=2026-11-23	2026-11-24	2026-11-24
 ]]></system-out>
   </testcase>
@@ -69,7 +68,7 @@
     <system-out><![CDATA[CASE	PERIOD-03	FR-04 FR-05	Boundary value analysis	STUDENT; active=true; count=0; fees=0; days=6; checkout=2026-11-23	2026-11-29	2026-11-29
 ]]></system-out>
   </testcase>
-  <testcase name="loanPeriodBoundary(String, Role, int, String)[4]" classname="edu.campus.loan.LoanServiceTest" time="0.003">
+  <testcase name="loanPeriodBoundary(String, Role, int, String)[4]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
     <system-out><![CDATA[CASE	PERIOD-04	FR-04 FR-05	Boundary value analysis	STUDENT; active=true; count=0; fees=0; days=7; checkout=2026-11-23	2026-11-30	2026-11-30
 ]]></system-out>
   </testcase>
@@ -85,19 +84,19 @@
     <system-out><![CDATA[CASE	PERIOD-07	FR-04 FR-05	Boundary value analysis	STAFF; active=true; count=0; fees=0; days=1; checkout=2026-11-23	2026-11-24	2026-11-24
 ]]></system-out>
   </testcase>
-  <testcase name="loanPeriodBoundary(String, Role, int, String)[8]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
+  <testcase name="loanPeriodBoundary(String, Role, int, String)[8]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
     <system-out><![CDATA[CASE	PERIOD-08	FR-04 FR-05	Boundary value analysis	STAFF; active=true; count=0; fees=0; days=13; checkout=2026-11-23	2026-12-06	2026-12-06
 ]]></system-out>
   </testcase>
-  <testcase name="loanPeriodBoundary(String, Role, int, String)[9]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
+  <testcase name="loanPeriodBoundary(String, Role, int, String)[9]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
     <system-out><![CDATA[CASE	PERIOD-09	FR-04 FR-05	Boundary value analysis	STAFF; active=true; count=0; fees=0; days=14; checkout=2026-11-23	2026-12-07	2026-12-07
 ]]></system-out>
   </testcase>
-  <testcase name="loanPeriodBoundary(String, Role, int, String)[10]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
+  <testcase name="loanPeriodBoundary(String, Role, int, String)[10]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
     <system-out><![CDATA[CASE	PERIOD-10	FR-04	Negative testing	STAFF; active=true; count=0; fees=0; days=15; checkout=2026-11-23	IllegalArgumentException	IllegalArgumentException
 ]]></system-out>
   </testcase>
-  <testcase name="loanPeriodBoundary(String, Role, int, String)[11]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
+  <testcase name="loanPeriodBoundary(String, Role, int, String)[11]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
     <system-out><![CDATA[CASE	PERIOD-11	FR-04	Negative testing	STUDENT; active=true; count=0; fees=0; days=-2147483648; checkout=2026-11-23	IllegalArgumentException	IllegalArgumentException
 ]]></system-out>
   </testcase>
@@ -113,19 +112,19 @@
     <system-out><![CDATA[CASE	STATE-02	FR-08	Regression testing	blocked request followed by two eligible requests on the same service	true;true;2	true;true;2
 ]]></system-out>
   </testcase>
-  <testcase name="missingBorrower" classname="edu.campus.loan.LoanServiceTest" time="0.001">
+  <testcase name="missingBorrower" classname="edu.campus.loan.LoanServiceTest" time="0.002">
     <system-out><![CDATA[CASE	LOAN-NEG-01	FR-01	Negative testing	borrower=null; checkout=2026-11-23; days=1	IllegalArgumentException	IllegalArgumentException
 ]]></system-out>
   </testcase>
-  <testcase name="outstandingDebtBoundary(String, long, boolean)[1]" classname="edu.campus.loan.LoanServiceTest" time="0.004">
+  <testcase name="outstandingDebtBoundary(String, long, boolean)[1]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
     <system-out><![CDATA[CASE	DEBT-01	FR-02	Boundary value analysis	STUDENT; active=true; count=0; fees=0; days=1; checkout=2026-11-23	true	true
 ]]></system-out>
   </testcase>
-  <testcase name="outstandingDebtBoundary(String, long, boolean)[2]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
+  <testcase name="outstandingDebtBoundary(String, long, boolean)[2]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
     <system-out><![CDATA[CASE	DEBT-02	FR-02	Boundary value analysis	STUDENT; active=true; count=0; fees=1; days=1; checkout=2026-11-23	false	false
 ]]></system-out>
   </testcase>
-  <testcase name="outstandingDebtBoundary(String, long, boolean)[3]" classname="edu.campus.loan.LoanServiceTest" time="0.003">
+  <testcase name="outstandingDebtBoundary(String, long, boolean)[3]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
     <system-out><![CDATA[CASE	DEBT-03	FR-02	Boundary value analysis	STUDENT; active=true; count=0; fees=100; days=1; checkout=2026-11-23	false	false
 ]]></system-out>
   </testcase>
@@ -133,7 +132,7 @@
     <system-out><![CDATA[CASE	DEBT-04	FR-02	Boundary value analysis	STUDENT; active=true; count=0; fees=9223372036854775807; days=1; checkout=2026-11-23	false	false
 ]]></system-out>
   </testcase>
-  <testcase name="capacityBoundary(String, Role, int, boolean)[1]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
+  <testcase name="capacityBoundary(String, Role, int, boolean)[1]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
     <system-out><![CDATA[CASE	CAP-01	FR-02	Boundary value analysis	STUDENT; active=true; debt=0; count=0; days=1; checkout=2026-11-23	true	true
 ]]></system-out>
   </testcase>
@@ -169,23 +168,23 @@
     <system-out><![CDATA[CASE	CAP-09	FR-02	Boundary value analysis	STAFF; active=true; debt=0; count=2147483647; days=1; checkout=2026-11-23	false	false
 ]]></system-out>
   </testcase>
-  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[1]" classname="edu.campus.loan.LoanServiceTest" time="0.009">
+  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[1]" classname="edu.campus.loan.LoanServiceTest" time="0.006">
     <system-out><![CDATA[CASE	DT-STUDENT-1	FR-02 FR-03 FR-05	Decision table	STUDENT; active=true; debt=0; count=2; days=7; checkout=2026-11-23	true;[];2026-11-30	true;[];2026-11-30
 ]]></system-out>
   </testcase>
-  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[2]" classname="edu.campus.loan.LoanServiceTest" time="0.004">
+  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[2]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
     <system-out><![CDATA[CASE	DT-STUDENT-2	FR-02 FR-03 FR-05	Decision table	STUDENT; active=true; debt=0; count=3; days=7; checkout=2026-11-23	false;[LOAN_LIMIT_REACHED];none	false;[LOAN_LIMIT_REACHED];none
 ]]></system-out>
   </testcase>
-  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[3]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
+  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[3]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
     <system-out><![CDATA[CASE	DT-STUDENT-3	FR-02 FR-03 FR-05	Decision table	STUDENT; active=true; debt=1; count=2; days=7; checkout=2026-11-23	false;[OUTSTANDING_FEES];none	false;[OUTSTANDING_FEES];none
 ]]></system-out>
   </testcase>
-  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[4]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
+  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[4]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
     <system-out><![CDATA[CASE	DT-STUDENT-4	FR-02 FR-03 FR-05	Decision table	STUDENT; active=true; debt=1; count=3; days=7; checkout=2026-11-23	false;[OUTSTANDING_FEES, LOAN_LIMIT_REACHED];none	false;[OUTSTANDING_FEES, LOAN_LIMIT_REACHED];none
 ]]></system-out>
   </testcase>
-  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[5]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
+  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[5]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
     <system-out><![CDATA[CASE	DT-STUDENT-5	FR-02 FR-03 FR-05	Decision table	STUDENT; active=false; debt=0; count=2; days=7; checkout=2026-11-23	false;[INACTIVE_MEMBERSHIP];none	false;[INACTIVE_MEMBERSHIP];none
 ]]></system-out>
   </testcase>
@@ -197,7 +196,7 @@
     <system-out><![CDATA[CASE	DT-STUDENT-7	FR-02 FR-03 FR-05	Decision table	STUDENT; active=false; debt=1; count=2; days=7; checkout=2026-11-23	false;[INACTIVE_MEMBERSHIP, OUTSTANDING_FEES];none	false;[INACTIVE_MEMBERSHIP, OUTSTANDING_FEES];none
 ]]></system-out>
   </testcase>
-  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[8]" classname="edu.campus.loan.LoanServiceTest" time="0.003">
+  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[8]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
     <system-out><![CDATA[CASE	DT-STUDENT-8	FR-02 FR-03 FR-05	Decision table	STUDENT; active=false; debt=1; count=3; days=7; checkout=2026-11-23	false;[INACTIVE_MEMBERSHIP, OUTSTANDING_FEES, LOAN_LIMIT_REACHED];none	false;[INACTIVE_MEMBERSHIP, OUTSTANDING_FEES, LOAN_LIMIT_REACHED];none
 ]]></system-out>
   </testcase>
@@ -209,19 +208,19 @@
     <system-out><![CDATA[CASE	DT-STAFF-2	FR-02 FR-03 FR-05	Decision table	STAFF; active=true; debt=0; count=5; days=7; checkout=2026-11-23	false;[LOAN_LIMIT_REACHED];none	false;[LOAN_LIMIT_REACHED];none
 ]]></system-out>
   </testcase>
-  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[11]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
+  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[11]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
     <system-out><![CDATA[CASE	DT-STAFF-3	FR-02 FR-03 FR-05	Decision table	STAFF; active=true; debt=1; count=4; days=7; checkout=2026-11-23	false;[OUTSTANDING_FEES];none	false;[OUTSTANDING_FEES];none
 ]]></system-out>
   </testcase>
-  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[12]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
+  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[12]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
     <system-out><![CDATA[CASE	DT-STAFF-4	FR-02 FR-03 FR-05	Decision table	STAFF; active=true; debt=1; count=5; days=7; checkout=2026-11-23	false;[OUTSTANDING_FEES, LOAN_LIMIT_REACHED];none	false;[OUTSTANDING_FEES, LOAN_LIMIT_REACHED];none
 ]]></system-out>
   </testcase>
-  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[13]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
+  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[13]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
     <system-out><![CDATA[CASE	DT-STAFF-5	FR-02 FR-03 FR-05	Decision table	STAFF; active=false; debt=0; count=4; days=7; checkout=2026-11-23	false;[INACTIVE_MEMBERSHIP];none	false;[INACTIVE_MEMBERSHIP];none
 ]]></system-out>
   </testcase>
-  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[14]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
+  <testcase name="decisionTable(String, Role, boolean, boolean, boolean, String)[14]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
     <system-out><![CDATA[CASE	DT-STAFF-6	FR-02 FR-03 FR-05	Decision table	STAFF; active=false; debt=0; count=5; days=7; checkout=2026-11-23	false;[INACTIVE_MEMBERSHIP, LOAN_LIMIT_REACHED];none	false;[INACTIVE_MEMBERSHIP, LOAN_LIMIT_REACHED];none
 ]]></system-out>
   </testcase>
@@ -241,11 +240,11 @@
     <system-out><![CDATA[CASE	LOAN-NEG-03	FR-05	Negative testing	checkout=LocalDate.MAX; days=1	IllegalArgumentException	IllegalArgumentException
 ]]></system-out>
   </testcase>
-  <testcase name="validateBeforeEligibility" classname="edu.campus.loan.LoanServiceTest" time="0.002">
+  <testcase name="validateBeforeEligibility" classname="edu.campus.loan.LoanServiceTest" time="0.001">
     <system-out><![CDATA[CASE	LOAN-NEG-04	FR-04 FR-08	Negative testing	inactive STUDENT; checkout=2026-11-23; days=8	IllegalArgumentException	IllegalArgumentException
 ]]></system-out>
   </testcase>
-  <testcase name="calendarDates(String, LocalDate, int, String)[1]" classname="edu.campus.loan.LoanServiceTest" time="0.004">
+  <testcase name="calendarDates(String, LocalDate, int, String)[1]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
     <system-out><![CDATA[CASE	DATE-01	FR-05	Boundary value analysis	STUDENT; active=true; count=0; debt=0; checkout=2026-01-31; days=1	2026-02-01	2026-02-01
 ]]></system-out>
   </testcase>
@@ -253,7 +252,7 @@
     <system-out><![CDATA[CASE	DATE-02	FR-05	Boundary value analysis	STUDENT; active=true; count=0; debt=0; checkout=2026-12-31; days=1	2027-01-01	2027-01-01
 ]]></system-out>
   </testcase>
-  <testcase name="calendarDates(String, LocalDate, int, String)[3]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
+  <testcase name="calendarDates(String, LocalDate, int, String)[3]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
     <system-out><![CDATA[CASE	DATE-03	FR-05	Boundary value analysis	STUDENT; active=true; count=0; debt=0; checkout=2024-02-28; days=1	2024-02-29	2024-02-29
 ]]></system-out>
   </testcase>
@@ -261,11 +260,11 @@
     <system-out><![CDATA[CASE	DATE-04	FR-05	Boundary value analysis	STUDENT; active=true; count=0; debt=0; checkout=2024-02-28; days=2	2024-03-01	2024-03-01
 ]]></system-out>
   </testcase>
-  <testcase name="calendarDates(String, LocalDate, int, String)[5]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
+  <testcase name="calendarDates(String, LocalDate, int, String)[5]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
     <system-out><![CDATA[CASE	DATE-05	FR-05	Boundary value analysis	STUDENT; active=true; count=0; debt=0; checkout=2026-02-28; days=1	2026-03-01	2026-03-01
 ]]></system-out>
   </testcase>
-  <testcase name="calendarDates(String, LocalDate, int, String)[6]" classname="edu.campus.loan.LoanServiceTest" time="0.001">
+  <testcase name="calendarDates(String, LocalDate, int, String)[6]" classname="edu.campus.loan.LoanServiceTest" time="0.002">
     <system-out><![CDATA[CASE	DATE-06	FR-05	Boundary value analysis	STUDENT; active=true; count=0; debt=0; checkout=+999999999-12-30; days=1	+999999999-12-31	+999999999-12-31
 ]]></system-out>
   </testcase>

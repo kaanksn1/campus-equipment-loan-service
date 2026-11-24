@@ -65,7 +65,8 @@ An applicant at the limit is rejected. Return every applicable rejection reason.
 | `src/test/java/edu/campus/loan/` | JUnit 5 parameterized and ordinary tests, plus evidence helper |
 | `docs/requirements.md` | FR-01 through FR-09 and explicit interpretation decisions |
 | `docs/test-plan.md` | Equivalence classes, boundaries, complete decision table and regression plan |
-| `docs/student-guide-tr.md` | Turkish explanation and demonstration guide |
+| `docs/student-guide-tr.md` | Turkish explanation, demonstration exercises and pending student contribution record |
+| `docs/assignment-compliance.md` | Status under the instructor's original sections 1–9 and requirement-to-evidence map |
 | `docs/report.html` | Editable eight-section report generated from measured evidence |
 | `submission/SWE411_Report.pdf` | Rendered report |
 | `evidence/test-cases.html` | All recorded test inputs, expected and actual results |

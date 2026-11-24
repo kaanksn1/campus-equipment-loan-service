@@ -2,6 +2,26 @@
 
 This map connects the supplied SWE411 assignment and original proposal to concrete project materials. Instructor approval is unconfirmed; implementation proceeded provisionally at the student's request. Original PDFs are preserved in `references`.
 
+## Status by the assignment's original section numbers
+
+The following numbers are the instructor's nine section headings, not a separate development checklist. "Materials ready" describes available artifacts; it is not a grade prediction or a claim of independent student authorship. At the student's request, development continues without waiting for a reply to the proposal email; no actual approval is asserted.
+
+| Section | Instructor's heading | Current status |
+| --- | --- | --- |
+| 1 | Objective | Application and systematic testing evidence are ready; individual understanding is addressed under sections 7 and 9. |
+| 2 | Project Proposal | Proposal prepared and emailed by the student; development continues as requested. |
+| 3 | Technical Requirements | Java, JUnit 5, requirements, test plan, case records, defect experiments and coverage materials are ready. |
+| 4 | Required Testing Techniques | All five required techniques are implemented and explained. |
+| 5 | Research Component | Required discussion topics and credible technical references are included; the student's personal learning reflection remains to be supplied. |
+| 6 | Required Deliverables | Eight-section report and supporting source, tests, results, coverage and build configuration are prepared locally; this is not confirmation of submission to the instructor. |
+| 7 | Duration and Individual Work | Java/JUnit/build setup is ready. Independent student learning, contribution and ability to explain the work have not yet been verified. The stated 3–4 weeks is a scope/duration expectation, not evidence of time actually spent. |
+| 8 | Evaluation Criteria | A rubric, not a separate task. All seven criteria have supporting materials; marks depend on the instructor's assessment of their quality. |
+| 9 | Academic Integrity | AI assistance and external sources are acknowledged. This alone does not establish compliance with the own-work requirement; the student's actual contribution, explanation and applicable instructor rules still need review. |
+
+See `docs/student-guide-tr.md` for the explanation exercises and contribution record. A Codex-assisted technical review must not be recorded as the student's independent review.
+
+## Requirement-to-evidence map
+
 | Assignment expectation | Evidence |
 | --- | --- |
 | Clearly defined real-world problem and small individual scope | Report section 1; original proposal; no GUI/database or external campus-policy claim |
