@@ -1,0 +1,4 @@
+Instructor submission update, supplied by the student in the conversation.
+The original email's sending date was not provided.
+
+You can submit your assignment on Blackboard under "Assignment 1 - File Upload" (please disregard my previous email stating that I would collect hard copies). You must submit your reports exclusively as Word or PDF files. Each file should be named using the following format: STUDENTNUMBER_FIRSTNAME_LASTNAME.pdf. (10-point deduction will be applied to any submissions that do not follow this format.) Please ensure that the final work you prepare based on your chosen topic does not exceed 7 pages, and use only your own sentences and code. Include only the relevant code and testing sections in your report. We previously set November 24th as the deadline for submitting a soft copy of the report; I will strictly not accept any reports submitted after this date.

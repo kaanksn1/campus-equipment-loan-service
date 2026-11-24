@@ -22,266 +22,181 @@ a { color: #1f4d78; text-decoration: none; }
 .small { font-size: 9.5pt; color: #526273; }
 section+section{break-before:page;page-break-before:always}</style><section>
 <p class="title"><b>Campus Equipment Loan Eligibility<br>and Overdue Fee Service</b></p>
-<p class="subtitle">SWE411 Software Verification and Validation<br>Implementation and automated testing report</p>
-<p class="meta"><b>Student:</b> Serdar Kaan Kesen &nbsp; | &nbsp; <b>Number:</b> 220911810</p>
-<p class="meta"><b>Instructor:</b> Dr. Osman Durmaz &nbsp; | &nbsp; <b>Date:</b> 24 November 2026</p>
-<p class="lead"><b>Measured result:</b> 103 JUnit 5 executions passed, with no failures, errors or skipped tests.
-All 8 packaged-console checks passed. Three deliberately seeded faults were detected.
-Overall line coverage is 96.30% and branch coverage is 93.33%.</p>
+<p class="meta">SWE411 Software Verification and Validation | Serdar Kaan Kesen | 220911810<br>
+Dr. Osman Durmaz | 24 November 2026</p>
 <h1>1. Introduction and Problem Definition</h1>
-<p>A campus equipment desk needs a consistent way to assess whether a borrower can receive a new loan,
-set its due date and calculate the fee when equipment is returned late. Manual evaluation can confuse
-student and staff limits, overlook a small debt or charge an additional day on an on-time return.
-The proposed solution is a small Java console service with explicit inputs and testable rules.</p>
-<p>The educational policy allows students up to three active loans and staff up to five. Approval also
-requires active membership and zero outstanding debt. The requested period is role-dependent, and a
-late return incurs a daily fee with a per-return ceiling. These rules offer Boolean combinations,
-numeric boundaries and invalid-input classes suitable for systematic testing.</p>
-<p>The scope follows the supplied proposal: no GUI, database, authentication, inventory reservation or
-payment processing. Evaluation does not actually issue equipment or update stored borrower data.
-Policy values are project assumptions, not claims about a real university. Development proceeded
-provisionally at the student's request while instructor topic approval remained unconfirmed.</p>
-<h2>Testing within quality assurance</h2>
-<p>Testing provides repeatable evidence that implemented behaviour agrees with specified requirements.
-It supports quality control by exposing failures; clear requirements, reviews and reproducible builds
-also support the broader quality-assurance process. Verification of these rules is distinct from
-validation with a real equipment desk: passing the suite cannot establish that the educational
-policy satisfies actual campus needs. The lecture material emphasises early detection, traceable
-tests and the limitations of testing as a proof of correctness [6].</p>
-</section><section>
+<p>A campus equipment desk needs consistent borrowing decisions, due dates and late-return fees.
+This Java 17 console application evaluates an explicit borrower snapshot and return dates.
+The educational rules are project assumptions. The scope excludes GUI, database, inventory,
+payments and actual equipment issuance. A decision does not update a borrower's loan count.</p>
+<p>Systematic tests check the specified behaviour; reviews, clear contracts and repeatable builds
+also support quality assurance. Passing tests verify the implemented rules but do not validate
+them as an actual university policy [1, 5].</p>
 <h1>2. Requirements Specification</h1>
-<p>The proposal is the policy baseline [8]. The full specification is in <code>docs/requirements.md</code>.
-The following identifiers are used in the executable case records.</p>
-<table><colgroup><col style="width:15%"><col style="width:85%"></colgroup><thead><tr><th>ID</th><th>Required behaviour</th></tr></thead><tbody><tr><td>FR-01</td><td>Validate borrower role, nonnegative current loan count and nonnegative integer-kurus debt.</td></tr><tr><td>FR-02</td><td>Approve only when membership is active, debt equals zero and current loans are below the role limit.</td></tr><tr><td>FR-03</td><td>Return all rejection reasons; an approved result has none, and a rejected result has no due date.</td></tr><tr><td>FR-04</td><td>Accept 1–7 requested calendar days for students or 1–14 for staff, inclusive.</td></tr><tr><td>FR-05</td><td>Require checkout date; approved due date = checkout + requested days; reject calendar overflow.</td></tr><tr><td>FR-06</td><td>Charge zero on/before due date, otherwise 100 kurus per late day, capped at 5,000 kurus.</td></tr><tr><td>FR-07</td><td>Require all return-related dates; due must follow checkout and return cannot precede checkout.</td></tr><tr><td>FR-08</td><td>Keep evaluation stateless and borrower snapshots and returned reasons immutable.</td></tr><tr><td>FR-09</td><td>Provide console demo, loan/fee commands, help, readable results and controlled input-error handling.</td></tr></tbody></table>
-<h2>Policy values and input interpretation</h2>
-<table><colgroup><col style="width:34%"><col style="width:33%"><col style="width:33%"></colgroup><thead><tr><th>Policy</th><th>Student</th><th>Staff</th></tr></thead><tbody><tr><td>Active-loan limit</td><td>3</td><td>5</td></tr><tr><td>Requested days</td><td>1–7</td><td>1–14</td></tr><tr><td>Eligibility</td><td>Active; zero debt; below limit</td><td>Active; zero debt; below limit</td></tr><tr><td>Late-return fee</td><td>100 kurus/day; cap 5,000</td><td>100 kurus/day; cap 5,000</td></tr></tbody></table>
-<p>One TL equals 100 kurus. A debt of one kurus blocks approval; a negative amount is invalid rather
-than a normal rejection. Counts at or above a limit are valid data that produce a rejection.
-Role and membership inputs are case-insensitive in the console; membership tokens must be true or false.</p>
-<p>The proposal's requirement to reject inconsistent return dates is made precise: due date must be
-strictly after checkout, and return may occur on checkout day or later. This permits early return and
-agrees with the minimum one-day loan period. The whole request is validated before eligibility,
-including when the borrower is already inactive.</p>
-<p>Dates are explicit ISO calendar dates; weekends and leap days count. There is no grace period,
-holiday adjustment, renewal or fee waiver. There is no dependence on today's clock or a time zone.
-Java 17, JUnit 5, Maven and JaCoCo fulfil the technical approach. The assignment specifies neither a
-minimum test count nor a mandatory coverage percentage [7].</p>
+<table><colgroup><col style="width:15%"><col style="width:85%"></colgroup><thead><tr><th>ID</th><th>Required behaviour</th></tr></thead><tbody><tr><td>FR-01</td><td>Require STUDENT/STAFF role; reject missing role, negative loan count or negative debt.</td></tr><tr><td>FR-02</td><td>Approve only with active membership, zero debt and count below 3 (student) or 5 (staff).</td></tr><tr><td>FR-03</td><td>Return all applicable rejection reasons; rejected decisions have no due date.</td></tr><tr><td>FR-04</td><td>Requested days: student 1–7, staff 1–14 inclusive; otherwise input error.</td></tr><tr><td>FR-05</td><td>Approved due date = checkout + requested calendar days; reject date overflow.</td></tr><tr><td>FR-06</td><td>On-time/early fee = 0; late fee = 100 kurus/day, capped at 5,000 kurus per return.</td></tr><tr><td>FR-07</td><td>Require checkout, due and return dates; due &gt; checkout and return &gt;= checkout.</td></tr><tr><td>FR-08</td><td>Stateless evaluation; immutable borrower data and returned rejection reasons.</td></tr><tr><td>FR-09</td><td>Console demo/help and loan/fee commands; malformed input produces exit code 2.</td></tr></tbody></table>
+<p>A count at or above the limit and positive debt are valid inputs that cause normal rejection.
+Negative values and out-of-range periods are invalid. Validate the complete request before evaluating
+eligibility. One TL is 100 kurus; even one kurus of debt blocks approval. Dates include weekends
+and leap days; no grace period or holiday adjustment applies.</p>
 </section><section>
 <h1>3. Implementation</h1>
-<p>The application separates console parsing from deterministic business services. The only production
-dependency is the Java runtime. Maven defines Java release 17 and pins dependency/plugin versions.</p>
-<table><colgroup><col style="width:30%"><col style="width:70%"></colgroup><thead><tr><th>Type</th><th>Responsibility</th></tr></thead><tbody><tr><td>Role</td><td>Holds the student/staff loan-count and maximum-period policy.</td></tr><tr><td>Borrower</td><td>An immutable Java record; validates role, count and debt in its constructor.</td></tr><tr><td>LoanService</td><td>Validates a request, calculates a candidate due date and collects every eligibility rejection.</td></tr><tr><td>RejectionReason</td><td>Names inactive membership, outstanding fees and reached loan limit.</td></tr><tr><td>LoanDecision</td><td>Exposes approval, immutable reasons and an optional due date.</td></tr><tr><td>OverdueFeeService</td><td>Validates dates and calculates the capped fee from late calendar days.</td></tr><tr><td>ConsoleApp</td><td>Implements help, demo, loan/fee commands, formatting and input errors.</td></tr></tbody></table>
-<h2>Key design choices</h2>
-<p>The loan service validates missing data and the role-specific period first. It then uses
-<code>checkoutDate.plusDays(requestedDays)</code>, translating date-range overflow into an input error.
-Three independent checks collect all applicable rejection reasons instead of returning after the first.
-Only an approved decision exposes the calculated due date.</p>
-<p>Money is represented as <code>long</code> integer kurus, avoiding fractional binary arithmetic in
-debt comparisons and fee totals. Fee calculation uses the calendar-day difference between due and
-return. Nonpositive differences cost zero; positive differences are multiplied by 100 and limited
-to 5,000. Even the full supported date span multiplied by 100 fits within a long.</p>
-<p><code>LocalDate</code> represents an immutable date without a time or time zone [4]. Its calendar
-arithmetic handles month and year transitions and leap years. Explicit dates also make tests stable
-across machines and days. The service has no mutable fields and does not change counts or accumulate debt.</p>
-<h2>Console and reproducible build</h2>
-<pre>./scripts/build.sh clean verify
-./scripts/run.sh loan STUDENT true 2 0 2026-11-23 7
-./scripts/run.sh fee 2026-11-23 2026-11-30 2026-12-03</pre>
-<p>A business rejection returns exit code 0 because evaluation succeeded. Invalid input returns code 2
-and prints an error and usage to stderr. Amounts are formatted in TL with two decimal places.</p>
-<p>The measured environment was macOS ARM64, Eclipse Adoptium Java 17.0.21.1, Maven 3.9.11 [5],
-JUnit Jupiter 5.13.4, Surefire 3.5.4 and JaCoCo 0.8.14. Maven Wrapper scripts support repeatable builds.
-The machine's original default Java was version 8; the helper scripts select the separately cached JDK 17
-without changing permanent system settings. Details are preserved in <code>evidence/environment.txt</code>.</p>
+<p>Role holds policy limits; Borrower validates an immutable snapshot; LoanDecision carries the
+result and RejectionReason names the causes. LoanService and OverdueFeeService implement the
+rules, while ConsoleApp handles parsing and output. Java 17, Maven, JUnit 5 and JaCoCo are configured
+in the POM. Production code has no third-party runtime dependencies.</p>
+<h2>Eligibility: LoanService.requestLoan excerpt</h2>
+<p>Nulls, requested period and date overflow are validated before this block. The candidate date
+is calculated with checkoutDate.plusDays(requestedDays). Separate checks preserve every reason.</p>
+<pre>List&lt;RejectionReason&gt; reasons = new ArrayList&lt;&gt;();
+if (!borrower.activeMembership()) {
+    reasons.add(RejectionReason.INACTIVE_MEMBERSHIP);
+}
+if (borrower.outstandingFeeCents() &gt; 0) {
+    reasons.add(RejectionReason.OUTSTANDING_FEES);
+}
+if (borrower.currentLoanCount() &gt;= borrower.role().loanLimit()) {
+    reasons.add(RejectionReason.LOAN_LIMIT_REACHED);
+}
+return new LoanDecision(
+        reasons.isEmpty() ? candidateDueDate : null, reasons);</pre>
+<h2>Fee: OverdueFeeService.calculateFeeCents excerpt</h2>
+<p>Missing or inconsistent dates are rejected first. These lines then calculate lateness and apply
+the cap. DAILY_FEE_CENTS is 100; MAXIMUM_FEE_CENTS is 5,000.</p>
+<pre>long lateDays = ChronoUnit.DAYS.between(dueDate, returnDate);
+if (lateDays &lt;= 0) {
+    return 0;
+}
+return Math.min(lateDays * DAILY_FEE_CENTS, MAXIMUM_FEE_CENTS);</pre>
+<p>Integer long values avoid fractional money arithmetic. LocalDate represents date-only values,
+handles month/year and leap-day transitions, and avoids current-clock dependence [4]. The full
+supported date span multiplied by 100 fits in long. Returned reasons use List.copyOf; a rejected
+decision exposes an empty Optional for its due date.</p>
+<p>Source excerpts are whitespace-formatted; the complete classes remain in src/main/java.
+The console accepts integer kurus and ISO dates. Normal business rejection has exit code 0;
+invalid input has exit code 2 and an error on stderr.</p>
 </section><section>
 <h1>4. Test Plan and Test Design</h1>
-<p>The highest-priority risks are approving a blocked borrower, rejecting an eligible borrower and
-charging the wrong fee. Tests derive expected values from the requirements, not from production
-helper methods. Business logic is tested directly; console parsing/output is tested as a component;
-the packaged executable receives separate process-level smoke checks.</p>
-<h2>Equivalence partitioning</h2>
-<table><colgroup><col style="width:20%"><col style="width:43%"><col style="width:37%"></colgroup><thead><tr><th>Input</th><th>Selected partitions</th><th>Examples</th></tr></thead><tbody><tr><td>Role</td><td>Student, staff; missing/unknown</td><td>DT rows; MODEL-05; CLI-NEG-01</td></tr><tr><td>Loan count</td><td>Below, at and above limit; negative</td><td>CAP-01–09; MODEL-01–02</td></tr><tr><td>Debt</td><td>Zero, positive; negative or malformed</td><td>DEBT-01–04; MODEL-03–04</td></tr><tr><td>Period</td><td>Within role range; outside or malformed</td><td>PERIOD-01–12; CLI-NEG-14</td></tr><tr><td>Return date</td><td>Early, on-time, late; missing/inconsistent</td><td>FEE-01–09; FEE-NEG-01–06</td></tr></tbody></table>
-<p>These classes distinguish invalid input from valid rejection. Zero debt and positive debt cannot
-be treated as one class; otherwise the one-kurus blocking rule could remain untested. Early return is
-valid and must not be confused with a return before checkout.</p>
-<h2>Boundary value analysis</h2>
-<table><colgroup><col style="width:28%"><col style="width:26%"><col style="width:46%"></colgroup><thead><tr><th>Boundary</th><th>Values</th><th>Required distinction</th></tr></thead><tbody><tr><td>Student count</td><td>2, 3, 4</td><td>Only 2 leaves capacity.</td></tr><tr><td>Staff count</td><td>4, 5, 6</td><td>Only 4 leaves capacity.</td></tr><tr><td>Debt, in kurus</td><td>-1, 0, 1</td><td>Invalid; eligible on debt; blocked.</td></tr><tr><td>Student days</td><td>0, 1, 6, 7, 8</td><td>Both inclusive ends and outside.</td></tr><tr><td>Staff days</td><td>0, 1, 13, 14, 15</td><td>Both inclusive ends and outside.</td></tr><tr><td>Late days</td><td>-1, 0, 1</td><td>Free early/on time; first charge.</td></tr><tr><td>Cap, late days</td><td>49, 50, 51</td><td>4,900; 5,000; 5,000 kurus.</td></tr></tbody></table>
-<p>Additional calendar cases cross month/year boundaries and leap/non-leap February. Numeric extremes
-and date-range endpoints test representation and overflow handling. Ordinary examples ensure boundary
-tests are supplemented by representative valid behaviour.</p>
-<h2>Eight-rule decision table</h2>
-<p>A = active membership, Z = zero debt, C = current count below the role limit. Other inputs are valid.
-The complete Boolean model has eight rules. Each is executed once for each role, producing 16 cases.</p>
-<table><colgroup><col style="width:12%"><col style="width:9%"><col style="width:9%"><col style="width:9%"><col style="width:61%"></colgroup><thead><tr><th>Rule</th><th>A</th><th>Z</th><th>C</th><th>Expected decision</th></tr></thead><tbody><tr><td>1</td><td>T</td><td>T</td><td>T</td><td>Approve; due date present; no reasons</td></tr><tr><td>2</td><td>T</td><td>T</td><td>F</td><td>Reject: loan limit</td></tr><tr><td>3</td><td>T</td><td>F</td><td>T</td><td>Reject: outstanding debt</td></tr><tr><td>4</td><td>T</td><td>F</td><td>F</td><td>Reject: debt and loan limit</td></tr><tr><td>5</td><td>F</td><td>T</td><td>T</td><td>Reject: inactive membership</td></tr><tr><td>6</td><td>F</td><td>T</td><td>F</td><td>Reject: inactive and loan limit</td></tr><tr><td>7</td><td>F</td><td>F</td><td>T</td><td>Reject: inactive and debt</td></tr><tr><td>8</td><td>F</td><td>F</td><td>F</td><td>Reject: all three reasons</td></tr></tbody></table>
-<p>Every rejected result must have no due date. Checking the complete reason list catches an
-implementation that stops after the first failure. Exhausting this small Boolean model does not
-exhaust all numeric and calendar inputs.</p>
-<h2>Negative testing and regression</h2>
-<p>Negative tests cover null roles/borrowers/dates, negative numbers, invalid periods, impossible dates,
-unsupported console tokens and numeric overflow. State tests attempt to mutate returned reasons and
-make unrelated successive calls. After each controlled fault experiment, the unmodified project is
-available for regression; after all experiments, the entire original suite is rerun and its results
-are preserved separately. The full design is in <code>docs/test-plan.md</code>.</p>
+<p>Primary risks are incorrect approval, invalid input accepted as valid, calendar mistakes and
+overcharging. Expected values come from requirements and literal examples. Unit tests target
+services; component tests target console parsing/output; separate JAR checks cover process behaviour.</p>
+<table><colgroup><col style="width:27%"><col style="width:73%"></colgroup><thead><tr><th>Technique</th><th>Application and selection rationale</th></tr></thead><tbody><tr><td>Equivalence partitioning</td><td>Debt: negative/zero/positive; count: below/at/above limit; return: early/on-time/late. Representatives exercise distinct behaviours.</td></tr><tr><td>Boundary value analysis</td><td>Check neighbours of count, period, first late day and fee cap; these expose incorrect comparisons and off-by-one calculations.</td></tr><tr><td>Decision table</td><td>All eight combinations of active membership, zero debt and available capacity; execute for both roles (16 cases).</td></tr><tr><td>Negative testing</td><td>Nulls, negative values, invalid periods, date ordering/overflow and malformed console tokens must be rejected deliberately.</td></tr><tr><td>Regression testing</td><td>Rerun existing tests after each controlled fault is repaired and rerun the complete original suite after all experiments.</td></tr></tbody></table>
+<h2>Selected boundary values</h2>
+<table><colgroup><col style="width:26%"><col style="width:35%"><col style="width:39%"></colgroup><thead><tr><th>Input</th><th>Values</th><th>Expected distinction</th></tr></thead><tbody><tr><td>Student / staff count</td><td>2, 3, 4 / 4, 5, 6</td><td>Below limit permits; at/above blocks.</td></tr><tr><td>Debt (kurus)</td><td>-1, 0, 1</td><td>Invalid / debt-free / blocked.</td></tr><tr><td>Student / staff days</td><td>0, 1, 6, 7, 8 / 0, 1, 13, 14, 15</td><td>Inclusive period ends and outside.</td></tr><tr><td>Days late</td><td>-1, 0, 1; 49, 50, 51</td><td>0, 0, 100; 4,900, 5,000, 5,000 kurus.</td></tr></tbody></table>
+<h2>Decision table</h2>
+<p>A = active, Z = zero debt, C = capacity available. Other inputs are valid.</p>
+<table><colgroup><col style="width:9%"><col style="width:9%"><col style="width:9%"><col style="width:73%"></colgroup><thead><tr><th>A</th><th>Z</th><th>C</th><th>Result / rejection reasons</th></tr></thead><tbody><tr><td>T</td><td>T</td><td>T</td><td>Approve; reasons empty; due date present.</td></tr><tr><td>T</td><td>T</td><td>F</td><td>Reject: loan limit.</td></tr><tr><td>T</td><td>F</td><td>T</td><td>Reject: debt.</td></tr><tr><td>T</td><td>F</td><td>F</td><td>Reject: debt and loan limit.</td></tr><tr><td>F</td><td>T</td><td>T</td><td>Reject: inactive membership.</td></tr><tr><td>F</td><td>T</td><td>F</td><td>Reject: inactive membership and loan limit.</td></tr><tr><td>F</td><td>F</td><td>T</td><td>Reject: inactive membership and debt.</td></tr><tr><td>F</td><td>F</td><td>F</td><td>Reject: all three reasons.</td></tr></tbody></table>
+<p>The table exhausts the Boolean eligibility model, not every date or integer. Calendar, representation
+limits and state-isolation tests complement it. Invalid periods must raise an error even for an inactive borrower.</p>
 </section><section>
 <h1>5. Test Implementation and Results</h1>
-<p>JUnit 5 provides the test runner and assertion framework. Ordinary tests handle distinct behaviours;
-parameterized tests express related examples through CsvSource and MethodSource. Assertions compare
-actual values with explicit expected values; exception assertions also check immutability. Fresh test
-instances keep fixtures independent [1]. JUnit is test-scoped and is not shipped as an application dependency.</p>
-<p>Evidence from the final passing Maven verify run was collected at 2026-11-24T15:18:45+01:00. It contains 103 cases:
-103 passed, 0 failed,
-0 errored and 0 were skipped.</p>
-<table><colgroup><col style="width:48%"><col style="width:13%"><col style="width:13%"><col style="width:13%"><col style="width:13%"></colgroup><thead><tr><th>Test class</th><th>Cases</th><th>Failures</th><th>Errors</th><th>Skipped</th></tr></thead><tbody><tr><td>BorrowerTest</td><td>6</td><td>0</td><td>0</td><td>0</td></tr><tr><td>ConsoleAppTest</td><td>21</td><td>0</td><td>0</td><td>0</td></tr><tr><td>LoanServiceTest</td><td>54</td><td>0</td><td>0</td><td>0</td></tr><tr><td>OverdueFeeServiceTest</td><td>22</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>
-<p>The baseline before injected faults also passed all 103 cases. The final regression reproduces that
-result after the experiments. Baseline and regression logs are separate files.</p>
-<h2>Examples from the executed case records</h2>
-<table><colgroup><col style="width:18%"><col style="width:33%"><col style="width:20%"><col style="width:20%"><col style="width:9%"></colgroup><thead><tr><th>Case</th><th>Input summary</th><th>Expected</th><th>Actual</th><th>Result</th></tr></thead><tbody><tr><td>CAP-03</td><td>Student; active; zero debt; count 3</td><td>false</td><td>false</td><td>PASS</td></tr><tr><td>DEBT-02</td><td>Student; active; count 0; debt 1 kurus</td><td>false</td><td>false</td><td>PASS</td></tr><tr><td>PERIOD-04</td><td>Student; checkout 2026-11-23; 7 days</td><td>2026-11-30</td><td>2026-11-30</td><td>PASS</td></tr><tr><td>DATE-03</td><td>Checkout 2024-02-28; 1 day</td><td>2024-02-29</td><td>2024-02-29</td><td>PASS</td></tr><tr><td>FEE-03</td><td>Return exactly on due date</td><td>0</td><td>0</td><td>PASS</td></tr><tr><td>FEE-08</td><td>Return 51 days after due date</td><td>5000</td><td>5000</td><td>PASS</td></tr><tr><td>FEE-NEG-06</td><td>Return before checkout</td><td>IllegalArgumentException</td><td>IllegalArgumentException</td><td>PASS</td></tr></tbody></table>
-<p>Amounts in fee rows are integer kurus. An expected input exception is a successful negative test,
-not a test failure. Each of the 103 executions has a unique case record with requirement, technique,
-input, expected and actual result in <code>evidence/test-cases.html</code> and its JSON equivalent.
-The JUnit result also includes any additional assertions beyond the recorded principal comparison.</p>
-<h2>Console demonstration and process checks</h2>
-<pre>APPROVED; due date: 2026-11-30
-REJECTED; reasons: [INACTIVE_MEMBERSHIP,
-                   OUTSTANDING_FEES, LOAN_LIMIT_REACHED]
-Three days late: 3.00 TL</pre>
-<p>The wrapped rejection above is for readability; the console prints it on one line. Eight separate
-JAR process checks passed, covering approval, complete rejection, normal/zero/capped fees, invalid data,
-unknown command and the demo. They verify output and exit codes; exact stdout/stderr are preserved in
-<code>evidence/console-smoke.json</code>. Deliberately unsuccessful test executions are documented next.</p>
+<p>JUnit 5 @ParameterizedTest with @CsvSource/@MethodSource expresses related examples;
+@Test covers distinct cases. Fresh fixtures and explicit dates make tests repeatable [1].
+CaseEvidence records inputs, expected/actual values and requirement IDs, then calls assertEquals.
+JUnit also checks complete reason lists, absent due dates, immutability and exception behaviour.</p>
+<h2>Executed boundary test: OverdueFeeServiceTest</h2>
+<p>Fields omitted below: CHECKOUT = 2026-11-01 and DUE = 2026-11-08. Each row is a separate execution.</p>
+<pre>@ParameterizedTest(name = &quot;FEE-{0}: {1} days after due&quot;)
+@CsvSource({&quot;01, -7, 0&quot;, &quot;02, -1, 0&quot;, &quot;03, 0, 0&quot;,
+        &quot;04, 1, 100&quot;, &quot;05, 2, 200&quot;, &quot;06, 49, 4900&quot;,
+        &quot;07, 50, 5000&quot;, &quot;08, 51, 5000&quot;, &quot;09, 100, 5000&quot;})
+void feeBoundary(String suffix, int offset, long expected) {
+    LocalDate returned = DUE.plusDays(offset);
+    CaseEvidence.check(&quot;FEE-&quot; + suffix, &quot;FR-06&quot;,
+            &quot;Boundary value analysis&quot;,
+            &quot;checkout=&quot; + CHECKOUT + &quot;; due=&quot; + DUE
+                    + &quot;; return=&quot; + returned,
+            expected,
+            service.calculateFeeCents(CHECKOUT, DUE, returned));
+}</pre>
+<h2>Executed state-isolation test</h2>
+<pre>@Test
+void sameInstanceDoesNotCarryAnEarlierFee() {
+    service.calculateFeeCents(CHECKOUT, DUE, DUE.plusDays(51));
+    CaseEvidence.check(&quot;FEE-STATE-01&quot;, &quot;FR-08&quot;,
+            &quot;Regression testing&quot;,
+            &quot;capped late return followed by an on-time return; &quot;
+                    + &quot;checkout=&quot; + CHECKOUT + &quot;; due=&quot; + DUE,
+            0L, service.calculateFeeCents(CHECKOUT, DUE, DUE));
+}</pre><table><colgroup><col style="width:48%"><col style="width:18%"><col style="width:34%"></colgroup><thead><tr><th>Test class</th><th>Executions</th><th>Failures / errors / skipped</th></tr></thead><tbody><tr><td>BorrowerTest</td><td>6</td><td>0 / 0 / 0</td></tr><tr><td>ConsoleAppTest</td><td>21</td><td>0 / 0 / 0</td></tr><tr><td>LoanServiceTest</td><td>54</td><td>0 / 0 / 0</td></tr><tr><td>OverdueFeeServiceTest</td><td>22</td><td>0 / 0 / 0</td></tr></tbody></table>
+<p><b>Total: 103 passed.</b> No failures, errors or skipped cases in the correct version.
+All cases have unique IDs and preserved Surefire results; the next page shows representative observations.</p>
+</section><section>
+<h2>5. Test Implementation and Results (continued)</h2>
+<h2>Representative executed cases</h2>
+<table><colgroup><col style="width:19%"><col style="width:35%"><col style="width:23%"><col style="width:23%"></colgroup><thead><tr><th>Case</th><th>Input summary</th><th>Expected</th><th>Actual</th></tr></thead><tbody><tr><td>CAP-03</td><td>Student count = 3</td><td>false</td><td>false</td></tr><tr><td>DEBT-02</td><td>Debt = 1 kurus</td><td>false</td><td>false</td></tr><tr><td>PERIOD-04</td><td>2026-11-23 + 7 days</td><td>2026-11-30</td><td>2026-11-30</td></tr><tr><td>DATE-03</td><td>2024-02-28 + 1 day</td><td>2024-02-29</td><td>2024-02-29</td></tr><tr><td>FEE-03</td><td>Return on due date</td><td>0 kurus</td><td>0 kurus</td></tr><tr><td>FEE-08</td><td>51 days late</td><td>5,000 kurus</td><td>5,000 kurus</td></tr><tr><td>FEE-NEG-06</td><td>Return before checkout</td><td>Input error</td><td>Input error</td></tr></tbody></table>
+<p>The invalid-date example expects IllegalArgumentException, so its successful rejection is a passing
+negative test. Literal dates and amounts form independent oracles. Full inputs and actual observations
+for all 103 cases remain in evidence/test-cases.html and JSON; extra assertions are reflected in JUnit results.</p>
+<h2>Student build and manual console checks</h2>
 
-<h2>Student execution record</h2>
-<p>I ran <code>./scripts/build.sh clean verify</code>; the build finished at
-2026-11-24T15:16:30+01:00 with BUILD SUCCESS. All
-103 JUnit executions passed, with zero failures, errors or skipped tests.
-I then ran the demo, a student request at the loan limit and a three-day-late return, comparing each
-console output with the expected result.</p>
-<table><colgroup><col style="width:21%"><col style="width:66%"><col style="width:13%"></colgroup><thead><tr><th>Manual check</th><th>Expected and observed outcome</th><th>Result</th></tr></thead><tbody><tr><td>DEMO</td><td>Approval; three rejection reasons; three-day fee of 3.00 TL</td><td>PASS</td></tr><tr><td>LIMIT</td><td>Student at 3 loans: rejected for LOAN_LIMIT_REACHED</td><td>PASS</td></tr><tr><td>FEE</td><td>Three days late: 3.00 TL (300 kurus)</td><td>PASS</td></tr></tbody></table>
-<p>All three manual console checks matched their expected outputs. The four terminal logs are
-<code>evidence/student-build.log</code>, <code>student-demo.log</code>,
-<code>student-limit.log</code> and <code>student-fee.log</code> in the same directory.
-Commands, full expected and actual outputs, and log checksums are preserved in
-<code>evidence/student-run.json</code>. These three manual checks are additional to the 103 JUnit
-executions and the eight automated packaged-JAR process checks.</p>
+<p>I ran the full build, which finished at 2026-11-24T15:16:30+01:00, then ran
+the demo and two explicit scenarios. Terminal output was saved with tee.</p>
+<pre>./scripts/build.sh clean verify
+Tests run: 103, Failures: 0, Errors: 0, Skipped: 0
+BUILD SUCCESS</pre><table><colgroup><col style="width:20%"><col style="width:67%"><col style="width:13%"></colgroup><thead><tr><th>Manual check</th><th>Expected and observed outcome</th><th>Result</th></tr></thead><tbody><tr><td>DEMO</td><td>Approval; three rejection reasons; three-day fee of 3.00 TL</td><td>PASS</td></tr><tr><td>LIMIT</td><td>Student at 3 loans: rejected for LOAN_LIMIT_REACHED</td><td>PASS</td></tr><tr><td>FEE</td><td>Three days late: 3.00 TL (300 kurus)</td><td>PASS</td></tr></tbody></table><pre>./scripts/run.sh loan STUDENT true 3 0 2026-11-24 7
+REJECTED; reasons: [LOAN_LIMIT_REACHED]
+./scripts/run.sh fee 2026-11-24 2026-12-01 2026-12-04
+Overdue fee: 3.00 TL (300 kurus)</pre>
+<p>The student execution record contains four raw terminal logs, commands, complete expected/actual
+outputs and checksums (evidence/student-run.json). These three manual checks are separate from the
+103 JUnit executions. Eight automated packaged-JAR checks also passed, verifying stdout/stderr and
+exit codes for approval, rejection, fees, invalid input and the demo.</p>
+<p>Build command: ./scripts/build.sh clean verify. Test and coverage outputs are generated under
+target/surefire-reports and target/site/jacoco. The public repository contains the complete source,
+configuration and preserved evidence:<br>
+<a href="https://github.com/kaanksn1/campus-equipment-loan-service">github.com/kaanksn1/campus-equipment-loan-service</a>.</p>
 </section><section>
 <h1>6. Code Coverage and Defect Analysis</h1>
-<p>JaCoCo attaches its agent to the JUnit process and creates a report during Maven verify [2].
-All seven production types are included; no console or validation code is excluded. The preserved
-HTML report opens at <code>evidence/jacoco/index.html</code>, with XML and CSV alongside it.</p>
-<table><colgroup><col style="width:35%"><col style="width:65%"></colgroup><thead><tr><th>Overall metric</th><th>Covered / total</th></tr></thead><tbody><tr><td>Instruction</td><td>509/519 (98.07%)</td></tr><tr><td>Line</td><td>104/108 (96.30%)</td></tr><tr><td>Branch</td><td>56/60 (93.33%)</td></tr></tbody></table><table><colgroup><col style="width:34%"><col style="width:33%"><col style="width:33%"></colgroup><thead><tr><th>Production type</th><th>Line coverage</th><th>Branch coverage</th></tr></thead><tbody><tr><td>Role</td><td>9/9 (100.00%)</td><td>Not applicable</td></tr><tr><td>Borrower</td><td>8/8 (100.00%)</td><td>6/6 (100.00%)</td></tr><tr><td>LoanService</td><td>20/20 (100.00%)</td><td>16/16 (100.00%)</td></tr><tr><td>OverdueFeeService</td><td>11/11 (100.00%)</td><td>12/12 (100.00%)</td></tr><tr><td>RejectionReason</td><td>4/4 (100.00%)</td><td>Not applicable</td></tr><tr><td>ConsoleApp</td><td>45/49 (91.84%)</td><td>22/26 (84.62%)</td></tr><tr><td>LoanDecision</td><td>7/7 (100.00%)</td><td>Not applicable</td></tr></tbody></table>
-<p>Both business services achieved 100% measured line and branch coverage. Overall coverage is lower
-because ConsoleApp has an unmeasured main entry point and some command-dispatch branches. The eight
-external JAR runs exercise the real process but do not use the JUnit process's JaCoCo agent.
-No-branch enum/accessor classes show not applicable for that metric.</p>
-<h2>Controlled defect detection</h2>
-<p>Three faults were deliberately injected into isolated temporary copies after the correct baseline.
-They are seeded experimental defects, not claims about accidental student development mistakes.
-Existing relevant tests were run without changing their expected results.</p>
-<table><colgroup><col style="width:12%"><col style="width:35%"><col style="width:14%"><col style="width:39%"></colgroup><thead><tr><th>ID</th><th>Injected defect</th><th>Failing cases</th><th>Expected vs actual example</th></tr></thead><tbody><tr><td>FI-01</td><td>Loan limit off-by-one</td><td>2</td><td>CAP-03: false vs true</td></tr><tr><td>FI-02</td><td>On-time return charged as one day late</td><td>4</td><td>FEE-03: 0 vs 100</td></tr><tr><td>FI-03</td><td>Per-return fee cap removed</td><td>2</td><td>FEE-08: 5000 vs 5100</td></tr></tbody></table>
-<p>FI-01 changes the capacity comparison from greater-than-or-equal to greater-than, incorrectly allowing
-an applicant exactly at the limit. Restoring the original comparison prevents that approval. FI-02 adds
-one to the late-day count; keeping the plain date difference restores free on-time return. FI-03 removes
-the cap; restoring the minimum of calculated fee and 5,000 kurus prevents overcharging.</p>
-<p>Each faulty version ran nine relevant cases. FI-01 caused two assertion failures, FI-02 four and FI-03 two,
-with no test errors. After restoring each copy's correct source, all nine targeted cases passed again.
-Raw failure and repaired-run logs, Surefire results, exact diffs and expected/actual values are preserved
-under <code>evidence/fault-injection</code>. Source hashes confirm that original Java source and POM were
-unchanged by verification. The final full regression passed all 103 cases.</p>
-<h2>Interpretation and limits of coverage</h2>
-<p>The lecture's RIPR model explains the evidence: a test reaches the faulty comparison/calculation,
-produces an incorrect decision or fee, propagates it into the returned value and reveals it through an
-assertion [6]. Merely executing the same line would not necessarily reveal the fault.</p>
-<p>JaCoCo instruction counts measure executed bytecode, line counts measure executed source lines, and
-branch counts cover decision outcomes; exception handling is not counted as branches [3]. These metrics
-cannot prove that requirements, assertions or all input combinations are correct. The three selected
-faults demonstrate detection of specific mistakes, not a comprehensive mutation score.</p>
+<p>JaCoCo measures all seven production types; no console or validation classes are excluded.
+Instruction coverage is 509/519 (98.07%).</p><table><colgroup><col style="width:38%"><col style="width:31%"><col style="width:31%"></colgroup><thead><tr><th>Class</th><th>Line coverage</th><th>Branch coverage</th></tr></thead><tbody><tr><td>All production code</td><td>104/108 (96.30%)</td><td>56/60 (93.33%)</td></tr><tr><td>Role</td><td>9/9 (100.00%)</td><td>Not applicable</td></tr><tr><td>Borrower</td><td>8/8 (100.00%)</td><td>6/6 (100.00%)</td></tr><tr><td>LoanService</td><td>20/20 (100.00%)</td><td>16/16 (100.00%)</td></tr><tr><td>OverdueFeeService</td><td>11/11 (100.00%)</td><td>12/12 (100.00%)</td></tr><tr><td>RejectionReason</td><td>4/4 (100.00%)</td><td>Not applicable</td></tr><tr><td>ConsoleApp</td><td>45/49 (91.84%)</td><td>22/26 (84.62%)</td></tr><tr><td>LoanDecision</td><td>7/7 (100.00%)</td><td>Not applicable</td></tr></tbody></table>
+<p>Both business services have 100% line/branch coverage. Missed overall lines and branches belong
+to console entry/dispatch paths. Separate JVM smoke runs exercise the entry point but are not attached
+to the JUnit JaCoCo agent. Exception handling is not counted as JaCoCo branches [2, 3].</p>
+<h2>Controlled faults and real unsuccessful executions</h2>
+<p>Each fault was deliberately seeded in a temporary copy. Existing expected values were unchanged;
+these are controlled experiments, not claims about accidental student mistakes.</p>
+<table><colgroup><col style="width:13%"><col style="width:34%"><col style="width:12%"><col style="width:41%"></colgroup><thead><tr><th>Fault</th><th>Change</th><th>Failed</th><th>Expected / faulty actual example</th></tr></thead><tbody><tr><td>FI-01</td><td>Loan limit off-by-one</td><td>2/9</td><td>false / true</td></tr><tr><td>FI-02</td><td>On-time return charged as one day late</td><td>4/9</td><td>0 / 100</td></tr><tr><td>FI-03</td><td>Per-return fee cap removed</td><td>2/9</td><td>5000 / 5100</td></tr></tbody></table>
+<p>FI-01 uses > instead of >=, admitting a borrower at the limit. FI-02 adds one late day, charging
+an on-time return. FI-03 removes the 5,000-kurus cap. The experiments produced 2, 4 and 2 genuine
+assertion failures, respectively, with no test errors. After restoring each copy, all nine targeted
+tests passed. The complete original suite also passed all 103 cases after the experiments.</p>
+<p>Exact diffs, failing and repaired results, and logs are preserved under evidence/fault-injection.
+Source checksums verify that the original Java files and POM were unchanged by the experiments.</p>
+<h2>What coverage does and does not establish</h2>
+<p>Execution coverage cannot prove correct requirements or assertions. A test must reach a fault,
+produce an incorrect state, propagate it to an observable result and reveal it with a check (RIPR) [5].
+The boundary tests reveal these selected faults; three experiments do not constitute comprehensive
+mutation testing. High coverage therefore supports, rather than replaces, meaningful expected results.</p>
 </section><section>
 <h1>7. Discussion and Conclusion</h1>
-<h2>Effectiveness of the approach</h2>
-<p>The small scope made it possible to connect every requirement to executable evidence. Decision-table
-tests establish all combinations of the three eligibility conditions for both roles, while boundaries
-target the comparisons that distinguish valid periods, available capacity, first late day and fee cap.
-Negative cases ensure invalid data is reported deliberately. Calendar examples check behaviours that
-simple integer inputs would miss.</p>
-<p>Automated unit testing makes these checks repeatable and inexpensive to rerun after changes. A single
-build runs the suite and generates coverage. Independent expected examples and the fault experiments
-provide evidence of assertion effectiveness beyond a high coverage value. Reviewing requirements and
-code also supports early defect prevention, consistent with the lecture's review practices [6]. No
-multi-person formal review is claimed for this individual project.</p>
-<h2>Implementation and learning challenges</h2>
-<p>The actual setup exposed a Java-version mismatch: the machine defaulted to Java 8, while the proposal
-specified Java 17. A separate JDK and Maven Wrapper resolved the build environment. Some lecture examples
-use JUnit 4 imports and lifecycle annotations; the implementation instead follows the required JUnit 5 API.</p>
-<p>The main design challenges were distinguishing a normal rejection from invalid input, returning every
-applicable reason, preserving integer money semantics and defining consistent date ordering. Parameterized
-tests reduced repetitive test code while preserving a separate, identifiable record for each concrete
-scenario. The source and accompanying guide explain these choices and the Java and testing concepts.</p>
-<h2>Student contribution and learning</h2>
-<p>I selected the project topic and small console scope, provided the proposal and course materials,
-and sent the topic approval email. I participated in a guided review of requirement examples,
-including rejection at the loan limit, invalid requested periods and late-fee calculations.</p>
-<p>I built the application and ran its full JUnit suite, then manually checked the demo, rejection at
-the student loan limit and a three-day overdue fee. I compared the displayed results with the expected
-outcomes and saved the terminal outputs as execution records. Section 5 presents this run and its logs.</p>
-<p>I studied the Java and testing concepts with explanations from ChatGPT.
-This study covered classes, objects and methods; parameters and return values;
-integer money representation and LocalDate; JUnit 5 annotations, assertions and parameterized tests;
-the five required test techniques; and interpretation of code coverage. I learned how to derive
-expected results from requirements and compare them with program output, and why execution coverage
-alone does not establish that a test detects an incorrect result.</p>
-<p>A worked example clarified the distinction between a due date and the actual return date:
-a return on 11 December with a due date of 8 December is three days late and costs 300 kurus.
-Another example showed why a borrower exactly at the limit must be rejected: changing the comparison
-from greater-than-or-equal to greater-than allows an incorrect approval. These examples connect
-the business rules to explicit expected values and boundary tests.</p>
-<p>I also learned to distinguish the expected value in an assertion from the actual result returned
-by the application. For a three-day delay, the correct fee is 300 kurus. If the application returns
-300 but the test expects 400, the test expectation must be corrected using the requirement.
-A failing test therefore requires checking both the application behaviour and the expected value.</p>
-<h2>Limitations and possible improvements</h2>
-<p>The service trusts a caller-supplied borrower snapshot. Without storage or inventory integration it
-cannot prevent simultaneous requests from exceeding a real equipment pool, update counts or collect fees.
-The chosen numeric policy has not been validated with an operating campus desk. Tests do not exhaust all
-possible dates and integers. No performance benchmark, real stakeholder acceptance study or comprehensive
-mutation analysis was performed.</p>
-<p>Future work could validate policy with stakeholders, add persistent loan records and transactional
-inventory control, and broaden property-based or mutation tests. These extensions are outside the submitted
-proposal's small console scope. Within the defined scope, the final implementation satisfies the tested
-rules and the original suite passes after the controlled defect experiments.</p>
-<h2>AI assistance and authorship</h2>
-<p>OpenAI Codex supported Java implementation, JUnit test design, build and test execution, evidence
-analysis and report preparation. ChatGPT was used to study the Java and testing concepts.
-Student contributions and learning outcomes are described above. The original proposal also
-acknowledges drafting assistance [8].</p>
-</section><section>
+<p>Decision tables cover combined eligibility conditions; boundaries expose comparison and fee-cap
+mistakes; invalid-input tests enforce contracts; regression checks expose unintended changes.
+JUnit makes these checks repeatable after edits and gives each concrete case an identifiable result [1].
+The controlled failures show that assertions detect selected faults beyond merely executing code.</p>
+<p>Implementation challenges included selecting Java 17 when the original machine used Java 8,
+distinguishing invalid input from normal rejection, and consistent date/money semantics. Explicit dates,
+integer kurus and a Maven Wrapper made the build and tests repeatable. Parameterized tests reduced
+duplication while keeping separate records for each example.</p>
+<p>I selected the topic and console scope, supplied the proposal and sent the approval email.
+I reviewed example decisions, built the application, ran the 103-test suite and manually compared
+three console runs with expected results. The actual terminal outputs are preserved. I studied Java,
+JUnit and test-design concepts with explanations from ChatGPT, including expected-versus-actual
+values and the distinction between due and actual return dates.</p>
+<p>The service trusts supplied snapshots and has no persistence or concurrent inventory control.
+The policy has not been validated with an operating equipment desk; tests do not exhaust every date
+or integer. Within scope, broader fault selection and additional calendar combinations could improve
+the evidence. The tested rules pass the suite, with limits stated above.</p>
+<p class="small"><b>Assistance:</b> OpenAI Codex supported implementation, test design, execution,
+analysis and report preparation. ChatGPT supported concept study. External technical sources are cited below.</p>
 <h1>8. References</h1>
-<p>Official technical references were consulted on 23 November 2026. Source numbering is used in the text.</p>
-<p><b>[1]</b> JUnit Team. <i>JUnit 5 User Guide, version 5.13.4.</i> Annotations, assertions, fixtures,
-parameterized tests and execution.<br><a href="https://docs.junit.org/5.13.4/user-guide/">docs.junit.org/5.13.4/user-guide/</a></p>
-<p><b>[2]</b> JaCoCo Project. <i>Maven Plug-in.</i> Agent configuration and report generation. The build pins
-version 0.8.14; the online trunk documentation may describe a newer development version.<br>
-<a href="https://www.jacoco.org/jacoco/trunk/doc/maven.html">jacoco.org — Maven plug-in documentation</a></p>
-<p><b>[3]</b> JaCoCo Project. <i>Coverage Counters.</i> Definitions and limitations of instruction,
-line and branch metrics.<br><a href="https://www.jacoco.org/jacoco/trunk/doc/counters.html">jacoco.org — Coverage counter documentation</a></p>
-<p><b>[4]</b> Oracle. <i>Java Platform, Standard Edition 17 API Specification: LocalDate.</i> Date-only
-representation and calendar arithmetic.<br>
-<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html">docs.oracle.com — Java 17 LocalDate API</a></p>
-<p><b>[5]</b> Apache Software Foundation. <i>Apache Maven 3.9.11 Release Notes.</i><br>
-<a href="https://maven.apache.org/docs/3.9.11/release-notes.html">maven.apache.org — Maven 3.9.11 release notes</a></p>
-<p><b>[6]</b> Durmaz, O. <i>SWE411 Software Verification and Validation lecture slides.</i> Supplied course
-materials: l0 (course introduction), l1 (software engineering and testing foundations), l2 (quality,
-MDTD, RIPR and coverage), l3 (practice and test automation), and l4 (reviews and inspections). Undated.</p>
-<p><b>[7]</b> Durmaz, O. <i>SVV Research Assignment: Software Development and Automated Testing with JUnit.</i>
-Supplied assignment, four pages; <code>references/Assignment.pdf</code>.</p>
-<p><b>[8]</b> Kesen, S. K. <i>Campus Equipment Loan Eligibility and Overdue Fee Service: Project proposal for
-instructor approval.</i> 21 November 2026. Supplied proposal;
-<code>references/project_proposal.pdf</code>. Drafting assistance acknowledged as OpenAI Codex.</p>
-<h2>Supporting submission materials</h2>
-<p>Java production and test sources; pinned Maven configuration and wrapper; requirement specification;
-test plan; all 103 case records; baseline/final execution logs; Surefire XML/text; JaCoCo HTML/XML/CSV;
-three controlled fault-experiment records; eight console smoke records; student execution summary and
-four terminal logs; source checksums; environment
-details; English build instructions and Turkish demonstration guide.</p>
-<p class="small">Traceability and raw evidence remain in the accompanying project rather than being
-replaced by the report's representative tables.</p>
+<p class="small"><b>[1]</b> JUnit Team. <i>JUnit 5 User Guide, 5.13.4.</i> Assertions, fixtures and parameterized tests.<br>
+<a href="https://docs.junit.org/5.13.4/user-guide/">https://docs.junit.org/5.13.4/user-guide/</a></p>
+<p class="small"><b>[2]</b> JaCoCo. <i>Maven Plug-in.</i> Build pins 0.8.14; online trunk may differ.<br>
+<a href="https://www.jacoco.org/jacoco/trunk/doc/maven.html">https://www.jacoco.org/jacoco/trunk/doc/maven.html</a></p>
+<p class="small"><b>[3]</b> JaCoCo. <i>Coverage Counters.</i> Line/branch definitions and limitations.<br>
+<a href="https://www.jacoco.org/jacoco/trunk/doc/counters.html">https://www.jacoco.org/jacoco/trunk/doc/counters.html</a></p>
+<p class="small"><b>[4]</b> Oracle. <i>Java SE 17 API: LocalDate.</i><br>
+<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html">Java SE 17 LocalDate API documentation</a></p>
+<p class="small"><b>[5]</b> O. Durmaz. <i>SWE411 lecture slides l0–l4 and SVV Research Assignment.</i>
+Supplied course materials. Technical references consulted 23 November 2026.</p>
 </section></html>

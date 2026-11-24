@@ -2,6 +2,20 @@
 
 This map connects the supplied SWE411 assignment and original proposal to concrete project materials. Instructor approval is unconfirmed; implementation proceeded provisionally at the student's request. Original PDFs are preserved in `references`.
 
+## Later instructor submission update
+
+The later email takes precedence over the original delivery instructions. Its text is preserved in `references/instructor-submission-update.txt`.
+
+| Updated condition | Current status |
+| --- | --- |
+| Word or PDF report only | PDF prepared; the ZIP remains supporting material. |
+| `STUDENTNUMBER_FIRSTNAME_LASTNAME.pdf` | `220911810_SerdarKaan_Kesen.pdf`; both given names are combined. |
+| At most seven pages | Seven pages total, including title information and references; the generator rejects longer output. |
+| Relevant code and testing sections only | Selected eligibility, fee and JUnit excerpts, with requirements, results and analysis under the original eight headings. |
+| Blackboard: Assignment 1 - File Upload | Not submitted by this workspace; the final upload and receipt remain to be completed. |
+| Deadline: 24 November; no late reports | The deadline is recorded. Preparing or pushing the report is not submission. |
+| Student's own sentences and code | Not established: substantial implementation and report preparation used Codex. Accurate acknowledgement and recorded student runs do not alone satisfy this separate condition. |
+
 ## Status by the assignment's original section numbers
 
 The following numbers are the instructor's nine section headings. The table maps each heading to the project materials. Development continues without waiting for a reply to the proposal email, as requested by the student.
@@ -16,7 +30,7 @@ The following numbers are the instructor's nine section headings. The table maps
 | 6 | Required Deliverables | Eight-section report and supporting source, tests, results, coverage and build configuration are prepared locally; this is not confirmation of submission to the instructor. |
 | 7 | Duration and Individual Work | Report section 7 describes topic/scope decisions, proposal submission, worked examples, Java/testing study with ChatGPT, and the student's full build and three manual console checks. Raw execution logs are preserved. |
 | 8 | Evaluation Criteria | A rubric, not a separate task. All seven criteria have supporting materials; marks depend on the instructor's assessment of their quality. |
-| 9 | Academic Integrity | Report section 7 describes student contributions, learning outcomes and AI assistance. External technical sources are cited in the report and listed in section 8. |
+| 9 | Academic Integrity | Actual student contributions and AI assistance are documented and sources cited. The later own-sentences/code condition remains unresolved, as recorded above. |
 
 See `docs/student-guide-tr.md` for explanations, worked examples and the contribution record.
 
@@ -43,10 +57,10 @@ See `docs/student-guide-tr.md` for explanations, worked examples and the contrib
 | JUnit 5 features and application | Report section 5; ordinary/parameterized tests, assertions, fresh fixtures |
 | Techniques and project-specific justification | Report section 4 and detailed test plan |
 | Java/testing challenges | Report section 7; actual setup/version and data-contract challenges; no invented personal experiences |
-| At least three credible sources | Five official technical reference pages plus supplied course/assignment/proposal sources in report section 8 |
-| Required eight-section individual report | `submission/SWE411_Report.pdf`; editable `docs/report.html` |
+| At least three credible sources | Four official technical references and supplied course materials in report section 8 |
+| Required eight-section individual report | `submission/220911810_SerdarKaan_Kesen.pdf`; editable `docs/report.html` |
 | Source, tests, build configuration and reports | Submission ZIP contains all of these and the executable JAR |
 | Learning and ability to explain choices | Report section 7 and `docs/student-guide-tr.md`; design explanations and worked examples |
 | Acknowledgement of external/AI assistance | Report section 7, README and original proposal |
 
-No mandatory minimum test count, numerical coverage threshold, GUI, database or specified report length was added. The proposal's exact role limits, date periods, money representation, fee rate and cap were retained. Clarifications of unspecified date ordering and error behaviour are identified in the requirements.
+No mandatory minimum test count, numerical coverage threshold, GUI or database was added. The later email sets the seven-page maximum and report filename. The proposal's exact role limits, date periods, money representation, fee rate and cap were retained. Clarifications of unspecified date ordering and error behaviour are identified in the requirements.

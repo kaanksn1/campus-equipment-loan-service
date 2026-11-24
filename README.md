@@ -68,7 +68,7 @@ An applicant at the limit is rejected. Return every applicable rejection reason.
 | `docs/student-guide-tr.md` | Turkish explanation, demonstration exercises and student learning record |
 | `docs/assignment-compliance.md` | Status under the instructor's original sections 1–9 and requirement-to-evidence map |
 | `docs/report.html` | Editable eight-section report generated from measured evidence |
-| `submission/SWE411_Report.pdf` | Rendered report |
+| `submission/220911810_SerdarKaan_Kesen.pdf` | Seven-page report, including references |
 | `evidence/test-cases.html` | All recorded test inputs, expected and actual results |
 | `evidence/summary.json` | Exact execution and coverage counts |
 | `evidence/jacoco/index.html` | Preserved full JaCoCo coverage report |
@@ -79,6 +79,12 @@ An applicant at the limit is rejected. Return every applicable rejection reason.
 | `references/` | Unchanged supplied proposal and assignment |
 
 Fresh build reports are also available at `target/surefire-reports` and `target/site/jacoco/index.html`. No production classes are excluded from coverage. Coverage alone is not proof of correct requirements or assertions.
+
+## Instructor's updated submission instructions
+
+Upload `submission/220911810_SerdarKaan_Kesen.pdf` to Blackboard under **Assignment 1 - File Upload** by **24 November**. The complete report, including references, is seven pages. Its filename follows the student-number, first-name and last-name pattern; both given names are combined as `SerdarKaan`. The report includes selected implementation and executed test excerpts. The supporting ZIP is for source and evidence; it does not replace the required PDF/Word report. A local file or GitHub push does not confirm Blackboard submission.
+
+The instructor also requires the student's own sentences and code. The acknowledgement below accurately identifies AI assistance, but acknowledging assistance or understanding the result does not by itself establish compliance with that authorship condition. The student must resolve this condition before presenting the work as fully compliant. The supplied email text is preserved in `references/instructor-submission-update.txt`.
 
 ## Reproduce the complete evidence workflow
 

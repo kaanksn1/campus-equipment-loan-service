@@ -42,14 +42,14 @@ def main():
         files.extend(path for path in (ROOT / name).rglob("*")
                      if path.is_file() and "__pycache__" not in path.parts)
     files.extend(ROOT / name for name in ("pom.xml", "mvnw", "mvnw.cmd", ".gitignore", "README.md", "requirements-docs.txt"))
-    files.extend([ROOT / "target/campus-equipment-loan.jar", OUT / "SWE411_Report.pdf"])
+    files.extend([ROOT / "target/campus-equipment-loan.jar", OUT / "220911810_SerdarKaan_Kesen.pdf"])
     files = sorted(set(files))
     for path in files:
         if not path.exists():
             raise RuntimeError("Missing deliverable: " + str(path))
     manifest = {"project": "Campus Equipment Loan Eligibility and Overdue Fee Service",
                 "student": "Serdar Kaan Kesen", "student_number": "220911810",
-                "status": "Submission package; student contribution, learning outcomes and AI assistance documented in the report",
+                "status": "Supporting archive; upload the named PDF to Blackboard. Student authorship condition requires separate compliance.",
                 "final_tests": summary["tests"], "console_smoke_tests": summary["console_smoke_tests"],
                 "student_execution": {"build_finished_at": student_run["build_finished_at"],
                                       "automated_tests": student_tests["tests"],
@@ -67,7 +67,7 @@ def main():
             raise RuntimeError("Submission archive failed integrity verification")
     shutil.copy2(ROOT / "target/campus-equipment-loan.jar", OUT / "campus-equipment-loan.jar")
     (OUT / "checksums.sha256").write_text("".join(digest(path) + "  " + path.name + "\n" for path in
-                                                  (destination, OUT / "SWE411_Report.pdf", OUT / "campus-equipment-loan.jar")))
+                                                  (destination, OUT / "220911810_SerdarKaan_Kesen.pdf", OUT / "campus-equipment-loan.jar")))
     print(json.dumps({"archive": str(destination), "files": len(files), "bytes": destination.stat().st_size}, indent=2))
 
 
