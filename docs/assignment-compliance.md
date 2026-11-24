@@ -12,13 +12,13 @@ The following numbers are the instructor's nine section headings, not a separate
 | 2 | Project Proposal | Proposal prepared and emailed by the student; development continues as requested. |
 | 3 | Technical Requirements | Java, JUnit 5, requirements, test plan, case records, defect experiments and coverage materials are ready. |
 | 4 | Required Testing Techniques | All five required techniques are implemented and explained. |
-| 5 | Research Component | Required discussion topics and credible technical references are included; the student's personal learning reflection remains to be supplied. |
+| 5 | Research Component | Required discussion topics, credible technical references and a personal learning reflection are included. The reflection uses the student's reported AI-assisted study and examples discussed in this session. |
 | 6 | Required Deliverables | Eight-section report and supporting source, tests, results, coverage and build configuration are prepared locally; this is not confirmation of submission to the instructor. |
-| 7 | Duration and Individual Work | Java/JUnit/build setup is ready. Independent student learning, contribution and ability to explain the work have not yet been verified. The stated 3–4 weeks is a scope/duration expectation, not evidence of time actually spent. |
+| 7 | Duration and Individual Work | Java/JUnit/build setup is ready. Report section 7 records topic/scope decisions, proposal submission, guided example review and the student's reported study of Java/testing with ChatGPT. The stated 3–4 weeks is a scope/duration expectation, not evidence of time actually spent. |
 | 8 | Evaluation Criteria | A rubric, not a separate task. All seven criteria have supporting materials; marks depend on the instructor's assessment of their quality. |
-| 9 | Academic Integrity | AI assistance and external sources are acknowledged. This alone does not establish compliance with the own-work requirement; the student's actual contribution, explanation and applicable instructor rules still need review. |
+| 9 | Academic Integrity | AI assistance, external sources and student contributions are disclosed in the report. The student remains responsible for explaining and demonstrating the decisions and meeting the instructor's own-work requirements. |
 
-See `docs/student-guide-tr.md` for the explanation exercises and contribution record. A Codex-assisted technical review must not be recorded as the student's independent review.
+See `docs/student-guide-tr.md` for the explanation exercises and contribution record. The student's reported additional study is distinguished from work observed in the guided session; no independent student implementation or execution is inferred from AI-assisted study.
 
 ## Requirement-to-evidence map
 

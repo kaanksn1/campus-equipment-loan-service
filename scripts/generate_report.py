@@ -10,7 +10,7 @@ import pymupdf as fitz
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_LEFT
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.platypus import BaseDocTemplate, PageTemplate, Frame, Paragraph, Table, TableStyle, Spacer, Preformatted, KeepTogether
+from reportlab.platypus import BaseDocTemplate, PageTemplate, Frame, Paragraph, Table, TableStyle, Spacer, Preformatted, KeepTogether, PageBreak
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "submission"
@@ -67,7 +67,7 @@ def build_sections():
 <p class="subtitle">SWE411 Software Verification and Validation<br>Implementation and automated testing report</p>
 <p class="meta"><b>Student:</b> Serdar Kaan Kesen &nbsp; | &nbsp; <b>Number:</b> 220911810</p>
 <p class="meta"><b>Instructor:</b> Dr. Osman Durmaz &nbsp; | &nbsp; <b>Date:</b> {REPORT_DATE}</p>
-<p class="meta"><b>Status:</b> AI-assisted draft for student review</p>
+<p class="meta"><b>Status:</b> AI-assisted report</p>
 <p class="lead"><b>Measured result:</b> {s['tests']} JUnit 5 executions passed, with no failures, errors or skipped tests.
 All {s['console_smoke_tests']} packaged-console checks passed. Three deliberately seeded faults were detected.
 Overall line coverage is {s['coverage']['LINE']['percent']:.2f}% and branch coverage is {s['coverage']['BRANCH']['percent']:.2f}%.</p>
@@ -330,6 +330,21 @@ applicable reason, preserving integer money semantics and defining consistent da
 tests reduced repetitive test code while preserving a separate, identifiable record for each concrete
 scenario. The source and accompanying guide explain these choices and support student review of
 the Java and testing concepts.</p>
+<h2>Student contribution and learning</h2>
+<p>I selected the project topic and small console scope, provided the proposal and course materials,
+and sent the topic approval email. I participated in a guided review of requirement examples,
+including rejection at the loan limit, invalid requested periods and late-fee calculations.</p>
+<p>I studied the Java and testing concepts with explanations from ChatGPT.
+This study covered classes, objects and methods; parameters and return values;
+integer money representation and LocalDate; JUnit 5 annotations, assertions and parameterized tests;
+the five required test techniques; and interpretation of code coverage. I learned how to derive
+expected results from requirements and compare them with program output, and why execution coverage
+alone does not establish that a test detects an incorrect result.</p>
+<p>A worked example clarified the distinction between a due date and the actual return date:
+a return on 11 December with a due date of 8 December is three days late and costs 300 kurus.
+Another example showed why a borrower exactly at the limit must be rejected: changing the comparison
+from greater-than-or-equal to greater-than allows an incorrect approval. These examples connect
+the business rules to explicit expected values and boundary tests.</p>
 <h2>Limitations and possible improvements</h2>
 <p>The service trusts a caller-supplied borrower snapshot. Without storage or inventory integration it
 cannot prevent simultaneous requests from exceeding a real equipment pool, update counts or collect fees.
@@ -342,10 +357,10 @@ proposal's small console scope. Within the defined scope, the final implementati
 rules and the original suite passes after the controlled defect experiments.</p>
 <h2>AI assistance and authorship</h2>
 <p>OpenAI Codex assisted implementation, test design, execution orchestration, evidence analysis and report
-drafting. This document and code are provided for student review. The student must verify the content,
-understand and demonstrate the decisions, and acknowledge assistance under the instructor's guidelines.
-Neither instructor approval nor completed independent student review is asserted. The original proposal
-already acknowledges drafting assistance [8].</p>
+drafting. ChatGPT was used to study the Java and testing concepts described above.
+The student is responsible for verifying the submitted material and explaining and demonstrating
+the implementation and testing decisions in accordance with the instructor's guidelines.
+The original proposal also acknowledges drafting assistance [8].</p>
 """
 
     references = """
@@ -468,7 +483,10 @@ def render(sections):
                                 backColor=colors.HexColor("#f4f6f9"), borderPadding=6,
                                 spaceBefore=3, spaceAfter=10)
     flow = []
-    for section in sections:
+    for section_index, section in enumerate(sections):
+        # Keep the reference list and supporting-material summary together on a fresh page.
+        if section_index == len(sections) - 1:
+            flow.append(PageBreak())
         blocks = [node for node in FragmentParser(section).root.children if isinstance(node, HtmlNode)]
         for index, node in enumerate(blocks):
             if node.tag in ("p", "h1", "h2", "h3"):
@@ -517,7 +535,7 @@ def render(sections):
     document = BaseDocTemplate(str(destination), pagesize=(612, 792),
                                   leftMargin=72, rightMargin=72, topMargin=64, bottomMargin=64,
                                   title="Campus Equipment Loan Eligibility and Overdue Fee Service",
-                                  author="Serdar Kaan Kesen (AI-assisted draft)",
+                                  author="Serdar Kaan Kesen",
                                   subject="SWE411 implementation and JUnit 5 testing report")
     frame = Frame(72, 64, 468, 664, leftPadding=0, rightPadding=0,
                   topPadding=0, bottomPadding=0, id="body")

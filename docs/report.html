@@ -25,7 +25,7 @@ section+section{break-before:page;page-break-before:always}</style><section>
 <p class="subtitle">SWE411 Software Verification and Validation<br>Implementation and automated testing report</p>
 <p class="meta"><b>Student:</b> Serdar Kaan Kesen &nbsp; | &nbsp; <b>Number:</b> 220911810</p>
 <p class="meta"><b>Instructor:</b> Dr. Osman Durmaz &nbsp; | &nbsp; <b>Date:</b> 24 November 2026</p>
-<p class="meta"><b>Status:</b> AI-assisted draft for student review</p>
+<p class="meta"><b>Status:</b> AI-assisted report</p>
 <p class="lead"><b>Measured result:</b> 103 JUnit 5 executions passed, with no failures, errors or skipped tests.
 All 8 packaged-console checks passed. Three deliberately seeded faults were detected.
 Overall line coverage is 96.30% and branch coverage is 93.33%.</p>
@@ -204,6 +204,21 @@ applicable reason, preserving integer money semantics and defining consistent da
 tests reduced repetitive test code while preserving a separate, identifiable record for each concrete
 scenario. The source and accompanying guide explain these choices and support student review of
 the Java and testing concepts.</p>
+<h2>Student contribution and learning</h2>
+<p>I selected the project topic and small console scope, provided the proposal and course materials,
+and sent the topic approval email. I participated in a guided review of requirement examples,
+including rejection at the loan limit, invalid requested periods and late-fee calculations.</p>
+<p>I studied the Java and testing concepts with explanations from ChatGPT.
+This study covered classes, objects and methods; parameters and return values;
+integer money representation and LocalDate; JUnit 5 annotations, assertions and parameterized tests;
+the five required test techniques; and interpretation of code coverage. I learned how to derive
+expected results from requirements and compare them with program output, and why execution coverage
+alone does not establish that a test detects an incorrect result.</p>
+<p>A worked example clarified the distinction between a due date and the actual return date:
+a return on 11 December with a due date of 8 December is three days late and costs 300 kurus.
+Another example showed why a borrower exactly at the limit must be rejected: changing the comparison
+from greater-than-or-equal to greater-than allows an incorrect approval. These examples connect
+the business rules to explicit expected values and boundary tests.</p>
 <h2>Limitations and possible improvements</h2>
 <p>The service trusts a caller-supplied borrower snapshot. Without storage or inventory integration it
 cannot prevent simultaneous requests from exceeding a real equipment pool, update counts or collect fees.
@@ -216,10 +231,10 @@ proposal's small console scope. Within the defined scope, the final implementati
 rules and the original suite passes after the controlled defect experiments.</p>
 <h2>AI assistance and authorship</h2>
 <p>OpenAI Codex assisted implementation, test design, execution orchestration, evidence analysis and report
-drafting. This document and code are provided for student review. The student must verify the content,
-understand and demonstrate the decisions, and acknowledge assistance under the instructor's guidelines.
-Neither instructor approval nor completed independent student review is asserted. The original proposal
-already acknowledges drafting assistance [8].</p>
+drafting. ChatGPT was used to study the Java and testing concepts described above.
+The student is responsible for verifying the submitted material and explaining and demonstrating
+the implementation and testing decisions in accordance with the instructor's guidelines.
+The original proposal also acknowledges drafting assistance [8].</p>
 </section><section>
 <h1>8. References</h1>
 <p>Official technical references were consulted on 23 November 2026. Source numbering is used in the text.</p>

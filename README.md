@@ -65,7 +65,7 @@ An applicant at the limit is rejected. Return every applicable rejection reason.
 | `src/test/java/edu/campus/loan/` | JUnit 5 parameterized and ordinary tests, plus evidence helper |
 | `docs/requirements.md` | FR-01 through FR-09 and explicit interpretation decisions |
 | `docs/test-plan.md` | Equivalence classes, boundaries, complete decision table and regression plan |
-| `docs/student-guide-tr.md` | Turkish explanation, demonstration exercises and pending student contribution record |
+| `docs/student-guide-tr.md` | Turkish explanation, demonstration exercises and student learning record |
 | `docs/assignment-compliance.md` | Status under the instructor's original sections 1–9 and requirement-to-evidence map |
 | `docs/report.html` | Editable eight-section report generated from measured evidence |
 | `submission/SWE411_Report.pdf` | Rendered report |
@@ -103,4 +103,4 @@ The report PDF and preserved test evidence are versioned. Compiled JARs, submiss
 
 Java release 17; Maven 3.9.11; JUnit Jupiter 5.13.4; JaCoCo 0.8.14. Other plugin versions are pinned in `pom.xml`. JUnit 5 is used even though some lecture examples show JUnit 4 syntax.
 
-Implementation, test design, execution orchestration, analysis and report drafting were assisted by OpenAI Codex. This is an AI-assisted project for student review. The student must verify the work, understand and explain the decisions, and acknowledge assistance according to the instructor's guidelines. No instructor approval or independent student review is asserted by these files. External technical references appear in the report.
+Implementation, test design, execution orchestration, analysis and report drafting were assisted by OpenAI Codex. The student also reports studying the Java and testing concepts with ChatGPT. Report section 7 describes the student's contribution and AI-assisted learning. The student is responsible for verifying the material, explaining the decisions and acknowledging assistance according to the instructor's guidelines. External technical references appear in the report.

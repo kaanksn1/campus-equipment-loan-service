@@ -90,22 +90,26 @@ Sırasıyla testler, demo, kabul, kapasite reddi, üç nedenli ret, sıfır ücr
 
 ### Gerçek katkı ve inceleme kaydı
 
-Bu bölüm henüz öğrenci tarafından doldurulmadı. Aşağıdaki başlıklar tamamlanmış öğrenci faaliyeti olarak sunulmaz. Yanıtlarını kendi cümlelerinle hazırladıktan sonra raporun kişisel tartışma bölümüne yalnızca doğruladığın bilgileri ekle.
+Bu kayıt, 24 Kasım 2026 tarihli konuşmadaki yanıtlar ve öğrencinin ChatGPT ile yaptığı ek çalışmaya ilişkin beyanı kullanılarak güncellendi. Kişisel katkı ve öğrenme açıklaması İngilizce raporun 7. bölümüne eklendi.
 
-Konuşmada doğrulanan katkı: kullanıcı mevcut konuyu ve küçük Java konsol kapsamını bu çalışmaya taşıdı, proposal ile onay e-postasını paylaştı ve geliştirmeye devam etme kararını verdi. Bunlar kodun öğrenci tarafından bağımsız yazıldığı veya incelendiği anlamına gelmez. Ek katkılar aşağıdaki kayda öğrencinin açıklamalarıyla eklenecek.
-
-| Başlık | Öğrencinin dolduracağı bilgi |
+| Başlık | Kaydedilen katkı veya çalışma |
 | --- | --- |
-| Konu ve kapsam kararları | Hangi kararı kendin verdin? Hangi seçenekleri neden eledin? |
-| Kod incelemesi | Hangi sınıf/metotları gerçekten inceledin? Açıklayabildiğin bir tasarım kararı nedir? |
-| Çalıştırma | Hangi komutu kendin çalıştırdın? Ne bekledin ve ne gördün? |
-| Test katkısı | Kendin seçtiğin senaryo, girdileri ve kodu çalıştırmadan önce belirlediğin beklenen sonuç nedir? |
-| Öğrenme ve eleştiri | Başlangıçta anlamadığın bir kavramı şimdi nasıl açıklıyorsun? Mevcut çözümde hangi sınırlamayı görüyorsun? |
-| Kullanılan yardım | Codex'in, kütüphanelerin ve kaynakların hangi katkısını kullandın? Hocanın ayrıca belirttiği bir kural var mı? |
+| Konu ve kapsam | Öğrenci mevcut konuyu ve küçük Java konsol kapsamını bu çalışmaya taşıdı; proposal ile gönderdiği onay e-postasını paylaştı. |
+| Sınır örneği | Personelin 5 mevcut ödünçte reddedileceğini ve `>=` yerine `>` hatasını yakalayan değerin 5 olduğunu belirledi. |
+| Geçersiz girdi | Pozitif borcun normal ret; negatif borcun ve öğrencinin 8 günlük isteğinin geçersiz girdi hatası ürettiğini belirledi. |
+| Ücret örneği | 60 gün gecikmede tavanın 50 TL olduğunu söyledi; 8 Aralık son tarih ve 11 Aralık gerçek iade için 300 kuruşu doğru hesapladı. |
+| Ek öğrenme beyanı | Öğrenci Java ve JUnit kavramlarını, test tekniklerini ve coverage konularını ChatGPT ile çalışıp öğrendiğini belirtti. Bu beyan rapora yansıtıldı. |
+| Kullanılan yardım | Uygulama, test tasarımı, çalıştırma, analiz ve raporda Codex; kavramları öğrenmede ChatGPT desteği belirtildi. |
+
+Öğrencinin kendi bilgisayarında bağımsız derleme, test çalıştırma veya kod değişikliği yaptığına ilişkin bir kayıt eklenmedi. Korunan çalıştırma kanıtları proje araçlarıyla alınan gerçek sonuçlardır.
+
+### Kaldığımız uygulama noktası
+
+Üç gün gecikmeyi 300 kuruş bekleyen JUnit örneğine kadar gelindi. Son açıklanan kontrol `assertEquals(300L, actual)` oldu. Tekrar için sonraki soru: Program doğru olarak 300 döndürürken test 400 bekliyorsa hangi tarafı neden düzeltmek gerekir? Ardından bir mevcut testi okuyup bir girdi/beklenen sonuç değişikliğini çalıştırarak incele.
 
 ### Sonucu önce kendin tahmin et
 
-Aşağıdaki sorular kodu çalıştırmadan önce açıklama hazırlamak içindir. Bunlar henüz öğrencinin cevapladığı veya geçtiği bir sınav olarak kaydedilmez.
+Aşağıdaki sorular tekrar ve gösterim hazırlığı içindir. Konuşmada yanıtlanan örneklerle birlikte kullanılabilir; resmi bir sınav veya bağımsız uygulama değerlendirmesi değildir.
 
 1. Aktif bir öğrencinin 2 ödüncü ve 1 kuruş borcu var. 24 Kasım 2026'da 7 gün istiyor. Sonuç ne olur, hangi neden döner ve teslim tarihi bulunur mu? Bu örnek hangi girdi sınıfını sınar?
 2. Borçsuz, aktif bir öğrencinin mevcut ödünç sayısı 3. Karşılaştırmayı `>=` yerine `>` yapmak neyi değiştirir? Bu yanlışı yakalayacak iki komşu sınır değeri seç.
@@ -115,13 +119,10 @@ Aşağıdaki sorular kodu çalıştırmadan önce açıklama hazırlamak içindi
 
 Soruların ardından kendin bir ek senaryo seç, beklenen sonucu kurallardan çıkar ve mevcut testlerden hangisinin bunu kapsadığını bul. Kapsanmıyorsa yeni testin neyi farklı doğrulayacağını açıkla. Yeni test eklemeden önce senaryonun amacını netleştir.
 
-### Tamamlanma kontrolü
+### Gösterim için öz değerlendirme
 
-- [ ] İncelediğim kod ve testleri kendi cümlelerimle açıklayabiliyorum.
-- [ ] Bir sınır senaryosunun beklenen sonucunu kodu çalıştırmadan çıkarabiliyorum.
-- [ ] Kontrol amacıyla eklenen üç hatayı gerçek geliştirme hatalarından ayırabiliyorum.
-- [ ] Kendi katkımı ve kullandığım yardımı doğru biçimde yazdım.
-- [ ] Rapordaki kişisel öğrenme bölümünü gerçekten yaşadığım deneyimlerle tamamladım.
-- [ ] Kullanılan yardımın hocanın kurallarıyla uyumunu değerlendirdim.
-
-Bu kutular öğrenci tarafından henüz doğrulanmadı. Teknik testlerin geçmesi bu kutuları otomatik olarak tamamlamaz.
+- İncelediğin kod ve testleri kendi cümlelerinle açıkla.
+- Bir sınır senaryosunun beklenen sonucunu kodu çalıştırmadan çıkar.
+- Kontrol amacıyla eklenen üç hatayı gerçek geliştirme hatalarından ayır.
+- Kendi katkını ve kullanılan yardımı rapordaki açıklamayla tutarlı anlat.
+- Teknik testlerin geçmesi ile gereksinimlerin doğru ve eksiksiz olması arasındaki farkı açıkla.
